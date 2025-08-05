@@ -1,14 +1,20 @@
-import { SendEmailDto } from "../api/email/dto/email.schema";
+import { render } from "@react-email/render";
 import { resend } from "../services/resend/resend";
 
-export const sendEmail = async (sendEmailDto: SendEmailDto) => {
+export const sendEmail = async (sendEmailDto: {
+  to: string;
+  subject: string;
+  html: React.ReactNode;
+}) => {
   const { to, subject, html } = sendEmailDto;
 
+  const htmlRendered = await render(html);
+
   await resend.emails.send({
-    from: "Elevate Global <noreply@help.elevateglobal.app>",
+    from: "Test <noreply@help.elevateglobal.app>",
     to: to,
     subject: subject,
-    html: html,
+    html: htmlRendered,
   });
 
   return {

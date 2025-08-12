@@ -30,8 +30,6 @@ jobs:
           file: ./Dockerfile
           push: false
           load: false
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: Open PR to main
         if: ${{ success() && github.ref_name == 'staging' }}

@@ -1,1 +1,7 @@
-npm test
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# npm test            # ❌ remove or comment this
+# pnpm test           # (same story)
+# Run something else if you want, e.g. lint:
+# pnpm lint

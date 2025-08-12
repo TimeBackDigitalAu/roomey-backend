@@ -21,6 +21,8 @@ export const appConfigSchema = z.object({
   STRIPE_SECRET_KEY: z.string().min(1),
   STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
 
+  TURNSTILE_SECRET_KEY: z.string().min(1),
+
   PORT: z.coerce.number().default(8080),
 });
 

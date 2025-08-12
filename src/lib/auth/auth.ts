@@ -3,6 +3,7 @@ import { betterAuth, BetterAuthPlugin, User } from "better-auth";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import {
   admin,
+  captcha,
   emailOTP,
   haveIBeenPwned,
   magicLink,
@@ -218,6 +219,11 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
           }));
         },
       },
+    }),
+
+    captcha({
+      provider: "cloudflare-turnstile", // or google-recaptcha, hcaptcha
+      secretKey: process.env.TURNSTILE_SECRET_KEY!,
     }),
   ],
   secondaryStorage: {

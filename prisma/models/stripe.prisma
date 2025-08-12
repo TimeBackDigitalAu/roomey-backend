@@ -1,0 +1,29 @@
+model Subscription {
+  id                   String    @id @default(uuid())
+  plan                 String
+  referenceId          String
+  stripeCustomerId     String?
+  stripeSubscriptionId String?
+  status               String?
+  periodStart          DateTime?
+  periodEnd            DateTime?
+  cancelAtPeriodEnd    Boolean?
+  seats                Int?
+
+  @@map("subscription")
+  @@schema("stripe_schema")
+}
+
+model plan_table {
+  plan_id          String    @id @default(uuid()) @map("id")
+  plan_name        String    @map("name")
+  plan_price_id    String?   @map("priceId")
+  plan_created_at  DateTime  @map("createdAt") @default(now()) @db.Timestamptz(3)
+  plan_updated_at  DateTime? @map("updatedAt") @db.Timestamptz(3)
+  plan_photo       String?   @map("photo")
+  plan_description String?   @map("description")
+  plan_is_active   Boolean   @map("isActive")
+
+  @@map("plan_table")
+  @@schema("stripe_schema")
+}

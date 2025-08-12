@@ -7293,7 +7293,7 @@ export namespace Prisma {
   }
 
   export type User_tableCreateInput = {
-    id: string
+    id?: string
     user_name: string
     user_email: string
     user_email_verified: boolean
@@ -7309,7 +7309,7 @@ export namespace Prisma {
   }
 
   export type User_tableUncheckedCreateInput = {
-    id: string
+    id?: string
     user_name: string
     user_email: string
     user_email_verified: boolean
@@ -7357,7 +7357,7 @@ export namespace Prisma {
   }
 
   export type User_tableCreateManyInput = {
-    id: string
+    id?: string
     user_name: string
     user_email: string
     user_email_verified: boolean
@@ -7402,7 +7402,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCreateInput = {
-    id: string
+    id?: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null
@@ -7417,7 +7417,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableUncheckedCreateInput = {
-    id: string
+    id?: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_user_id: string
@@ -7462,7 +7462,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCreateManyInput = {
-    id: string
+    id?: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_user_id: string
@@ -7506,7 +7506,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableCreateInput = {
-    id: string
+    id?: string
     verification_identifier: string
     verification_value: string
     verification_expires_at: Date | string
@@ -7515,7 +7515,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableUncheckedCreateInput = {
-    id: string
+    id?: string
     verification_identifier: string
     verification_value: string
     verification_expires_at: Date | string
@@ -7542,7 +7542,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableCreateManyInput = {
-    id: string
+    id?: string
     verification_identifier: string
     verification_value: string
     verification_expires_at: Date | string
@@ -7569,7 +7569,7 @@ export namespace Prisma {
   }
 
   export type SubscriptionCreateInput = {
-    id: string
+    id?: string
     plan: string
     referenceId: string
     stripeCustomerId?: string | null
@@ -7582,7 +7582,7 @@ export namespace Prisma {
   }
 
   export type SubscriptionUncheckedCreateInput = {
-    id: string
+    id?: string
     plan: string
     referenceId: string
     stripeCustomerId?: string | null
@@ -7621,7 +7621,7 @@ export namespace Prisma {
   }
 
   export type SubscriptionCreateManyInput = {
-    id: string
+    id?: string
     plan: string
     referenceId: string
     stripeCustomerId?: string | null
@@ -7660,7 +7660,7 @@ export namespace Prisma {
   }
 
   export type plan_tableCreateInput = {
-    plan_id: string
+    plan_id?: string
     plan_name: string
     plan_price_id?: string | null
     plan_created_at?: Date | string
@@ -7671,7 +7671,7 @@ export namespace Prisma {
   }
 
   export type plan_tableUncheckedCreateInput = {
-    plan_id: string
+    plan_id?: string
     plan_name: string
     plan_price_id?: string | null
     plan_created_at?: Date | string
@@ -7704,7 +7704,7 @@ export namespace Prisma {
   }
 
   export type plan_tableCreateManyInput = {
-    plan_id: string
+    plan_id?: string
     plan_name: string
     plan_price_id?: string | null
     plan_created_at?: Date | string
@@ -8398,7 +8398,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCreateWithoutUser_tableInput = {
-    id: string
+    id?: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null
@@ -8412,7 +8412,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableUncheckedCreateWithoutUser_tableInput = {
-    id: string
+    id?: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null
@@ -8470,7 +8470,7 @@ export namespace Prisma {
   }
 
   export type User_tableCreateWithoutUser_account_tablesInput = {
-    id: string
+    id?: string
     user_name: string
     user_email: string
     user_email_verified: boolean
@@ -8485,7 +8485,7 @@ export namespace Prisma {
   }
 
   export type User_tableUncheckedCreateWithoutUser_account_tablesInput = {
-    id: string
+    id?: string
     user_name: string
     user_email: string
     user_email_verified: boolean
@@ -8546,7 +8546,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCreateManyUser_tableInput = {
-    id: string
+    id?: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null

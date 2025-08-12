@@ -1,8 +1,6 @@
 # ---------- Base (shared) ----------
     FROM node:20.10-slim AS base
     WORKDIR /app
-
-    ENV HUSKY=0
     
     # System deps (doppler + tools you need everywhere)
     RUN apt-get update && apt-get install -y \
@@ -40,7 +38,7 @@
     RUN pnpm run build
     
     # Install only production deps (smaller runtime)
-    RUN pnpm install --prod --frozen-lockfile
+    RUN pnpm install --prod --frozen-lockfile --ignore-scripts
     
     # ---------- Runtime ----------
     FROM base AS runner

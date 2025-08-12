@@ -29,10 +29,10 @@ export type User_account_table = $Result.DefaultSelection<Prisma.$User_account_t
  */
 export type Verification_table = $Result.DefaultSelection<Prisma.$Verification_tablePayload>
 /**
- * Model subscriotion_table
+ * Model Subscription
  * 
  */
-export type subscriotion_table = $Result.DefaultSelection<Prisma.$subscriotion_tablePayload>
+export type Subscription = $Result.DefaultSelection<Prisma.$SubscriptionPayload>
 /**
  * Model plan_table
  * 
@@ -195,14 +195,14 @@ export class PrismaClient<
   get verification_table(): Prisma.Verification_tableDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.subscriotion_table`: Exposes CRUD operations for the **subscriotion_table** model.
+   * `prisma.subscription`: Exposes CRUD operations for the **Subscription** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Subscriotion_tables
-    * const subscriotion_tables = await prisma.subscriotion_table.findMany()
+    * // Fetch zero or more Subscriptions
+    * const subscriptions = await prisma.subscription.findMany()
     * ```
     */
-  get subscriotion_table(): Prisma.subscriotion_tableDelegate<ExtArgs, ClientOptions>;
+  get subscription(): Prisma.SubscriptionDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.plan_table`: Exposes CRUD operations for the **plan_table** model.
@@ -656,7 +656,7 @@ export namespace Prisma {
     User_table: 'User_table',
     User_account_table: 'User_account_table',
     Verification_table: 'Verification_table',
-    subscriotion_table: 'subscriotion_table',
+    Subscription: 'Subscription',
     plan_table: 'plan_table'
   };
 
@@ -676,7 +676,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user_table" | "user_account_table" | "verification_table" | "subscriotion_table" | "plan_table"
+      modelProps: "user_table" | "user_account_table" | "verification_table" | "subscription" | "plan_table"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -902,77 +902,77 @@ export namespace Prisma {
           }
         }
       }
-      subscriotion_table: {
-        payload: Prisma.$subscriotion_tablePayload<ExtArgs>
-        fields: Prisma.subscriotion_tableFieldRefs
+      Subscription: {
+        payload: Prisma.$SubscriptionPayload<ExtArgs>
+        fields: Prisma.SubscriptionFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.subscriotion_tableFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload> | null
+            args: Prisma.SubscriptionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.subscriotion_tableFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>
+            args: Prisma.SubscriptionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
           }
           findFirst: {
-            args: Prisma.subscriotion_tableFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload> | null
+            args: Prisma.SubscriptionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.subscriotion_tableFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>
+            args: Prisma.SubscriptionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
           }
           findMany: {
-            args: Prisma.subscriotion_tableFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>[]
+            args: Prisma.SubscriptionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>[]
           }
           create: {
-            args: Prisma.subscriotion_tableCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>
+            args: Prisma.SubscriptionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
           }
           createMany: {
-            args: Prisma.subscriotion_tableCreateManyArgs<ExtArgs>
+            args: Prisma.SubscriptionCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.subscriotion_tableCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>[]
+            args: Prisma.SubscriptionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>[]
           }
           delete: {
-            args: Prisma.subscriotion_tableDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>
+            args: Prisma.SubscriptionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
           }
           update: {
-            args: Prisma.subscriotion_tableUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>
+            args: Prisma.SubscriptionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
           }
           deleteMany: {
-            args: Prisma.subscriotion_tableDeleteManyArgs<ExtArgs>
+            args: Prisma.SubscriptionDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.subscriotion_tableUpdateManyArgs<ExtArgs>
+            args: Prisma.SubscriptionUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.subscriotion_tableUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>[]
+            args: Prisma.SubscriptionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>[]
           }
           upsert: {
-            args: Prisma.subscriotion_tableUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$subscriotion_tablePayload>
+            args: Prisma.SubscriptionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SubscriptionPayload>
           }
           aggregate: {
-            args: Prisma.Subscriotion_tableAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSubscriotion_table>
+            args: Prisma.SubscriptionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSubscription>
           }
           groupBy: {
-            args: Prisma.subscriotion_tableGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Subscriotion_tableGroupByOutputType>[]
+            args: Prisma.SubscriptionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionGroupByOutputType>[]
           }
           count: {
-            args: Prisma.subscriotion_tableCountArgs<ExtArgs>
-            result: $Utils.Optional<Subscriotion_tableCountAggregateOutputType> | number
+            args: Prisma.SubscriptionCountArgs<ExtArgs>
+            result: $Utils.Optional<SubscriptionCountAggregateOutputType> | number
           }
         }
       }
@@ -1145,7 +1145,7 @@ export namespace Prisma {
     user_table?: User_tableOmit
     user_account_table?: User_account_tableOmit
     verification_table?: Verification_tableOmit
-    subscriotion_table?: subscriotion_tableOmit
+    subscription?: SubscriptionOmit
     plan_table?: plan_tableOmit
   }
 
@@ -1287,95 +1287,95 @@ export namespace Prisma {
   }
 
   export type User_tableMinAggregateOutputType = {
-    user_id: string | null
+    id: string | null
     user_name: string | null
     user_email: string | null
     user_email_verified: boolean | null
     user_image: string | null
     user_created_at: Date | null
     user_updated_at: Date | null
-    user_role: string | null
-    user_banned: boolean | null
-    user_ban_reason: string | null
-    user_ban_expires: Date | null
-    user_stripe_customer_id: string | null
+    role: string | null
+    banned: boolean | null
+    banReason: string | null
+    banExpires: Date | null
+    stripeCustomerId: string | null
   }
 
   export type User_tableMaxAggregateOutputType = {
-    user_id: string | null
+    id: string | null
     user_name: string | null
     user_email: string | null
     user_email_verified: boolean | null
     user_image: string | null
     user_created_at: Date | null
     user_updated_at: Date | null
-    user_role: string | null
-    user_banned: boolean | null
-    user_ban_reason: string | null
-    user_ban_expires: Date | null
-    user_stripe_customer_id: string | null
+    role: string | null
+    banned: boolean | null
+    banReason: string | null
+    banExpires: Date | null
+    stripeCustomerId: string | null
   }
 
   export type User_tableCountAggregateOutputType = {
-    user_id: number
+    id: number
     user_name: number
     user_email: number
     user_email_verified: number
     user_image: number
     user_created_at: number
     user_updated_at: number
-    user_role: number
-    user_banned: number
-    user_ban_reason: number
-    user_ban_expires: number
-    user_stripe_customer_id: number
+    role: number
+    banned: number
+    banReason: number
+    banExpires: number
+    stripeCustomerId: number
     _all: number
   }
 
 
   export type User_tableMinAggregateInputType = {
-    user_id?: true
+    id?: true
     user_name?: true
     user_email?: true
     user_email_verified?: true
     user_image?: true
     user_created_at?: true
     user_updated_at?: true
-    user_role?: true
-    user_banned?: true
-    user_ban_reason?: true
-    user_ban_expires?: true
-    user_stripe_customer_id?: true
+    role?: true
+    banned?: true
+    banReason?: true
+    banExpires?: true
+    stripeCustomerId?: true
   }
 
   export type User_tableMaxAggregateInputType = {
-    user_id?: true
+    id?: true
     user_name?: true
     user_email?: true
     user_email_verified?: true
     user_image?: true
     user_created_at?: true
     user_updated_at?: true
-    user_role?: true
-    user_banned?: true
-    user_ban_reason?: true
-    user_ban_expires?: true
-    user_stripe_customer_id?: true
+    role?: true
+    banned?: true
+    banReason?: true
+    banExpires?: true
+    stripeCustomerId?: true
   }
 
   export type User_tableCountAggregateInputType = {
-    user_id?: true
+    id?: true
     user_name?: true
     user_email?: true
     user_email_verified?: true
     user_image?: true
     user_created_at?: true
     user_updated_at?: true
-    user_role?: true
-    user_banned?: true
-    user_ban_reason?: true
-    user_ban_expires?: true
-    user_stripe_customer_id?: true
+    role?: true
+    banned?: true
+    banReason?: true
+    banExpires?: true
+    stripeCustomerId?: true
     _all?: true
   }
 
@@ -1452,18 +1452,18 @@ export namespace Prisma {
   }
 
   export type User_tableGroupByOutputType = {
-    user_id: string
+    id: string
     user_name: string
     user_email: string
     user_email_verified: boolean
     user_image: string | null
     user_created_at: Date
     user_updated_at: Date
-    user_role: string | null
-    user_banned: boolean | null
-    user_ban_reason: string | null
-    user_ban_expires: Date | null
-    user_stripe_customer_id: string | null
+    role: string | null
+    banned: boolean | null
+    banReason: string | null
+    banExpires: Date | null
+    stripeCustomerId: string | null
     _count: User_tableCountAggregateOutputType | null
     _min: User_tableMinAggregateOutputType | null
     _max: User_tableMaxAggregateOutputType | null
@@ -1484,68 +1484,68 @@ export namespace Prisma {
 
 
   export type User_tableSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    id?: boolean
     user_name?: boolean
     user_email?: boolean
     user_email_verified?: boolean
     user_image?: boolean
     user_created_at?: boolean
     user_updated_at?: boolean
-    user_role?: boolean
-    user_banned?: boolean
-    user_ban_reason?: boolean
-    user_ban_expires?: boolean
-    user_stripe_customer_id?: boolean
+    role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
+    stripeCustomerId?: boolean
     user_account_tables?: boolean | User_table$user_account_tablesArgs<ExtArgs>
     _count?: boolean | User_tableCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user_table"]>
 
   export type User_tableSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    id?: boolean
     user_name?: boolean
     user_email?: boolean
     user_email_verified?: boolean
     user_image?: boolean
     user_created_at?: boolean
     user_updated_at?: boolean
-    user_role?: boolean
-    user_banned?: boolean
-    user_ban_reason?: boolean
-    user_ban_expires?: boolean
-    user_stripe_customer_id?: boolean
+    role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
+    stripeCustomerId?: boolean
   }, ExtArgs["result"]["user_table"]>
 
   export type User_tableSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    id?: boolean
     user_name?: boolean
     user_email?: boolean
     user_email_verified?: boolean
     user_image?: boolean
     user_created_at?: boolean
     user_updated_at?: boolean
-    user_role?: boolean
-    user_banned?: boolean
-    user_ban_reason?: boolean
-    user_ban_expires?: boolean
-    user_stripe_customer_id?: boolean
+    role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
+    stripeCustomerId?: boolean
   }, ExtArgs["result"]["user_table"]>
 
   export type User_tableSelectScalar = {
-    user_id?: boolean
+    id?: boolean
     user_name?: boolean
     user_email?: boolean
     user_email_verified?: boolean
     user_image?: boolean
     user_created_at?: boolean
     user_updated_at?: boolean
-    user_role?: boolean
-    user_banned?: boolean
-    user_ban_reason?: boolean
-    user_ban_expires?: boolean
-    user_stripe_customer_id?: boolean
+    role?: boolean
+    banned?: boolean
+    banReason?: boolean
+    banExpires?: boolean
+    stripeCustomerId?: boolean
   }
 
-  export type User_tableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "user_name" | "user_email" | "user_email_verified" | "user_image" | "user_created_at" | "user_updated_at" | "user_role" | "user_banned" | "user_ban_reason" | "user_ban_expires" | "user_stripe_customer_id", ExtArgs["result"]["user_table"]>
+  export type User_tableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_name" | "user_email" | "user_email_verified" | "user_image" | "user_created_at" | "user_updated_at" | "role" | "banned" | "banReason" | "banExpires" | "stripeCustomerId", ExtArgs["result"]["user_table"]>
   export type User_tableInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user_account_tables?: boolean | User_table$user_account_tablesArgs<ExtArgs>
     _count?: boolean | User_tableCountOutputTypeDefaultArgs<ExtArgs>
@@ -1559,18 +1559,18 @@ export namespace Prisma {
       user_account_tables: Prisma.$User_account_tablePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      user_id: string
+      id: string
       user_name: string
       user_email: string
       user_email_verified: boolean
       user_image: string | null
       user_created_at: Date
       user_updated_at: Date
-      user_role: string | null
-      user_banned: boolean | null
-      user_ban_reason: string | null
-      user_ban_expires: Date | null
-      user_stripe_customer_id: string | null
+      role: string | null
+      banned: boolean | null
+      banReason: string | null
+      banExpires: Date | null
+      stripeCustomerId: string | null
     }, ExtArgs["result"]["user_table"]>
     composites: {}
   }
@@ -1654,8 +1654,8 @@ export namespace Prisma {
      * // Get first 10 User_tables
      * const user_tables = await prisma.user_table.findMany({ take: 10 })
      * 
-     * // Only select the `user_id`
-     * const user_tableWithUser_idOnly = await prisma.user_table.findMany({ select: { user_id: true } })
+     * // Only select the `id`
+     * const user_tableWithIdOnly = await prisma.user_table.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends User_tableFindManyArgs>(args?: SelectSubset<T, User_tableFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_tablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1699,9 +1699,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many User_tables and only return the `user_id`
-     * const user_tableWithUser_idOnly = await prisma.user_table.createManyAndReturn({
-     *   select: { user_id: true },
+     * // Create many User_tables and only return the `id`
+     * const user_tableWithIdOnly = await prisma.user_table.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -1790,9 +1790,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more User_tables and only return the `user_id`
-     * const user_tableWithUser_idOnly = await prisma.user_table.updateManyAndReturn({
-     *   select: { user_id: true },
+     * // Update zero or more User_tables and only return the `id`
+     * const user_tableWithIdOnly = await prisma.user_table.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -1995,18 +1995,18 @@ export namespace Prisma {
    * Fields of the User_table model
    */
   interface User_tableFieldRefs {
-    readonly user_id: FieldRef<"User_table", 'String'>
+    readonly id: FieldRef<"User_table", 'String'>
     readonly user_name: FieldRef<"User_table", 'String'>
     readonly user_email: FieldRef<"User_table", 'String'>
     readonly user_email_verified: FieldRef<"User_table", 'Boolean'>
     readonly user_image: FieldRef<"User_table", 'String'>
     readonly user_created_at: FieldRef<"User_table", 'DateTime'>
     readonly user_updated_at: FieldRef<"User_table", 'DateTime'>
-    readonly user_role: FieldRef<"User_table", 'String'>
-    readonly user_banned: FieldRef<"User_table", 'Boolean'>
-    readonly user_ban_reason: FieldRef<"User_table", 'String'>
-    readonly user_ban_expires: FieldRef<"User_table", 'DateTime'>
-    readonly user_stripe_customer_id: FieldRef<"User_table", 'String'>
+    readonly role: FieldRef<"User_table", 'String'>
+    readonly banned: FieldRef<"User_table", 'Boolean'>
+    readonly banReason: FieldRef<"User_table", 'String'>
+    readonly banExpires: FieldRef<"User_table", 'DateTime'>
+    readonly stripeCustomerId: FieldRef<"User_table", 'String'>
   }
     
 
@@ -2448,7 +2448,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableMinAggregateOutputType = {
-    user_account_id: string | null
+    id: string | null
     user_account_account_id: string | null
     user_account_provider_id: string | null
     user_account_user_id: string | null
@@ -2456,7 +2456,6 @@ export namespace Prisma {
     user_account_refresh_token: string | null
     user_account_id_token: string | null
     user_account_access_token_expires_at: Date | null
-    user_account_refresh_token_expires_at: Date | null
     user_account_scope: string | null
     user_account_password: string | null
     user_account_created_at: Date | null
@@ -2464,7 +2463,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableMaxAggregateOutputType = {
-    user_account_id: string | null
+    id: string | null
     user_account_account_id: string | null
     user_account_provider_id: string | null
     user_account_user_id: string | null
@@ -2472,7 +2471,6 @@ export namespace Prisma {
     user_account_refresh_token: string | null
     user_account_id_token: string | null
     user_account_access_token_expires_at: Date | null
-    user_account_refresh_token_expires_at: Date | null
     user_account_scope: string | null
     user_account_password: string | null
     user_account_created_at: Date | null
@@ -2480,7 +2478,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCountAggregateOutputType = {
-    user_account_id: number
+    id: number
     user_account_account_id: number
     user_account_provider_id: number
     user_account_user_id: number
@@ -2488,7 +2486,6 @@ export namespace Prisma {
     user_account_refresh_token: number
     user_account_id_token: number
     user_account_access_token_expires_at: number
-    user_account_refresh_token_expires_at: number
     user_account_scope: number
     user_account_password: number
     user_account_created_at: number
@@ -2498,7 +2495,7 @@ export namespace Prisma {
 
 
   export type User_account_tableMinAggregateInputType = {
-    user_account_id?: true
+    id?: true
     user_account_account_id?: true
     user_account_provider_id?: true
     user_account_user_id?: true
@@ -2506,7 +2503,6 @@ export namespace Prisma {
     user_account_refresh_token?: true
     user_account_id_token?: true
     user_account_access_token_expires_at?: true
-    user_account_refresh_token_expires_at?: true
     user_account_scope?: true
     user_account_password?: true
     user_account_created_at?: true
@@ -2514,7 +2510,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableMaxAggregateInputType = {
-    user_account_id?: true
+    id?: true
     user_account_account_id?: true
     user_account_provider_id?: true
     user_account_user_id?: true
@@ -2522,7 +2518,6 @@ export namespace Prisma {
     user_account_refresh_token?: true
     user_account_id_token?: true
     user_account_access_token_expires_at?: true
-    user_account_refresh_token_expires_at?: true
     user_account_scope?: true
     user_account_password?: true
     user_account_created_at?: true
@@ -2530,7 +2525,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCountAggregateInputType = {
-    user_account_id?: true
+    id?: true
     user_account_account_id?: true
     user_account_provider_id?: true
     user_account_user_id?: true
@@ -2538,7 +2533,6 @@ export namespace Prisma {
     user_account_refresh_token?: true
     user_account_id_token?: true
     user_account_access_token_expires_at?: true
-    user_account_refresh_token_expires_at?: true
     user_account_scope?: true
     user_account_password?: true
     user_account_created_at?: true
@@ -2619,7 +2613,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableGroupByOutputType = {
-    user_account_id: string
+    id: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_user_id: string
@@ -2627,7 +2621,6 @@ export namespace Prisma {
     user_account_refresh_token: string | null
     user_account_id_token: string | null
     user_account_access_token_expires_at: Date | null
-    user_account_refresh_token_expires_at: Date | null
     user_account_scope: string | null
     user_account_password: string | null
     user_account_created_at: Date
@@ -2652,7 +2645,7 @@ export namespace Prisma {
 
 
   export type User_account_tableSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_account_id?: boolean
+    id?: boolean
     user_account_account_id?: boolean
     user_account_provider_id?: boolean
     user_account_user_id?: boolean
@@ -2660,7 +2653,6 @@ export namespace Prisma {
     user_account_refresh_token?: boolean
     user_account_id_token?: boolean
     user_account_access_token_expires_at?: boolean
-    user_account_refresh_token_expires_at?: boolean
     user_account_scope?: boolean
     user_account_password?: boolean
     user_account_created_at?: boolean
@@ -2669,7 +2661,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["user_account_table"]>
 
   export type User_account_tableSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_account_id?: boolean
+    id?: boolean
     user_account_account_id?: boolean
     user_account_provider_id?: boolean
     user_account_user_id?: boolean
@@ -2677,7 +2669,6 @@ export namespace Prisma {
     user_account_refresh_token?: boolean
     user_account_id_token?: boolean
     user_account_access_token_expires_at?: boolean
-    user_account_refresh_token_expires_at?: boolean
     user_account_scope?: boolean
     user_account_password?: boolean
     user_account_created_at?: boolean
@@ -2686,7 +2677,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["user_account_table"]>
 
   export type User_account_tableSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_account_id?: boolean
+    id?: boolean
     user_account_account_id?: boolean
     user_account_provider_id?: boolean
     user_account_user_id?: boolean
@@ -2694,7 +2685,6 @@ export namespace Prisma {
     user_account_refresh_token?: boolean
     user_account_id_token?: boolean
     user_account_access_token_expires_at?: boolean
-    user_account_refresh_token_expires_at?: boolean
     user_account_scope?: boolean
     user_account_password?: boolean
     user_account_created_at?: boolean
@@ -2703,7 +2693,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["user_account_table"]>
 
   export type User_account_tableSelectScalar = {
-    user_account_id?: boolean
+    id?: boolean
     user_account_account_id?: boolean
     user_account_provider_id?: boolean
     user_account_user_id?: boolean
@@ -2711,14 +2701,13 @@ export namespace Prisma {
     user_account_refresh_token?: boolean
     user_account_id_token?: boolean
     user_account_access_token_expires_at?: boolean
-    user_account_refresh_token_expires_at?: boolean
     user_account_scope?: boolean
     user_account_password?: boolean
     user_account_created_at?: boolean
     user_account_updated_at?: boolean
   }
 
-  export type User_account_tableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_account_id" | "user_account_account_id" | "user_account_provider_id" | "user_account_user_id" | "user_account_access_token" | "user_account_refresh_token" | "user_account_id_token" | "user_account_access_token_expires_at" | "user_account_refresh_token_expires_at" | "user_account_scope" | "user_account_password" | "user_account_created_at" | "user_account_updated_at", ExtArgs["result"]["user_account_table"]>
+  export type User_account_tableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "user_account_account_id" | "user_account_provider_id" | "user_account_user_id" | "user_account_access_token" | "user_account_refresh_token" | "user_account_id_token" | "user_account_access_token_expires_at" | "user_account_scope" | "user_account_password" | "user_account_created_at" | "user_account_updated_at", ExtArgs["result"]["user_account_table"]>
   export type User_account_tableInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user_table?: boolean | User_tableDefaultArgs<ExtArgs>
   }
@@ -2735,7 +2724,7 @@ export namespace Prisma {
       user_table: Prisma.$User_tablePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      user_account_id: string
+      id: string
       user_account_account_id: string
       user_account_provider_id: string
       user_account_user_id: string
@@ -2743,7 +2732,6 @@ export namespace Prisma {
       user_account_refresh_token: string | null
       user_account_id_token: string | null
       user_account_access_token_expires_at: Date | null
-      user_account_refresh_token_expires_at: Date | null
       user_account_scope: string | null
       user_account_password: string | null
       user_account_created_at: Date
@@ -2831,8 +2819,8 @@ export namespace Prisma {
      * // Get first 10 User_account_tables
      * const user_account_tables = await prisma.user_account_table.findMany({ take: 10 })
      * 
-     * // Only select the `user_account_id`
-     * const user_account_tableWithUser_account_idOnly = await prisma.user_account_table.findMany({ select: { user_account_id: true } })
+     * // Only select the `id`
+     * const user_account_tableWithIdOnly = await prisma.user_account_table.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends User_account_tableFindManyArgs>(args?: SelectSubset<T, User_account_tableFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$User_account_tablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -2876,9 +2864,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many User_account_tables and only return the `user_account_id`
-     * const user_account_tableWithUser_account_idOnly = await prisma.user_account_table.createManyAndReturn({
-     *   select: { user_account_id: true },
+     * // Create many User_account_tables and only return the `id`
+     * const user_account_tableWithIdOnly = await prisma.user_account_table.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -2967,9 +2955,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more User_account_tables and only return the `user_account_id`
-     * const user_account_tableWithUser_account_idOnly = await prisma.user_account_table.updateManyAndReturn({
-     *   select: { user_account_id: true },
+     * // Update zero or more User_account_tables and only return the `id`
+     * const user_account_tableWithIdOnly = await prisma.user_account_table.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3172,7 +3160,7 @@ export namespace Prisma {
    * Fields of the User_account_table model
    */
   interface User_account_tableFieldRefs {
-    readonly user_account_id: FieldRef<"User_account_table", 'String'>
+    readonly id: FieldRef<"User_account_table", 'String'>
     readonly user_account_account_id: FieldRef<"User_account_table", 'String'>
     readonly user_account_provider_id: FieldRef<"User_account_table", 'String'>
     readonly user_account_user_id: FieldRef<"User_account_table", 'String'>
@@ -3180,7 +3168,6 @@ export namespace Prisma {
     readonly user_account_refresh_token: FieldRef<"User_account_table", 'String'>
     readonly user_account_id_token: FieldRef<"User_account_table", 'String'>
     readonly user_account_access_token_expires_at: FieldRef<"User_account_table", 'DateTime'>
-    readonly user_account_refresh_token_expires_at: FieldRef<"User_account_table", 'DateTime'>
     readonly user_account_scope: FieldRef<"User_account_table", 'String'>
     readonly user_account_password: FieldRef<"User_account_table", 'String'>
     readonly user_account_created_at: FieldRef<"User_account_table", 'DateTime'>
@@ -3610,7 +3597,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableMinAggregateOutputType = {
-    verification_id: string | null
+    id: string | null
     verification_identifier: string | null
     verification_value: string | null
     verification_expires_at: Date | null
@@ -3619,7 +3606,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableMaxAggregateOutputType = {
-    verification_id: string | null
+    id: string | null
     verification_identifier: string | null
     verification_value: string | null
     verification_expires_at: Date | null
@@ -3628,7 +3615,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableCountAggregateOutputType = {
-    verification_id: number
+    id: number
     verification_identifier: number
     verification_value: number
     verification_expires_at: number
@@ -3639,7 +3626,7 @@ export namespace Prisma {
 
 
   export type Verification_tableMinAggregateInputType = {
-    verification_id?: true
+    id?: true
     verification_identifier?: true
     verification_value?: true
     verification_expires_at?: true
@@ -3648,7 +3635,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableMaxAggregateInputType = {
-    verification_id?: true
+    id?: true
     verification_identifier?: true
     verification_value?: true
     verification_expires_at?: true
@@ -3657,7 +3644,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableCountAggregateInputType = {
-    verification_id?: true
+    id?: true
     verification_identifier?: true
     verification_value?: true
     verification_expires_at?: true
@@ -3739,7 +3726,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableGroupByOutputType = {
-    verification_id: string
+    id: string
     verification_identifier: string
     verification_value: string
     verification_expires_at: Date
@@ -3765,7 +3752,7 @@ export namespace Prisma {
 
 
   export type Verification_tableSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    verification_id?: boolean
+    id?: boolean
     verification_identifier?: boolean
     verification_value?: boolean
     verification_expires_at?: boolean
@@ -3774,7 +3761,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["verification_table"]>
 
   export type Verification_tableSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    verification_id?: boolean
+    id?: boolean
     verification_identifier?: boolean
     verification_value?: boolean
     verification_expires_at?: boolean
@@ -3783,7 +3770,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["verification_table"]>
 
   export type Verification_tableSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    verification_id?: boolean
+    id?: boolean
     verification_identifier?: boolean
     verification_value?: boolean
     verification_expires_at?: boolean
@@ -3792,7 +3779,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["verification_table"]>
 
   export type Verification_tableSelectScalar = {
-    verification_id?: boolean
+    id?: boolean
     verification_identifier?: boolean
     verification_value?: boolean
     verification_expires_at?: boolean
@@ -3800,13 +3787,13 @@ export namespace Prisma {
     verification_updated_at?: boolean
   }
 
-  export type Verification_tableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"verification_id" | "verification_identifier" | "verification_value" | "verification_expires_at" | "verification_created_at" | "verification_updated_at", ExtArgs["result"]["verification_table"]>
+  export type Verification_tableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "verification_identifier" | "verification_value" | "verification_expires_at" | "verification_created_at" | "verification_updated_at", ExtArgs["result"]["verification_table"]>
 
   export type $Verification_tablePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Verification_table"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      verification_id: string
+      id: string
       verification_identifier: string
       verification_value: string
       verification_expires_at: Date
@@ -3895,8 +3882,8 @@ export namespace Prisma {
      * // Get first 10 Verification_tables
      * const verification_tables = await prisma.verification_table.findMany({ take: 10 })
      * 
-     * // Only select the `verification_id`
-     * const verification_tableWithVerification_idOnly = await prisma.verification_table.findMany({ select: { verification_id: true } })
+     * // Only select the `id`
+     * const verification_tableWithIdOnly = await prisma.verification_table.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends Verification_tableFindManyArgs>(args?: SelectSubset<T, Verification_tableFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Verification_tablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -3940,9 +3927,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Verification_tables and only return the `verification_id`
-     * const verification_tableWithVerification_idOnly = await prisma.verification_table.createManyAndReturn({
-     *   select: { verification_id: true },
+     * // Create many Verification_tables and only return the `id`
+     * const verification_tableWithIdOnly = await prisma.verification_table.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -4031,9 +4018,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Verification_tables and only return the `verification_id`
-     * const verification_tableWithVerification_idOnly = await prisma.verification_table.updateManyAndReturn({
-     *   select: { verification_id: true },
+     * // Update zero or more Verification_tables and only return the `id`
+     * const verification_tableWithIdOnly = await prisma.verification_table.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4235,7 +4222,7 @@ export namespace Prisma {
    * Fields of the Verification_table model
    */
   interface Verification_tableFieldRefs {
-    readonly verification_id: FieldRef<"Verification_table", 'String'>
+    readonly id: FieldRef<"Verification_table", 'String'>
     readonly verification_identifier: FieldRef<"Verification_table", 'String'>
     readonly verification_value: FieldRef<"Verification_table", 'String'>
     readonly verification_expires_at: FieldRef<"Verification_table", 'DateTime'>
@@ -4608,431 +4595,431 @@ export namespace Prisma {
 
 
   /**
-   * Model subscriotion_table
+   * Model Subscription
    */
 
-  export type AggregateSubscriotion_table = {
-    _count: Subscriotion_tableCountAggregateOutputType | null
-    _avg: Subscriotion_tableAvgAggregateOutputType | null
-    _sum: Subscriotion_tableSumAggregateOutputType | null
-    _min: Subscriotion_tableMinAggregateOutputType | null
-    _max: Subscriotion_tableMaxAggregateOutputType | null
+  export type AggregateSubscription = {
+    _count: SubscriptionCountAggregateOutputType | null
+    _avg: SubscriptionAvgAggregateOutputType | null
+    _sum: SubscriptionSumAggregateOutputType | null
+    _min: SubscriptionMinAggregateOutputType | null
+    _max: SubscriptionMaxAggregateOutputType | null
   }
 
-  export type Subscriotion_tableAvgAggregateOutputType = {
-    subscription_seats: number | null
+  export type SubscriptionAvgAggregateOutputType = {
+    seats: number | null
   }
 
-  export type Subscriotion_tableSumAggregateOutputType = {
-    subscription_seats: number | null
+  export type SubscriptionSumAggregateOutputType = {
+    seats: number | null
   }
 
-  export type Subscriotion_tableMinAggregateOutputType = {
-    subscription_id: string | null
-    subscription_plan: string | null
-    subscription_reference_id: string | null
-    subscription_stripe_customer_id: string | null
-    subscription_stripe_subscription_id: string | null
-    subscription_status: string | null
-    subscription_period_start: Date | null
-    subscription_period_end: Date | null
-    subscription_cancel_at_period_end: boolean | null
-    subscription_seats: number | null
+  export type SubscriptionMinAggregateOutputType = {
+    id: string | null
+    plan: string | null
+    referenceId: string | null
+    stripeCustomerId: string | null
+    stripeSubscriptionId: string | null
+    status: string | null
+    periodStart: Date | null
+    periodEnd: Date | null
+    cancelAtPeriodEnd: boolean | null
+    seats: number | null
   }
 
-  export type Subscriotion_tableMaxAggregateOutputType = {
-    subscription_id: string | null
-    subscription_plan: string | null
-    subscription_reference_id: string | null
-    subscription_stripe_customer_id: string | null
-    subscription_stripe_subscription_id: string | null
-    subscription_status: string | null
-    subscription_period_start: Date | null
-    subscription_period_end: Date | null
-    subscription_cancel_at_period_end: boolean | null
-    subscription_seats: number | null
+  export type SubscriptionMaxAggregateOutputType = {
+    id: string | null
+    plan: string | null
+    referenceId: string | null
+    stripeCustomerId: string | null
+    stripeSubscriptionId: string | null
+    status: string | null
+    periodStart: Date | null
+    periodEnd: Date | null
+    cancelAtPeriodEnd: boolean | null
+    seats: number | null
   }
 
-  export type Subscriotion_tableCountAggregateOutputType = {
-    subscription_id: number
-    subscription_plan: number
-    subscription_reference_id: number
-    subscription_stripe_customer_id: number
-    subscription_stripe_subscription_id: number
-    subscription_status: number
-    subscription_period_start: number
-    subscription_period_end: number
-    subscription_cancel_at_period_end: number
-    subscription_seats: number
+  export type SubscriptionCountAggregateOutputType = {
+    id: number
+    plan: number
+    referenceId: number
+    stripeCustomerId: number
+    stripeSubscriptionId: number
+    status: number
+    periodStart: number
+    periodEnd: number
+    cancelAtPeriodEnd: number
+    seats: number
     _all: number
   }
 
 
-  export type Subscriotion_tableAvgAggregateInputType = {
-    subscription_seats?: true
+  export type SubscriptionAvgAggregateInputType = {
+    seats?: true
   }
 
-  export type Subscriotion_tableSumAggregateInputType = {
-    subscription_seats?: true
+  export type SubscriptionSumAggregateInputType = {
+    seats?: true
   }
 
-  export type Subscriotion_tableMinAggregateInputType = {
-    subscription_id?: true
-    subscription_plan?: true
-    subscription_reference_id?: true
-    subscription_stripe_customer_id?: true
-    subscription_stripe_subscription_id?: true
-    subscription_status?: true
-    subscription_period_start?: true
-    subscription_period_end?: true
-    subscription_cancel_at_period_end?: true
-    subscription_seats?: true
+  export type SubscriptionMinAggregateInputType = {
+    id?: true
+    plan?: true
+    referenceId?: true
+    stripeCustomerId?: true
+    stripeSubscriptionId?: true
+    status?: true
+    periodStart?: true
+    periodEnd?: true
+    cancelAtPeriodEnd?: true
+    seats?: true
   }
 
-  export type Subscriotion_tableMaxAggregateInputType = {
-    subscription_id?: true
-    subscription_plan?: true
-    subscription_reference_id?: true
-    subscription_stripe_customer_id?: true
-    subscription_stripe_subscription_id?: true
-    subscription_status?: true
-    subscription_period_start?: true
-    subscription_period_end?: true
-    subscription_cancel_at_period_end?: true
-    subscription_seats?: true
+  export type SubscriptionMaxAggregateInputType = {
+    id?: true
+    plan?: true
+    referenceId?: true
+    stripeCustomerId?: true
+    stripeSubscriptionId?: true
+    status?: true
+    periodStart?: true
+    periodEnd?: true
+    cancelAtPeriodEnd?: true
+    seats?: true
   }
 
-  export type Subscriotion_tableCountAggregateInputType = {
-    subscription_id?: true
-    subscription_plan?: true
-    subscription_reference_id?: true
-    subscription_stripe_customer_id?: true
-    subscription_stripe_subscription_id?: true
-    subscription_status?: true
-    subscription_period_start?: true
-    subscription_period_end?: true
-    subscription_cancel_at_period_end?: true
-    subscription_seats?: true
+  export type SubscriptionCountAggregateInputType = {
+    id?: true
+    plan?: true
+    referenceId?: true
+    stripeCustomerId?: true
+    stripeSubscriptionId?: true
+    status?: true
+    periodStart?: true
+    periodEnd?: true
+    cancelAtPeriodEnd?: true
+    seats?: true
     _all?: true
   }
 
-  export type Subscriotion_tableAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which subscriotion_table to aggregate.
+     * Filter which Subscription to aggregate.
      */
-    where?: subscriotion_tableWhereInput
+    where?: SubscriptionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of subscriotion_tables to fetch.
+     * Determine the order of Subscriptions to fetch.
      */
-    orderBy?: subscriotion_tableOrderByWithRelationInput | subscriotion_tableOrderByWithRelationInput[]
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: subscriotion_tableWhereUniqueInput
+    cursor?: SubscriptionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` subscriotion_tables from the position of the cursor.
+     * Take `±n` Subscriptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` subscriotion_tables.
+     * Skip the first `n` Subscriptions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned subscriotion_tables
+     * Count returned Subscriptions
     **/
-    _count?: true | Subscriotion_tableCountAggregateInputType
+    _count?: true | SubscriptionCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: Subscriotion_tableAvgAggregateInputType
+    _avg?: SubscriptionAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: Subscriotion_tableSumAggregateInputType
+    _sum?: SubscriptionSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: Subscriotion_tableMinAggregateInputType
+    _min?: SubscriptionMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: Subscriotion_tableMaxAggregateInputType
+    _max?: SubscriptionMaxAggregateInputType
   }
 
-  export type GetSubscriotion_tableAggregateType<T extends Subscriotion_tableAggregateArgs> = {
-        [P in keyof T & keyof AggregateSubscriotion_table]: P extends '_count' | 'count'
+  export type GetSubscriptionAggregateType<T extends SubscriptionAggregateArgs> = {
+        [P in keyof T & keyof AggregateSubscription]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSubscriotion_table[P]>
-      : GetScalarType<T[P], AggregateSubscriotion_table[P]>
+        : GetScalarType<T[P], AggregateSubscription[P]>
+      : GetScalarType<T[P], AggregateSubscription[P]>
   }
 
 
 
 
-  export type subscriotion_tableGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: subscriotion_tableWhereInput
-    orderBy?: subscriotion_tableOrderByWithAggregationInput | subscriotion_tableOrderByWithAggregationInput[]
-    by: Subscriotion_tableScalarFieldEnum[] | Subscriotion_tableScalarFieldEnum
-    having?: subscriotion_tableScalarWhereWithAggregatesInput
+  export type SubscriptionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SubscriptionWhereInput
+    orderBy?: SubscriptionOrderByWithAggregationInput | SubscriptionOrderByWithAggregationInput[]
+    by: SubscriptionScalarFieldEnum[] | SubscriptionScalarFieldEnum
+    having?: SubscriptionScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: Subscriotion_tableCountAggregateInputType | true
-    _avg?: Subscriotion_tableAvgAggregateInputType
-    _sum?: Subscriotion_tableSumAggregateInputType
-    _min?: Subscriotion_tableMinAggregateInputType
-    _max?: Subscriotion_tableMaxAggregateInputType
+    _count?: SubscriptionCountAggregateInputType | true
+    _avg?: SubscriptionAvgAggregateInputType
+    _sum?: SubscriptionSumAggregateInputType
+    _min?: SubscriptionMinAggregateInputType
+    _max?: SubscriptionMaxAggregateInputType
   }
 
-  export type Subscriotion_tableGroupByOutputType = {
-    subscription_id: string
-    subscription_plan: string
-    subscription_reference_id: string
-    subscription_stripe_customer_id: string | null
-    subscription_stripe_subscription_id: string | null
-    subscription_status: string | null
-    subscription_period_start: Date | null
-    subscription_period_end: Date | null
-    subscription_cancel_at_period_end: boolean | null
-    subscription_seats: number | null
-    _count: Subscriotion_tableCountAggregateOutputType | null
-    _avg: Subscriotion_tableAvgAggregateOutputType | null
-    _sum: Subscriotion_tableSumAggregateOutputType | null
-    _min: Subscriotion_tableMinAggregateOutputType | null
-    _max: Subscriotion_tableMaxAggregateOutputType | null
+  export type SubscriptionGroupByOutputType = {
+    id: string
+    plan: string
+    referenceId: string
+    stripeCustomerId: string | null
+    stripeSubscriptionId: string | null
+    status: string | null
+    periodStart: Date | null
+    periodEnd: Date | null
+    cancelAtPeriodEnd: boolean | null
+    seats: number | null
+    _count: SubscriptionCountAggregateOutputType | null
+    _avg: SubscriptionAvgAggregateOutputType | null
+    _sum: SubscriptionSumAggregateOutputType | null
+    _min: SubscriptionMinAggregateOutputType | null
+    _max: SubscriptionMaxAggregateOutputType | null
   }
 
-  type GetSubscriotion_tableGroupByPayload<T extends subscriotion_tableGroupByArgs> = Prisma.PrismaPromise<
+  type GetSubscriptionGroupByPayload<T extends SubscriptionGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<Subscriotion_tableGroupByOutputType, T['by']> &
+      PickEnumerable<SubscriptionGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof Subscriotion_tableGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof SubscriptionGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], Subscriotion_tableGroupByOutputType[P]>
-            : GetScalarType<T[P], Subscriotion_tableGroupByOutputType[P]>
+              : GetScalarType<T[P], SubscriptionGroupByOutputType[P]>
+            : GetScalarType<T[P], SubscriptionGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type subscriotion_tableSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    subscription_id?: boolean
-    subscription_plan?: boolean
-    subscription_reference_id?: boolean
-    subscription_stripe_customer_id?: boolean
-    subscription_stripe_subscription_id?: boolean
-    subscription_status?: boolean
-    subscription_period_start?: boolean
-    subscription_period_end?: boolean
-    subscription_cancel_at_period_end?: boolean
-    subscription_seats?: boolean
-  }, ExtArgs["result"]["subscriotion_table"]>
+  export type SubscriptionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    plan?: boolean
+    referenceId?: boolean
+    stripeCustomerId?: boolean
+    stripeSubscriptionId?: boolean
+    status?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    cancelAtPeriodEnd?: boolean
+    seats?: boolean
+  }, ExtArgs["result"]["subscription"]>
 
-  export type subscriotion_tableSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    subscription_id?: boolean
-    subscription_plan?: boolean
-    subscription_reference_id?: boolean
-    subscription_stripe_customer_id?: boolean
-    subscription_stripe_subscription_id?: boolean
-    subscription_status?: boolean
-    subscription_period_start?: boolean
-    subscription_period_end?: boolean
-    subscription_cancel_at_period_end?: boolean
-    subscription_seats?: boolean
-  }, ExtArgs["result"]["subscriotion_table"]>
+  export type SubscriptionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    plan?: boolean
+    referenceId?: boolean
+    stripeCustomerId?: boolean
+    stripeSubscriptionId?: boolean
+    status?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    cancelAtPeriodEnd?: boolean
+    seats?: boolean
+  }, ExtArgs["result"]["subscription"]>
 
-  export type subscriotion_tableSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    subscription_id?: boolean
-    subscription_plan?: boolean
-    subscription_reference_id?: boolean
-    subscription_stripe_customer_id?: boolean
-    subscription_stripe_subscription_id?: boolean
-    subscription_status?: boolean
-    subscription_period_start?: boolean
-    subscription_period_end?: boolean
-    subscription_cancel_at_period_end?: boolean
-    subscription_seats?: boolean
-  }, ExtArgs["result"]["subscriotion_table"]>
+  export type SubscriptionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    plan?: boolean
+    referenceId?: boolean
+    stripeCustomerId?: boolean
+    stripeSubscriptionId?: boolean
+    status?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    cancelAtPeriodEnd?: boolean
+    seats?: boolean
+  }, ExtArgs["result"]["subscription"]>
 
-  export type subscriotion_tableSelectScalar = {
-    subscription_id?: boolean
-    subscription_plan?: boolean
-    subscription_reference_id?: boolean
-    subscription_stripe_customer_id?: boolean
-    subscription_stripe_subscription_id?: boolean
-    subscription_status?: boolean
-    subscription_period_start?: boolean
-    subscription_period_end?: boolean
-    subscription_cancel_at_period_end?: boolean
-    subscription_seats?: boolean
+  export type SubscriptionSelectScalar = {
+    id?: boolean
+    plan?: boolean
+    referenceId?: boolean
+    stripeCustomerId?: boolean
+    stripeSubscriptionId?: boolean
+    status?: boolean
+    periodStart?: boolean
+    periodEnd?: boolean
+    cancelAtPeriodEnd?: boolean
+    seats?: boolean
   }
 
-  export type subscriotion_tableOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"subscription_id" | "subscription_plan" | "subscription_reference_id" | "subscription_stripe_customer_id" | "subscription_stripe_subscription_id" | "subscription_status" | "subscription_period_start" | "subscription_period_end" | "subscription_cancel_at_period_end" | "subscription_seats", ExtArgs["result"]["subscriotion_table"]>
+  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "plan" | "referenceId" | "stripeCustomerId" | "stripeSubscriptionId" | "status" | "periodStart" | "periodEnd" | "cancelAtPeriodEnd" | "seats", ExtArgs["result"]["subscription"]>
 
-  export type $subscriotion_tablePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "subscriotion_table"
+  export type $SubscriptionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Subscription"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      subscription_id: string
-      subscription_plan: string
-      subscription_reference_id: string
-      subscription_stripe_customer_id: string | null
-      subscription_stripe_subscription_id: string | null
-      subscription_status: string | null
-      subscription_period_start: Date | null
-      subscription_period_end: Date | null
-      subscription_cancel_at_period_end: boolean | null
-      subscription_seats: number | null
-    }, ExtArgs["result"]["subscriotion_table"]>
+      id: string
+      plan: string
+      referenceId: string
+      stripeCustomerId: string | null
+      stripeSubscriptionId: string | null
+      status: string | null
+      periodStart: Date | null
+      periodEnd: Date | null
+      cancelAtPeriodEnd: boolean | null
+      seats: number | null
+    }, ExtArgs["result"]["subscription"]>
     composites: {}
   }
 
-  type subscriotion_tableGetPayload<S extends boolean | null | undefined | subscriotion_tableDefaultArgs> = $Result.GetResult<Prisma.$subscriotion_tablePayload, S>
+  type SubscriptionGetPayload<S extends boolean | null | undefined | SubscriptionDefaultArgs> = $Result.GetResult<Prisma.$SubscriptionPayload, S>
 
-  type subscriotion_tableCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<subscriotion_tableFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Subscriotion_tableCountAggregateInputType | true
+  type SubscriptionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SubscriptionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SubscriptionCountAggregateInputType | true
     }
 
-  export interface subscriotion_tableDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['subscriotion_table'], meta: { name: 'subscriotion_table' } }
+  export interface SubscriptionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Subscription'], meta: { name: 'Subscription' } }
     /**
-     * Find zero or one Subscriotion_table that matches the filter.
-     * @param {subscriotion_tableFindUniqueArgs} args - Arguments to find a Subscriotion_table
+     * Find zero or one Subscription that matches the filter.
+     * @param {SubscriptionFindUniqueArgs} args - Arguments to find a Subscription
      * @example
-     * // Get one Subscriotion_table
-     * const subscriotion_table = await prisma.subscriotion_table.findUnique({
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends subscriotion_tableFindUniqueArgs>(args: SelectSubset<T, subscriotion_tableFindUniqueArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends SubscriptionFindUniqueArgs>(args: SelectSubset<T, SubscriptionFindUniqueArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Subscriotion_table that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Subscription that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {subscriotion_tableFindUniqueOrThrowArgs} args - Arguments to find a Subscriotion_table
+     * @param {SubscriptionFindUniqueOrThrowArgs} args - Arguments to find a Subscription
      * @example
-     * // Get one Subscriotion_table
-     * const subscriotion_table = await prisma.subscriotion_table.findUniqueOrThrow({
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends subscriotion_tableFindUniqueOrThrowArgs>(args: SelectSubset<T, subscriotion_tableFindUniqueOrThrowArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends SubscriptionFindUniqueOrThrowArgs>(args: SelectSubset<T, SubscriptionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Subscriotion_table that matches the filter.
+     * Find the first Subscription that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {subscriotion_tableFindFirstArgs} args - Arguments to find a Subscriotion_table
+     * @param {SubscriptionFindFirstArgs} args - Arguments to find a Subscription
      * @example
-     * // Get one Subscriotion_table
-     * const subscriotion_table = await prisma.subscriotion_table.findFirst({
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends subscriotion_tableFindFirstArgs>(args?: SelectSubset<T, subscriotion_tableFindFirstArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends SubscriptionFindFirstArgs>(args?: SelectSubset<T, SubscriptionFindFirstArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Subscriotion_table that matches the filter or
+     * Find the first Subscription that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {subscriotion_tableFindFirstOrThrowArgs} args - Arguments to find a Subscriotion_table
+     * @param {SubscriptionFindFirstOrThrowArgs} args - Arguments to find a Subscription
      * @example
-     * // Get one Subscriotion_table
-     * const subscriotion_table = await prisma.subscriotion_table.findFirstOrThrow({
+     * // Get one Subscription
+     * const subscription = await prisma.subscription.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends subscriotion_tableFindFirstOrThrowArgs>(args?: SelectSubset<T, subscriotion_tableFindFirstOrThrowArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends SubscriptionFindFirstOrThrowArgs>(args?: SelectSubset<T, SubscriptionFindFirstOrThrowArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Subscriotion_tables that matches the filter.
+     * Find zero or more Subscriptions that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {subscriotion_tableFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {SubscriptionFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Subscriotion_tables
-     * const subscriotion_tables = await prisma.subscriotion_table.findMany()
+     * // Get all Subscriptions
+     * const subscriptions = await prisma.subscription.findMany()
      * 
-     * // Get first 10 Subscriotion_tables
-     * const subscriotion_tables = await prisma.subscriotion_table.findMany({ take: 10 })
+     * // Get first 10 Subscriptions
+     * const subscriptions = await prisma.subscription.findMany({ take: 10 })
      * 
-     * // Only select the `subscription_id`
-     * const subscriotion_tableWithSubscription_idOnly = await prisma.subscriotion_table.findMany({ select: { subscription_id: true } })
+     * // Only select the `id`
+     * const subscriptionWithIdOnly = await prisma.subscription.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends subscriotion_tableFindManyArgs>(args?: SelectSubset<T, subscriotion_tableFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends SubscriptionFindManyArgs>(args?: SelectSubset<T, SubscriptionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Subscriotion_table.
-     * @param {subscriotion_tableCreateArgs} args - Arguments to create a Subscriotion_table.
+     * Create a Subscription.
+     * @param {SubscriptionCreateArgs} args - Arguments to create a Subscription.
      * @example
-     * // Create one Subscriotion_table
-     * const Subscriotion_table = await prisma.subscriotion_table.create({
+     * // Create one Subscription
+     * const Subscription = await prisma.subscription.create({
      *   data: {
-     *     // ... data to create a Subscriotion_table
+     *     // ... data to create a Subscription
      *   }
      * })
      * 
      */
-    create<T extends subscriotion_tableCreateArgs>(args: SelectSubset<T, subscriotion_tableCreateArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends SubscriptionCreateArgs>(args: SelectSubset<T, SubscriptionCreateArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Subscriotion_tables.
-     * @param {subscriotion_tableCreateManyArgs} args - Arguments to create many Subscriotion_tables.
+     * Create many Subscriptions.
+     * @param {SubscriptionCreateManyArgs} args - Arguments to create many Subscriptions.
      * @example
-     * // Create many Subscriotion_tables
-     * const subscriotion_table = await prisma.subscriotion_table.createMany({
+     * // Create many Subscriptions
+     * const subscription = await prisma.subscription.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends subscriotion_tableCreateManyArgs>(args?: SelectSubset<T, subscriotion_tableCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends SubscriptionCreateManyArgs>(args?: SelectSubset<T, SubscriptionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Subscriotion_tables and returns the data saved in the database.
-     * @param {subscriotion_tableCreateManyAndReturnArgs} args - Arguments to create many Subscriotion_tables.
+     * Create many Subscriptions and returns the data saved in the database.
+     * @param {SubscriptionCreateManyAndReturnArgs} args - Arguments to create many Subscriptions.
      * @example
-     * // Create many Subscriotion_tables
-     * const subscriotion_table = await prisma.subscriotion_table.createManyAndReturn({
+     * // Create many Subscriptions
+     * const subscription = await prisma.subscription.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Subscriotion_tables and only return the `subscription_id`
-     * const subscriotion_tableWithSubscription_idOnly = await prisma.subscriotion_table.createManyAndReturn({
-     *   select: { subscription_id: true },
+     * // Create many Subscriptions and only return the `id`
+     * const subscriptionWithIdOnly = await prisma.subscription.createManyAndReturn({
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -5041,28 +5028,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends subscriotion_tableCreateManyAndReturnArgs>(args?: SelectSubset<T, subscriotion_tableCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends SubscriptionCreateManyAndReturnArgs>(args?: SelectSubset<T, SubscriptionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Subscriotion_table.
-     * @param {subscriotion_tableDeleteArgs} args - Arguments to delete one Subscriotion_table.
+     * Delete a Subscription.
+     * @param {SubscriptionDeleteArgs} args - Arguments to delete one Subscription.
      * @example
-     * // Delete one Subscriotion_table
-     * const Subscriotion_table = await prisma.subscriotion_table.delete({
+     * // Delete one Subscription
+     * const Subscription = await prisma.subscription.delete({
      *   where: {
-     *     // ... filter to delete one Subscriotion_table
+     *     // ... filter to delete one Subscription
      *   }
      * })
      * 
      */
-    delete<T extends subscriotion_tableDeleteArgs>(args: SelectSubset<T, subscriotion_tableDeleteArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends SubscriptionDeleteArgs>(args: SelectSubset<T, SubscriptionDeleteArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Subscriotion_table.
-     * @param {subscriotion_tableUpdateArgs} args - Arguments to update one Subscriotion_table.
+     * Update one Subscription.
+     * @param {SubscriptionUpdateArgs} args - Arguments to update one Subscription.
      * @example
-     * // Update one Subscriotion_table
-     * const subscriotion_table = await prisma.subscriotion_table.update({
+     * // Update one Subscription
+     * const subscription = await prisma.subscription.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5072,30 +5059,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends subscriotion_tableUpdateArgs>(args: SelectSubset<T, subscriotion_tableUpdateArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends SubscriptionUpdateArgs>(args: SelectSubset<T, SubscriptionUpdateArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Subscriotion_tables.
-     * @param {subscriotion_tableDeleteManyArgs} args - Arguments to filter Subscriotion_tables to delete.
+     * Delete zero or more Subscriptions.
+     * @param {SubscriptionDeleteManyArgs} args - Arguments to filter Subscriptions to delete.
      * @example
-     * // Delete a few Subscriotion_tables
-     * const { count } = await prisma.subscriotion_table.deleteMany({
+     * // Delete a few Subscriptions
+     * const { count } = await prisma.subscription.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends subscriotion_tableDeleteManyArgs>(args?: SelectSubset<T, subscriotion_tableDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends SubscriptionDeleteManyArgs>(args?: SelectSubset<T, SubscriptionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Subscriotion_tables.
+     * Update zero or more Subscriptions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {subscriotion_tableUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {SubscriptionUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Subscriotion_tables
-     * const subscriotion_table = await prisma.subscriotion_table.updateMany({
+     * // Update many Subscriptions
+     * const subscription = await prisma.subscription.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5105,14 +5092,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends subscriotion_tableUpdateManyArgs>(args: SelectSubset<T, subscriotion_tableUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends SubscriptionUpdateManyArgs>(args: SelectSubset<T, SubscriptionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Subscriotion_tables and returns the data updated in the database.
-     * @param {subscriotion_tableUpdateManyAndReturnArgs} args - Arguments to update many Subscriotion_tables.
+     * Update zero or more Subscriptions and returns the data updated in the database.
+     * @param {SubscriptionUpdateManyAndReturnArgs} args - Arguments to update many Subscriptions.
      * @example
-     * // Update many Subscriotion_tables
-     * const subscriotion_table = await prisma.subscriotion_table.updateManyAndReturn({
+     * // Update many Subscriptions
+     * const subscription = await prisma.subscription.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5121,9 +5108,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Subscriotion_tables and only return the `subscription_id`
-     * const subscriotion_tableWithSubscription_idOnly = await prisma.subscriotion_table.updateManyAndReturn({
-     *   select: { subscription_id: true },
+     * // Update zero or more Subscriptions and only return the `id`
+     * const subscriptionWithIdOnly = await prisma.subscription.updateManyAndReturn({
+     *   select: { id: true },
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5135,56 +5122,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends subscriotion_tableUpdateManyAndReturnArgs>(args: SelectSubset<T, subscriotion_tableUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends SubscriptionUpdateManyAndReturnArgs>(args: SelectSubset<T, SubscriptionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Subscriotion_table.
-     * @param {subscriotion_tableUpsertArgs} args - Arguments to update or create a Subscriotion_table.
+     * Create or update one Subscription.
+     * @param {SubscriptionUpsertArgs} args - Arguments to update or create a Subscription.
      * @example
-     * // Update or create a Subscriotion_table
-     * const subscriotion_table = await prisma.subscriotion_table.upsert({
+     * // Update or create a Subscription
+     * const subscription = await prisma.subscription.upsert({
      *   create: {
-     *     // ... data to create a Subscriotion_table
+     *     // ... data to create a Subscription
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Subscriotion_table we want to update
+     *     // ... the filter for the Subscription we want to update
      *   }
      * })
      */
-    upsert<T extends subscriotion_tableUpsertArgs>(args: SelectSubset<T, subscriotion_tableUpsertArgs<ExtArgs>>): Prisma__subscriotion_tableClient<$Result.GetResult<Prisma.$subscriotion_tablePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends SubscriptionUpsertArgs>(args: SelectSubset<T, SubscriptionUpsertArgs<ExtArgs>>): Prisma__SubscriptionClient<$Result.GetResult<Prisma.$SubscriptionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Subscriotion_tables.
+     * Count the number of Subscriptions.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {subscriotion_tableCountArgs} args - Arguments to filter Subscriotion_tables to count.
+     * @param {SubscriptionCountArgs} args - Arguments to filter Subscriptions to count.
      * @example
-     * // Count the number of Subscriotion_tables
-     * const count = await prisma.subscriotion_table.count({
+     * // Count the number of Subscriptions
+     * const count = await prisma.subscription.count({
      *   where: {
-     *     // ... the filter for the Subscriotion_tables we want to count
+     *     // ... the filter for the Subscriptions we want to count
      *   }
      * })
     **/
-    count<T extends subscriotion_tableCountArgs>(
-      args?: Subset<T, subscriotion_tableCountArgs>,
+    count<T extends SubscriptionCountArgs>(
+      args?: Subset<T, SubscriptionCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], Subscriotion_tableCountAggregateOutputType>
+          : GetScalarType<T['select'], SubscriptionCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Subscriotion_table.
+     * Allows you to perform aggregations operations on a Subscription.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {Subscriotion_tableAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {SubscriptionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5204,13 +5191,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends Subscriotion_tableAggregateArgs>(args: Subset<T, Subscriotion_tableAggregateArgs>): Prisma.PrismaPromise<GetSubscriotion_tableAggregateType<T>>
+    aggregate<T extends SubscriptionAggregateArgs>(args: Subset<T, SubscriptionAggregateArgs>): Prisma.PrismaPromise<GetSubscriptionAggregateType<T>>
 
     /**
-     * Group by Subscriotion_table.
+     * Group by Subscription.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {subscriotion_tableGroupByArgs} args - Group by arguments.
+     * @param {SubscriptionGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5225,14 +5212,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends subscriotion_tableGroupByArgs,
+      T extends SubscriptionGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: subscriotion_tableGroupByArgs['orderBy'] }
-        : { orderBy?: subscriotion_tableGroupByArgs['orderBy'] },
+        ? { orderBy: SubscriptionGroupByArgs['orderBy'] }
+        : { orderBy?: SubscriptionGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5281,20 +5268,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, subscriotion_tableGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubscriotion_tableGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, SubscriptionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSubscriptionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the subscriotion_table model
+   * Fields of the Subscription model
    */
-  readonly fields: subscriotion_tableFieldRefs;
+  readonly fields: SubscriptionFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for subscriotion_table.
+   * The delegate class that acts as a "Promise-like" for Subscription.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__subscriotion_tableClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__SubscriptionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5322,382 +5309,382 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the subscriotion_table model
+   * Fields of the Subscription model
    */
-  interface subscriotion_tableFieldRefs {
-    readonly subscription_id: FieldRef<"subscriotion_table", 'String'>
-    readonly subscription_plan: FieldRef<"subscriotion_table", 'String'>
-    readonly subscription_reference_id: FieldRef<"subscriotion_table", 'String'>
-    readonly subscription_stripe_customer_id: FieldRef<"subscriotion_table", 'String'>
-    readonly subscription_stripe_subscription_id: FieldRef<"subscriotion_table", 'String'>
-    readonly subscription_status: FieldRef<"subscriotion_table", 'String'>
-    readonly subscription_period_start: FieldRef<"subscriotion_table", 'DateTime'>
-    readonly subscription_period_end: FieldRef<"subscriotion_table", 'DateTime'>
-    readonly subscription_cancel_at_period_end: FieldRef<"subscriotion_table", 'Boolean'>
-    readonly subscription_seats: FieldRef<"subscriotion_table", 'Int'>
+  interface SubscriptionFieldRefs {
+    readonly id: FieldRef<"Subscription", 'String'>
+    readonly plan: FieldRef<"Subscription", 'String'>
+    readonly referenceId: FieldRef<"Subscription", 'String'>
+    readonly stripeCustomerId: FieldRef<"Subscription", 'String'>
+    readonly stripeSubscriptionId: FieldRef<"Subscription", 'String'>
+    readonly status: FieldRef<"Subscription", 'String'>
+    readonly periodStart: FieldRef<"Subscription", 'DateTime'>
+    readonly periodEnd: FieldRef<"Subscription", 'DateTime'>
+    readonly cancelAtPeriodEnd: FieldRef<"Subscription", 'Boolean'>
+    readonly seats: FieldRef<"Subscription", 'Int'>
   }
     
 
   // Custom InputTypes
   /**
-   * subscriotion_table findUnique
+   * Subscription findUnique
    */
-  export type subscriotion_tableFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * Filter, which subscriotion_table to fetch.
+     * Filter, which Subscription to fetch.
      */
-    where: subscriotion_tableWhereUniqueInput
+    where: SubscriptionWhereUniqueInput
   }
 
   /**
-   * subscriotion_table findUniqueOrThrow
+   * Subscription findUniqueOrThrow
    */
-  export type subscriotion_tableFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * Filter, which subscriotion_table to fetch.
+     * Filter, which Subscription to fetch.
      */
-    where: subscriotion_tableWhereUniqueInput
+    where: SubscriptionWhereUniqueInput
   }
 
   /**
-   * subscriotion_table findFirst
+   * Subscription findFirst
    */
-  export type subscriotion_tableFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * Filter, which subscriotion_table to fetch.
+     * Filter, which Subscription to fetch.
      */
-    where?: subscriotion_tableWhereInput
+    where?: SubscriptionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of subscriotion_tables to fetch.
+     * Determine the order of Subscriptions to fetch.
      */
-    orderBy?: subscriotion_tableOrderByWithRelationInput | subscriotion_tableOrderByWithRelationInput[]
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for subscriotion_tables.
+     * Sets the position for searching for Subscriptions.
      */
-    cursor?: subscriotion_tableWhereUniqueInput
+    cursor?: SubscriptionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` subscriotion_tables from the position of the cursor.
+     * Take `±n` Subscriptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` subscriotion_tables.
+     * Skip the first `n` Subscriptions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of subscriotion_tables.
+     * Filter by unique combinations of Subscriptions.
      */
-    distinct?: Subscriotion_tableScalarFieldEnum | Subscriotion_tableScalarFieldEnum[]
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
   }
 
   /**
-   * subscriotion_table findFirstOrThrow
+   * Subscription findFirstOrThrow
    */
-  export type subscriotion_tableFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * Filter, which subscriotion_table to fetch.
+     * Filter, which Subscription to fetch.
      */
-    where?: subscriotion_tableWhereInput
+    where?: SubscriptionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of subscriotion_tables to fetch.
+     * Determine the order of Subscriptions to fetch.
      */
-    orderBy?: subscriotion_tableOrderByWithRelationInput | subscriotion_tableOrderByWithRelationInput[]
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for subscriotion_tables.
+     * Sets the position for searching for Subscriptions.
      */
-    cursor?: subscriotion_tableWhereUniqueInput
+    cursor?: SubscriptionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` subscriotion_tables from the position of the cursor.
+     * Take `±n` Subscriptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` subscriotion_tables.
+     * Skip the first `n` Subscriptions.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of subscriotion_tables.
+     * Filter by unique combinations of Subscriptions.
      */
-    distinct?: Subscriotion_tableScalarFieldEnum | Subscriotion_tableScalarFieldEnum[]
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
   }
 
   /**
-   * subscriotion_table findMany
+   * Subscription findMany
    */
-  export type subscriotion_tableFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * Filter, which subscriotion_tables to fetch.
+     * Filter, which Subscriptions to fetch.
      */
-    where?: subscriotion_tableWhereInput
+    where?: SubscriptionWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of subscriotion_tables to fetch.
+     * Determine the order of Subscriptions to fetch.
      */
-    orderBy?: subscriotion_tableOrderByWithRelationInput | subscriotion_tableOrderByWithRelationInput[]
+    orderBy?: SubscriptionOrderByWithRelationInput | SubscriptionOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing subscriotion_tables.
+     * Sets the position for listing Subscriptions.
      */
-    cursor?: subscriotion_tableWhereUniqueInput
+    cursor?: SubscriptionWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` subscriotion_tables from the position of the cursor.
+     * Take `±n` Subscriptions from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` subscriotion_tables.
+     * Skip the first `n` Subscriptions.
      */
     skip?: number
-    distinct?: Subscriotion_tableScalarFieldEnum | Subscriotion_tableScalarFieldEnum[]
+    distinct?: SubscriptionScalarFieldEnum | SubscriptionScalarFieldEnum[]
   }
 
   /**
-   * subscriotion_table create
+   * Subscription create
    */
-  export type subscriotion_tableCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * The data needed to create a subscriotion_table.
+     * The data needed to create a Subscription.
      */
-    data: XOR<subscriotion_tableCreateInput, subscriotion_tableUncheckedCreateInput>
+    data: XOR<SubscriptionCreateInput, SubscriptionUncheckedCreateInput>
   }
 
   /**
-   * subscriotion_table createMany
+   * Subscription createMany
    */
-  export type subscriotion_tableCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many subscriotion_tables.
+     * The data used to create many Subscriptions.
      */
-    data: subscriotion_tableCreateManyInput | subscriotion_tableCreateManyInput[]
+    data: SubscriptionCreateManyInput | SubscriptionCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * subscriotion_table createManyAndReturn
+   * Subscription createManyAndReturn
    */
-  export type subscriotion_tableCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelectCreateManyAndReturn<ExtArgs> | null
+    select?: SubscriptionSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * The data used to create many subscriotion_tables.
+     * The data used to create many Subscriptions.
      */
-    data: subscriotion_tableCreateManyInput | subscriotion_tableCreateManyInput[]
+    data: SubscriptionCreateManyInput | SubscriptionCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * subscriotion_table update
+   * Subscription update
    */
-  export type subscriotion_tableUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * The data needed to update a subscriotion_table.
+     * The data needed to update a Subscription.
      */
-    data: XOR<subscriotion_tableUpdateInput, subscriotion_tableUncheckedUpdateInput>
+    data: XOR<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput>
     /**
-     * Choose, which subscriotion_table to update.
+     * Choose, which Subscription to update.
      */
-    where: subscriotion_tableWhereUniqueInput
+    where: SubscriptionWhereUniqueInput
   }
 
   /**
-   * subscriotion_table updateMany
+   * Subscription updateMany
    */
-  export type subscriotion_tableUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update subscriotion_tables.
+     * The data used to update Subscriptions.
      */
-    data: XOR<subscriotion_tableUpdateManyMutationInput, subscriotion_tableUncheckedUpdateManyInput>
+    data: XOR<SubscriptionUpdateManyMutationInput, SubscriptionUncheckedUpdateManyInput>
     /**
-     * Filter which subscriotion_tables to update
+     * Filter which Subscriptions to update
      */
-    where?: subscriotion_tableWhereInput
+    where?: SubscriptionWhereInput
     /**
-     * Limit how many subscriotion_tables to update.
+     * Limit how many Subscriptions to update.
      */
     limit?: number
   }
 
   /**
-   * subscriotion_table updateManyAndReturn
+   * Subscription updateManyAndReturn
    */
-  export type subscriotion_tableUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: SubscriptionSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * The data used to update subscriotion_tables.
+     * The data used to update Subscriptions.
      */
-    data: XOR<subscriotion_tableUpdateManyMutationInput, subscriotion_tableUncheckedUpdateManyInput>
+    data: XOR<SubscriptionUpdateManyMutationInput, SubscriptionUncheckedUpdateManyInput>
     /**
-     * Filter which subscriotion_tables to update
+     * Filter which Subscriptions to update
      */
-    where?: subscriotion_tableWhereInput
+    where?: SubscriptionWhereInput
     /**
-     * Limit how many subscriotion_tables to update.
+     * Limit how many Subscriptions to update.
      */
     limit?: number
   }
 
   /**
-   * subscriotion_table upsert
+   * Subscription upsert
    */
-  export type subscriotion_tableUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * The filter to search for the subscriotion_table to update in case it exists.
+     * The filter to search for the Subscription to update in case it exists.
      */
-    where: subscriotion_tableWhereUniqueInput
+    where: SubscriptionWhereUniqueInput
     /**
-     * In case the subscriotion_table found by the `where` argument doesn't exist, create a new subscriotion_table with this data.
+     * In case the Subscription found by the `where` argument doesn't exist, create a new Subscription with this data.
      */
-    create: XOR<subscriotion_tableCreateInput, subscriotion_tableUncheckedCreateInput>
+    create: XOR<SubscriptionCreateInput, SubscriptionUncheckedCreateInput>
     /**
-     * In case the subscriotion_table was found with the provided `where` argument, update it with this data.
+     * In case the Subscription was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<subscriotion_tableUpdateInput, subscriotion_tableUncheckedUpdateInput>
+    update: XOR<SubscriptionUpdateInput, SubscriptionUncheckedUpdateInput>
   }
 
   /**
-   * subscriotion_table delete
+   * Subscription delete
    */
-  export type subscriotion_tableDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
     /**
-     * Filter which subscriotion_table to delete.
+     * Filter which Subscription to delete.
      */
-    where: subscriotion_tableWhereUniqueInput
+    where: SubscriptionWhereUniqueInput
   }
 
   /**
-   * subscriotion_table deleteMany
+   * Subscription deleteMany
    */
-  export type subscriotion_tableDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which subscriotion_tables to delete
+     * Filter which Subscriptions to delete
      */
-    where?: subscriotion_tableWhereInput
+    where?: SubscriptionWhereInput
     /**
-     * Limit how many subscriotion_tables to delete.
+     * Limit how many Subscriptions to delete.
      */
     limit?: number
   }
 
   /**
-   * subscriotion_table without action
+   * Subscription without action
    */
-  export type subscriotion_tableDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type SubscriptionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the subscriotion_table
+     * Select specific fields to fetch from the Subscription
      */
-    select?: subscriotion_tableSelect<ExtArgs> | null
+    select?: SubscriptionSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the subscriotion_table
+     * Omit specific fields from the Subscription
      */
-    omit?: subscriotion_tableOmit<ExtArgs> | null
+    omit?: SubscriptionOmit<ExtArgs> | null
   }
 
 
@@ -6750,25 +6737,25 @@ export namespace Prisma {
 
 
   export const User_tableScalarFieldEnum: {
-    user_id: 'user_id',
+    id: 'id',
     user_name: 'user_name',
     user_email: 'user_email',
     user_email_verified: 'user_email_verified',
     user_image: 'user_image',
     user_created_at: 'user_created_at',
     user_updated_at: 'user_updated_at',
-    user_role: 'user_role',
-    user_banned: 'user_banned',
-    user_ban_reason: 'user_ban_reason',
-    user_ban_expires: 'user_ban_expires',
-    user_stripe_customer_id: 'user_stripe_customer_id'
+    role: 'role',
+    banned: 'banned',
+    banReason: 'banReason',
+    banExpires: 'banExpires',
+    stripeCustomerId: 'stripeCustomerId'
   };
 
   export type User_tableScalarFieldEnum = (typeof User_tableScalarFieldEnum)[keyof typeof User_tableScalarFieldEnum]
 
 
   export const User_account_tableScalarFieldEnum: {
-    user_account_id: 'user_account_id',
+    id: 'id',
     user_account_account_id: 'user_account_account_id',
     user_account_provider_id: 'user_account_provider_id',
     user_account_user_id: 'user_account_user_id',
@@ -6776,7 +6763,6 @@ export namespace Prisma {
     user_account_refresh_token: 'user_account_refresh_token',
     user_account_id_token: 'user_account_id_token',
     user_account_access_token_expires_at: 'user_account_access_token_expires_at',
-    user_account_refresh_token_expires_at: 'user_account_refresh_token_expires_at',
     user_account_scope: 'user_account_scope',
     user_account_password: 'user_account_password',
     user_account_created_at: 'user_account_created_at',
@@ -6787,7 +6773,7 @@ export namespace Prisma {
 
 
   export const Verification_tableScalarFieldEnum: {
-    verification_id: 'verification_id',
+    id: 'id',
     verification_identifier: 'verification_identifier',
     verification_value: 'verification_value',
     verification_expires_at: 'verification_expires_at',
@@ -6798,20 +6784,20 @@ export namespace Prisma {
   export type Verification_tableScalarFieldEnum = (typeof Verification_tableScalarFieldEnum)[keyof typeof Verification_tableScalarFieldEnum]
 
 
-  export const Subscriotion_tableScalarFieldEnum: {
-    subscription_id: 'subscription_id',
-    subscription_plan: 'subscription_plan',
-    subscription_reference_id: 'subscription_reference_id',
-    subscription_stripe_customer_id: 'subscription_stripe_customer_id',
-    subscription_stripe_subscription_id: 'subscription_stripe_subscription_id',
-    subscription_status: 'subscription_status',
-    subscription_period_start: 'subscription_period_start',
-    subscription_period_end: 'subscription_period_end',
-    subscription_cancel_at_period_end: 'subscription_cancel_at_period_end',
-    subscription_seats: 'subscription_seats'
+  export const SubscriptionScalarFieldEnum: {
+    id: 'id',
+    plan: 'plan',
+    referenceId: 'referenceId',
+    stripeCustomerId: 'stripeCustomerId',
+    stripeSubscriptionId: 'stripeSubscriptionId',
+    status: 'status',
+    periodStart: 'periodStart',
+    periodEnd: 'periodEnd',
+    cancelAtPeriodEnd: 'cancelAtPeriodEnd',
+    seats: 'seats'
   };
 
-  export type Subscriotion_tableScalarFieldEnum = (typeof Subscriotion_tableScalarFieldEnum)[keyof typeof Subscriotion_tableScalarFieldEnum]
+  export type SubscriptionScalarFieldEnum = (typeof SubscriptionScalarFieldEnum)[keyof typeof SubscriptionScalarFieldEnum]
 
 
   export const Plan_tableScalarFieldEnum: {
@@ -6927,39 +6913,39 @@ export namespace Prisma {
     AND?: User_tableWhereInput | User_tableWhereInput[]
     OR?: User_tableWhereInput[]
     NOT?: User_tableWhereInput | User_tableWhereInput[]
-    user_id?: StringFilter<"User_table"> | string
+    id?: StringFilter<"User_table"> | string
     user_name?: StringFilter<"User_table"> | string
     user_email?: StringFilter<"User_table"> | string
     user_email_verified?: BoolFilter<"User_table"> | boolean
     user_image?: StringNullableFilter<"User_table"> | string | null
     user_created_at?: DateTimeFilter<"User_table"> | Date | string
     user_updated_at?: DateTimeFilter<"User_table"> | Date | string
-    user_role?: StringNullableFilter<"User_table"> | string | null
-    user_banned?: BoolNullableFilter<"User_table"> | boolean | null
-    user_ban_reason?: StringNullableFilter<"User_table"> | string | null
-    user_ban_expires?: DateTimeNullableFilter<"User_table"> | Date | string | null
-    user_stripe_customer_id?: StringNullableFilter<"User_table"> | string | null
+    role?: StringNullableFilter<"User_table"> | string | null
+    banned?: BoolNullableFilter<"User_table"> | boolean | null
+    banReason?: StringNullableFilter<"User_table"> | string | null
+    banExpires?: DateTimeNullableFilter<"User_table"> | Date | string | null
+    stripeCustomerId?: StringNullableFilter<"User_table"> | string | null
     user_account_tables?: User_account_tableListRelationFilter
   }
 
   export type User_tableOrderByWithRelationInput = {
-    user_id?: SortOrder
+    id?: SortOrder
     user_name?: SortOrder
     user_email?: SortOrder
     user_email_verified?: SortOrder
     user_image?: SortOrderInput | SortOrder
     user_created_at?: SortOrder
     user_updated_at?: SortOrder
-    user_role?: SortOrderInput | SortOrder
-    user_banned?: SortOrderInput | SortOrder
-    user_ban_reason?: SortOrderInput | SortOrder
-    user_ban_expires?: SortOrderInput | SortOrder
-    user_stripe_customer_id?: SortOrderInput | SortOrder
+    role?: SortOrderInput | SortOrder
+    banned?: SortOrderInput | SortOrder
+    banReason?: SortOrderInput | SortOrder
+    banExpires?: SortOrderInput | SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
     user_account_tables?: User_account_tableOrderByRelationAggregateInput
   }
 
   export type User_tableWhereUniqueInput = Prisma.AtLeast<{
-    user_id?: string
+    id?: string
     user_email?: string
     AND?: User_tableWhereInput | User_tableWhereInput[]
     OR?: User_tableWhereInput[]
@@ -6969,27 +6955,27 @@ export namespace Prisma {
     user_image?: StringNullableFilter<"User_table"> | string | null
     user_created_at?: DateTimeFilter<"User_table"> | Date | string
     user_updated_at?: DateTimeFilter<"User_table"> | Date | string
-    user_role?: StringNullableFilter<"User_table"> | string | null
-    user_banned?: BoolNullableFilter<"User_table"> | boolean | null
-    user_ban_reason?: StringNullableFilter<"User_table"> | string | null
-    user_ban_expires?: DateTimeNullableFilter<"User_table"> | Date | string | null
-    user_stripe_customer_id?: StringNullableFilter<"User_table"> | string | null
+    role?: StringNullableFilter<"User_table"> | string | null
+    banned?: BoolNullableFilter<"User_table"> | boolean | null
+    banReason?: StringNullableFilter<"User_table"> | string | null
+    banExpires?: DateTimeNullableFilter<"User_table"> | Date | string | null
+    stripeCustomerId?: StringNullableFilter<"User_table"> | string | null
     user_account_tables?: User_account_tableListRelationFilter
-  }, "user_id" | "user_email">
+  }, "id" | "user_email">
 
   export type User_tableOrderByWithAggregationInput = {
-    user_id?: SortOrder
+    id?: SortOrder
     user_name?: SortOrder
     user_email?: SortOrder
     user_email_verified?: SortOrder
     user_image?: SortOrderInput | SortOrder
     user_created_at?: SortOrder
     user_updated_at?: SortOrder
-    user_role?: SortOrderInput | SortOrder
-    user_banned?: SortOrderInput | SortOrder
-    user_ban_reason?: SortOrderInput | SortOrder
-    user_ban_expires?: SortOrderInput | SortOrder
-    user_stripe_customer_id?: SortOrderInput | SortOrder
+    role?: SortOrderInput | SortOrder
+    banned?: SortOrderInput | SortOrder
+    banReason?: SortOrderInput | SortOrder
+    banExpires?: SortOrderInput | SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
     _count?: User_tableCountOrderByAggregateInput
     _max?: User_tableMaxOrderByAggregateInput
     _min?: User_tableMinOrderByAggregateInput
@@ -6999,25 +6985,25 @@ export namespace Prisma {
     AND?: User_tableScalarWhereWithAggregatesInput | User_tableScalarWhereWithAggregatesInput[]
     OR?: User_tableScalarWhereWithAggregatesInput[]
     NOT?: User_tableScalarWhereWithAggregatesInput | User_tableScalarWhereWithAggregatesInput[]
-    user_id?: StringWithAggregatesFilter<"User_table"> | string
+    id?: StringWithAggregatesFilter<"User_table"> | string
     user_name?: StringWithAggregatesFilter<"User_table"> | string
     user_email?: StringWithAggregatesFilter<"User_table"> | string
     user_email_verified?: BoolWithAggregatesFilter<"User_table"> | boolean
     user_image?: StringNullableWithAggregatesFilter<"User_table"> | string | null
     user_created_at?: DateTimeWithAggregatesFilter<"User_table"> | Date | string
     user_updated_at?: DateTimeWithAggregatesFilter<"User_table"> | Date | string
-    user_role?: StringNullableWithAggregatesFilter<"User_table"> | string | null
-    user_banned?: BoolNullableWithAggregatesFilter<"User_table"> | boolean | null
-    user_ban_reason?: StringNullableWithAggregatesFilter<"User_table"> | string | null
-    user_ban_expires?: DateTimeNullableWithAggregatesFilter<"User_table"> | Date | string | null
-    user_stripe_customer_id?: StringNullableWithAggregatesFilter<"User_table"> | string | null
+    role?: StringNullableWithAggregatesFilter<"User_table"> | string | null
+    banned?: BoolNullableWithAggregatesFilter<"User_table"> | boolean | null
+    banReason?: StringNullableWithAggregatesFilter<"User_table"> | string | null
+    banExpires?: DateTimeNullableWithAggregatesFilter<"User_table"> | Date | string | null
+    stripeCustomerId?: StringNullableWithAggregatesFilter<"User_table"> | string | null
   }
 
   export type User_account_tableWhereInput = {
     AND?: User_account_tableWhereInput | User_account_tableWhereInput[]
     OR?: User_account_tableWhereInput[]
     NOT?: User_account_tableWhereInput | User_account_tableWhereInput[]
-    user_account_id?: StringFilter<"User_account_table"> | string
+    id?: StringFilter<"User_account_table"> | string
     user_account_account_id?: StringFilter<"User_account_table"> | string
     user_account_provider_id?: StringFilter<"User_account_table"> | string
     user_account_user_id?: StringFilter<"User_account_table"> | string
@@ -7025,7 +7011,6 @@ export namespace Prisma {
     user_account_refresh_token?: StringNullableFilter<"User_account_table"> | string | null
     user_account_id_token?: StringNullableFilter<"User_account_table"> | string | null
     user_account_access_token_expires_at?: DateTimeNullableFilter<"User_account_table"> | Date | string | null
-    user_account_refresh_token_expires_at?: DateTimeNullableFilter<"User_account_table"> | Date | string | null
     user_account_scope?: StringNullableFilter<"User_account_table"> | string | null
     user_account_password?: StringNullableFilter<"User_account_table"> | string | null
     user_account_created_at?: DateTimeFilter<"User_account_table"> | Date | string
@@ -7034,7 +7019,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableOrderByWithRelationInput = {
-    user_account_id?: SortOrder
+    id?: SortOrder
     user_account_account_id?: SortOrder
     user_account_provider_id?: SortOrder
     user_account_user_id?: SortOrder
@@ -7042,7 +7027,6 @@ export namespace Prisma {
     user_account_refresh_token?: SortOrderInput | SortOrder
     user_account_id_token?: SortOrderInput | SortOrder
     user_account_access_token_expires_at?: SortOrderInput | SortOrder
-    user_account_refresh_token_expires_at?: SortOrderInput | SortOrder
     user_account_scope?: SortOrderInput | SortOrder
     user_account_password?: SortOrderInput | SortOrder
     user_account_created_at?: SortOrder
@@ -7051,7 +7035,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableWhereUniqueInput = Prisma.AtLeast<{
-    user_account_id?: string
+    id?: string
     AND?: User_account_tableWhereInput | User_account_tableWhereInput[]
     OR?: User_account_tableWhereInput[]
     NOT?: User_account_tableWhereInput | User_account_tableWhereInput[]
@@ -7062,16 +7046,15 @@ export namespace Prisma {
     user_account_refresh_token?: StringNullableFilter<"User_account_table"> | string | null
     user_account_id_token?: StringNullableFilter<"User_account_table"> | string | null
     user_account_access_token_expires_at?: DateTimeNullableFilter<"User_account_table"> | Date | string | null
-    user_account_refresh_token_expires_at?: DateTimeNullableFilter<"User_account_table"> | Date | string | null
     user_account_scope?: StringNullableFilter<"User_account_table"> | string | null
     user_account_password?: StringNullableFilter<"User_account_table"> | string | null
     user_account_created_at?: DateTimeFilter<"User_account_table"> | Date | string
     user_account_updated_at?: DateTimeFilter<"User_account_table"> | Date | string
     user_table?: XOR<User_tableScalarRelationFilter, User_tableWhereInput>
-  }, "user_account_id">
+  }, "id">
 
   export type User_account_tableOrderByWithAggregationInput = {
-    user_account_id?: SortOrder
+    id?: SortOrder
     user_account_account_id?: SortOrder
     user_account_provider_id?: SortOrder
     user_account_user_id?: SortOrder
@@ -7079,7 +7062,6 @@ export namespace Prisma {
     user_account_refresh_token?: SortOrderInput | SortOrder
     user_account_id_token?: SortOrderInput | SortOrder
     user_account_access_token_expires_at?: SortOrderInput | SortOrder
-    user_account_refresh_token_expires_at?: SortOrderInput | SortOrder
     user_account_scope?: SortOrderInput | SortOrder
     user_account_password?: SortOrderInput | SortOrder
     user_account_created_at?: SortOrder
@@ -7093,7 +7075,7 @@ export namespace Prisma {
     AND?: User_account_tableScalarWhereWithAggregatesInput | User_account_tableScalarWhereWithAggregatesInput[]
     OR?: User_account_tableScalarWhereWithAggregatesInput[]
     NOT?: User_account_tableScalarWhereWithAggregatesInput | User_account_tableScalarWhereWithAggregatesInput[]
-    user_account_id?: StringWithAggregatesFilter<"User_account_table"> | string
+    id?: StringWithAggregatesFilter<"User_account_table"> | string
     user_account_account_id?: StringWithAggregatesFilter<"User_account_table"> | string
     user_account_provider_id?: StringWithAggregatesFilter<"User_account_table"> | string
     user_account_user_id?: StringWithAggregatesFilter<"User_account_table"> | string
@@ -7101,7 +7083,6 @@ export namespace Prisma {
     user_account_refresh_token?: StringNullableWithAggregatesFilter<"User_account_table"> | string | null
     user_account_id_token?: StringNullableWithAggregatesFilter<"User_account_table"> | string | null
     user_account_access_token_expires_at?: DateTimeNullableWithAggregatesFilter<"User_account_table"> | Date | string | null
-    user_account_refresh_token_expires_at?: DateTimeNullableWithAggregatesFilter<"User_account_table"> | Date | string | null
     user_account_scope?: StringNullableWithAggregatesFilter<"User_account_table"> | string | null
     user_account_password?: StringNullableWithAggregatesFilter<"User_account_table"> | string | null
     user_account_created_at?: DateTimeWithAggregatesFilter<"User_account_table"> | Date | string
@@ -7112,7 +7093,7 @@ export namespace Prisma {
     AND?: Verification_tableWhereInput | Verification_tableWhereInput[]
     OR?: Verification_tableWhereInput[]
     NOT?: Verification_tableWhereInput | Verification_tableWhereInput[]
-    verification_id?: StringFilter<"Verification_table"> | string
+    id?: StringFilter<"Verification_table"> | string
     verification_identifier?: StringFilter<"Verification_table"> | string
     verification_value?: StringFilter<"Verification_table"> | string
     verification_expires_at?: DateTimeFilter<"Verification_table"> | Date | string
@@ -7121,7 +7102,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableOrderByWithRelationInput = {
-    verification_id?: SortOrder
+    id?: SortOrder
     verification_identifier?: SortOrder
     verification_value?: SortOrder
     verification_expires_at?: SortOrder
@@ -7130,7 +7111,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableWhereUniqueInput = Prisma.AtLeast<{
-    verification_id?: string
+    id?: string
     AND?: Verification_tableWhereInput | Verification_tableWhereInput[]
     OR?: Verification_tableWhereInput[]
     NOT?: Verification_tableWhereInput | Verification_tableWhereInput[]
@@ -7139,10 +7120,10 @@ export namespace Prisma {
     verification_expires_at?: DateTimeFilter<"Verification_table"> | Date | string
     verification_created_at?: DateTimeNullableFilter<"Verification_table"> | Date | string | null
     verification_updated_at?: DateTimeNullableFilter<"Verification_table"> | Date | string | null
-  }, "verification_id">
+  }, "id">
 
   export type Verification_tableOrderByWithAggregationInput = {
-    verification_id?: SortOrder
+    id?: SortOrder
     verification_identifier?: SortOrder
     verification_value?: SortOrder
     verification_expires_at?: SortOrder
@@ -7157,7 +7138,7 @@ export namespace Prisma {
     AND?: Verification_tableScalarWhereWithAggregatesInput | Verification_tableScalarWhereWithAggregatesInput[]
     OR?: Verification_tableScalarWhereWithAggregatesInput[]
     NOT?: Verification_tableScalarWhereWithAggregatesInput | Verification_tableScalarWhereWithAggregatesInput[]
-    verification_id?: StringWithAggregatesFilter<"Verification_table"> | string
+    id?: StringWithAggregatesFilter<"Verification_table"> | string
     verification_identifier?: StringWithAggregatesFilter<"Verification_table"> | string
     verification_value?: StringWithAggregatesFilter<"Verification_table"> | string
     verification_expires_at?: DateTimeWithAggregatesFilter<"Verification_table"> | Date | string
@@ -7165,83 +7146,83 @@ export namespace Prisma {
     verification_updated_at?: DateTimeNullableWithAggregatesFilter<"Verification_table"> | Date | string | null
   }
 
-  export type subscriotion_tableWhereInput = {
-    AND?: subscriotion_tableWhereInput | subscriotion_tableWhereInput[]
-    OR?: subscriotion_tableWhereInput[]
-    NOT?: subscriotion_tableWhereInput | subscriotion_tableWhereInput[]
-    subscription_id?: StringFilter<"subscriotion_table"> | string
-    subscription_plan?: StringFilter<"subscriotion_table"> | string
-    subscription_reference_id?: StringFilter<"subscriotion_table"> | string
-    subscription_stripe_customer_id?: StringNullableFilter<"subscriotion_table"> | string | null
-    subscription_stripe_subscription_id?: StringNullableFilter<"subscriotion_table"> | string | null
-    subscription_status?: StringNullableFilter<"subscriotion_table"> | string | null
-    subscription_period_start?: DateTimeNullableFilter<"subscriotion_table"> | Date | string | null
-    subscription_period_end?: DateTimeNullableFilter<"subscriotion_table"> | Date | string | null
-    subscription_cancel_at_period_end?: BoolNullableFilter<"subscriotion_table"> | boolean | null
-    subscription_seats?: IntNullableFilter<"subscriotion_table"> | number | null
+  export type SubscriptionWhereInput = {
+    AND?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    OR?: SubscriptionWhereInput[]
+    NOT?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    id?: StringFilter<"Subscription"> | string
+    plan?: StringFilter<"Subscription"> | string
+    referenceId?: StringFilter<"Subscription"> | string
+    stripeCustomerId?: StringNullableFilter<"Subscription"> | string | null
+    stripeSubscriptionId?: StringNullableFilter<"Subscription"> | string | null
+    status?: StringNullableFilter<"Subscription"> | string | null
+    periodStart?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    periodEnd?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    cancelAtPeriodEnd?: BoolNullableFilter<"Subscription"> | boolean | null
+    seats?: IntNullableFilter<"Subscription"> | number | null
   }
 
-  export type subscriotion_tableOrderByWithRelationInput = {
-    subscription_id?: SortOrder
-    subscription_plan?: SortOrder
-    subscription_reference_id?: SortOrder
-    subscription_stripe_customer_id?: SortOrderInput | SortOrder
-    subscription_stripe_subscription_id?: SortOrderInput | SortOrder
-    subscription_status?: SortOrderInput | SortOrder
-    subscription_period_start?: SortOrderInput | SortOrder
-    subscription_period_end?: SortOrderInput | SortOrder
-    subscription_cancel_at_period_end?: SortOrderInput | SortOrder
-    subscription_seats?: SortOrderInput | SortOrder
+  export type SubscriptionOrderByWithRelationInput = {
+    id?: SortOrder
+    plan?: SortOrder
+    referenceId?: SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
+    stripeSubscriptionId?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    periodStart?: SortOrderInput | SortOrder
+    periodEnd?: SortOrderInput | SortOrder
+    cancelAtPeriodEnd?: SortOrderInput | SortOrder
+    seats?: SortOrderInput | SortOrder
   }
 
-  export type subscriotion_tableWhereUniqueInput = Prisma.AtLeast<{
-    subscription_id?: string
-    AND?: subscriotion_tableWhereInput | subscriotion_tableWhereInput[]
-    OR?: subscriotion_tableWhereInput[]
-    NOT?: subscriotion_tableWhereInput | subscriotion_tableWhereInput[]
-    subscription_plan?: StringFilter<"subscriotion_table"> | string
-    subscription_reference_id?: StringFilter<"subscriotion_table"> | string
-    subscription_stripe_customer_id?: StringNullableFilter<"subscriotion_table"> | string | null
-    subscription_stripe_subscription_id?: StringNullableFilter<"subscriotion_table"> | string | null
-    subscription_status?: StringNullableFilter<"subscriotion_table"> | string | null
-    subscription_period_start?: DateTimeNullableFilter<"subscriotion_table"> | Date | string | null
-    subscription_period_end?: DateTimeNullableFilter<"subscriotion_table"> | Date | string | null
-    subscription_cancel_at_period_end?: BoolNullableFilter<"subscriotion_table"> | boolean | null
-    subscription_seats?: IntNullableFilter<"subscriotion_table"> | number | null
-  }, "subscription_id">
+  export type SubscriptionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    OR?: SubscriptionWhereInput[]
+    NOT?: SubscriptionWhereInput | SubscriptionWhereInput[]
+    plan?: StringFilter<"Subscription"> | string
+    referenceId?: StringFilter<"Subscription"> | string
+    stripeCustomerId?: StringNullableFilter<"Subscription"> | string | null
+    stripeSubscriptionId?: StringNullableFilter<"Subscription"> | string | null
+    status?: StringNullableFilter<"Subscription"> | string | null
+    periodStart?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    periodEnd?: DateTimeNullableFilter<"Subscription"> | Date | string | null
+    cancelAtPeriodEnd?: BoolNullableFilter<"Subscription"> | boolean | null
+    seats?: IntNullableFilter<"Subscription"> | number | null
+  }, "id">
 
-  export type subscriotion_tableOrderByWithAggregationInput = {
-    subscription_id?: SortOrder
-    subscription_plan?: SortOrder
-    subscription_reference_id?: SortOrder
-    subscription_stripe_customer_id?: SortOrderInput | SortOrder
-    subscription_stripe_subscription_id?: SortOrderInput | SortOrder
-    subscription_status?: SortOrderInput | SortOrder
-    subscription_period_start?: SortOrderInput | SortOrder
-    subscription_period_end?: SortOrderInput | SortOrder
-    subscription_cancel_at_period_end?: SortOrderInput | SortOrder
-    subscription_seats?: SortOrderInput | SortOrder
-    _count?: subscriotion_tableCountOrderByAggregateInput
-    _avg?: subscriotion_tableAvgOrderByAggregateInput
-    _max?: subscriotion_tableMaxOrderByAggregateInput
-    _min?: subscriotion_tableMinOrderByAggregateInput
-    _sum?: subscriotion_tableSumOrderByAggregateInput
+  export type SubscriptionOrderByWithAggregationInput = {
+    id?: SortOrder
+    plan?: SortOrder
+    referenceId?: SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
+    stripeSubscriptionId?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    periodStart?: SortOrderInput | SortOrder
+    periodEnd?: SortOrderInput | SortOrder
+    cancelAtPeriodEnd?: SortOrderInput | SortOrder
+    seats?: SortOrderInput | SortOrder
+    _count?: SubscriptionCountOrderByAggregateInput
+    _avg?: SubscriptionAvgOrderByAggregateInput
+    _max?: SubscriptionMaxOrderByAggregateInput
+    _min?: SubscriptionMinOrderByAggregateInput
+    _sum?: SubscriptionSumOrderByAggregateInput
   }
 
-  export type subscriotion_tableScalarWhereWithAggregatesInput = {
-    AND?: subscriotion_tableScalarWhereWithAggregatesInput | subscriotion_tableScalarWhereWithAggregatesInput[]
-    OR?: subscriotion_tableScalarWhereWithAggregatesInput[]
-    NOT?: subscriotion_tableScalarWhereWithAggregatesInput | subscriotion_tableScalarWhereWithAggregatesInput[]
-    subscription_id?: StringWithAggregatesFilter<"subscriotion_table"> | string
-    subscription_plan?: StringWithAggregatesFilter<"subscriotion_table"> | string
-    subscription_reference_id?: StringWithAggregatesFilter<"subscriotion_table"> | string
-    subscription_stripe_customer_id?: StringNullableWithAggregatesFilter<"subscriotion_table"> | string | null
-    subscription_stripe_subscription_id?: StringNullableWithAggregatesFilter<"subscriotion_table"> | string | null
-    subscription_status?: StringNullableWithAggregatesFilter<"subscriotion_table"> | string | null
-    subscription_period_start?: DateTimeNullableWithAggregatesFilter<"subscriotion_table"> | Date | string | null
-    subscription_period_end?: DateTimeNullableWithAggregatesFilter<"subscriotion_table"> | Date | string | null
-    subscription_cancel_at_period_end?: BoolNullableWithAggregatesFilter<"subscriotion_table"> | boolean | null
-    subscription_seats?: IntNullableWithAggregatesFilter<"subscriotion_table"> | number | null
+  export type SubscriptionScalarWhereWithAggregatesInput = {
+    AND?: SubscriptionScalarWhereWithAggregatesInput | SubscriptionScalarWhereWithAggregatesInput[]
+    OR?: SubscriptionScalarWhereWithAggregatesInput[]
+    NOT?: SubscriptionScalarWhereWithAggregatesInput | SubscriptionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Subscription"> | string
+    plan?: StringWithAggregatesFilter<"Subscription"> | string
+    referenceId?: StringWithAggregatesFilter<"Subscription"> | string
+    stripeCustomerId?: StringNullableWithAggregatesFilter<"Subscription"> | string | null
+    stripeSubscriptionId?: StringNullableWithAggregatesFilter<"Subscription"> | string | null
+    status?: StringNullableWithAggregatesFilter<"Subscription"> | string | null
+    periodStart?: DateTimeNullableWithAggregatesFilter<"Subscription"> | Date | string | null
+    periodEnd?: DateTimeNullableWithAggregatesFilter<"Subscription"> | Date | string | null
+    cancelAtPeriodEnd?: BoolNullableWithAggregatesFilter<"Subscription"> | boolean | null
+    seats?: IntNullableWithAggregatesFilter<"Subscription"> | number | null
   }
 
   export type plan_tableWhereInput = {
@@ -7312,132 +7293,131 @@ export namespace Prisma {
   }
 
   export type User_tableCreateInput = {
-    user_id: string
+    id: string
     user_name: string
     user_email: string
     user_email_verified: boolean
     user_image?: string | null
-    user_created_at?: Date | string
+    user_created_at: Date | string
     user_updated_at: Date | string
-    user_role?: string | null
-    user_banned?: boolean | null
-    user_ban_reason?: string | null
-    user_ban_expires?: Date | string | null
-    user_stripe_customer_id?: string | null
+    role?: string | null
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
+    stripeCustomerId?: string | null
     user_account_tables?: User_account_tableCreateNestedManyWithoutUser_tableInput
   }
 
   export type User_tableUncheckedCreateInput = {
-    user_id: string
+    id: string
     user_name: string
     user_email: string
     user_email_verified: boolean
     user_image?: string | null
-    user_created_at?: Date | string
+    user_created_at: Date | string
     user_updated_at: Date | string
-    user_role?: string | null
-    user_banned?: boolean | null
-    user_ban_reason?: string | null
-    user_ban_expires?: Date | string | null
-    user_stripe_customer_id?: string | null
+    role?: string | null
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
+    stripeCustomerId?: string | null
     user_account_tables?: User_account_tableUncheckedCreateNestedManyWithoutUser_tableInput
   }
 
   export type User_tableUpdateInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_email?: StringFieldUpdateOperationsInput | string
     user_email_verified?: BoolFieldUpdateOperationsInput | boolean
     user_image?: NullableStringFieldUpdateOperationsInput | string | null
     user_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_role?: NullableStringFieldUpdateOperationsInput | string | null
-    user_banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    user_ban_reason?: NullableStringFieldUpdateOperationsInput | string | null
-    user_ban_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_tables?: User_account_tableUpdateManyWithoutUser_tableNestedInput
   }
 
   export type User_tableUncheckedUpdateInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_email?: StringFieldUpdateOperationsInput | string
     user_email_verified?: BoolFieldUpdateOperationsInput | boolean
     user_image?: NullableStringFieldUpdateOperationsInput | string | null
     user_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_role?: NullableStringFieldUpdateOperationsInput | string | null
-    user_banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    user_ban_reason?: NullableStringFieldUpdateOperationsInput | string | null
-    user_ban_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_tables?: User_account_tableUncheckedUpdateManyWithoutUser_tableNestedInput
   }
 
   export type User_tableCreateManyInput = {
-    user_id: string
+    id: string
     user_name: string
     user_email: string
     user_email_verified: boolean
     user_image?: string | null
-    user_created_at?: Date | string
+    user_created_at: Date | string
     user_updated_at: Date | string
-    user_role?: string | null
-    user_banned?: boolean | null
-    user_ban_reason?: string | null
-    user_ban_expires?: Date | string | null
-    user_stripe_customer_id?: string | null
+    role?: string | null
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
+    stripeCustomerId?: string | null
   }
 
   export type User_tableUpdateManyMutationInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_email?: StringFieldUpdateOperationsInput | string
     user_email_verified?: BoolFieldUpdateOperationsInput | boolean
     user_image?: NullableStringFieldUpdateOperationsInput | string | null
     user_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_role?: NullableStringFieldUpdateOperationsInput | string | null
-    user_banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    user_ban_reason?: NullableStringFieldUpdateOperationsInput | string | null
-    user_ban_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type User_tableUncheckedUpdateManyInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_email?: StringFieldUpdateOperationsInput | string
     user_email_verified?: BoolFieldUpdateOperationsInput | boolean
     user_image?: NullableStringFieldUpdateOperationsInput | string | null
     user_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_role?: NullableStringFieldUpdateOperationsInput | string | null
-    user_banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    user_ban_reason?: NullableStringFieldUpdateOperationsInput | string | null
-    user_ban_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type User_account_tableCreateInput = {
-    user_account_id: string
+    id: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null
     user_account_refresh_token?: string | null
     user_account_id_token?: string | null
     user_account_access_token_expires_at?: Date | string | null
-    user_account_refresh_token_expires_at?: Date | string | null
     user_account_scope?: string | null
     user_account_password?: string | null
-    user_account_created_at?: Date | string
+    user_account_created_at: Date | string
     user_account_updated_at: Date | string
     user_table: User_tableCreateNestedOneWithoutUser_account_tablesInput
   }
 
   export type User_account_tableUncheckedCreateInput = {
-    user_account_id: string
+    id: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_user_id: string
@@ -7445,22 +7425,20 @@ export namespace Prisma {
     user_account_refresh_token?: string | null
     user_account_id_token?: string | null
     user_account_access_token_expires_at?: Date | string | null
-    user_account_refresh_token_expires_at?: Date | string | null
     user_account_scope?: string | null
     user_account_password?: string | null
-    user_account_created_at?: Date | string
+    user_account_created_at: Date | string
     user_account_updated_at: Date | string
   }
 
   export type User_account_tableUpdateInput = {
-    user_account_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_account_account_id?: StringFieldUpdateOperationsInput | string
     user_account_provider_id?: StringFieldUpdateOperationsInput | string
     user_account_access_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_id_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_access_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_account_refresh_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_account_scope?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_password?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7469,7 +7447,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableUncheckedUpdateInput = {
-    user_account_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_account_account_id?: StringFieldUpdateOperationsInput | string
     user_account_provider_id?: StringFieldUpdateOperationsInput | string
     user_account_user_id?: StringFieldUpdateOperationsInput | string
@@ -7477,7 +7455,6 @@ export namespace Prisma {
     user_account_refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_id_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_access_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_account_refresh_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_account_scope?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_password?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7485,7 +7462,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCreateManyInput = {
-    user_account_id: string
+    id: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_user_id: string
@@ -7493,22 +7470,20 @@ export namespace Prisma {
     user_account_refresh_token?: string | null
     user_account_id_token?: string | null
     user_account_access_token_expires_at?: Date | string | null
-    user_account_refresh_token_expires_at?: Date | string | null
     user_account_scope?: string | null
     user_account_password?: string | null
-    user_account_created_at?: Date | string
+    user_account_created_at: Date | string
     user_account_updated_at: Date | string
   }
 
   export type User_account_tableUpdateManyMutationInput = {
-    user_account_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_account_account_id?: StringFieldUpdateOperationsInput | string
     user_account_provider_id?: StringFieldUpdateOperationsInput | string
     user_account_access_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_id_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_access_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_account_refresh_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_account_scope?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_password?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7516,7 +7491,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableUncheckedUpdateManyInput = {
-    user_account_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_account_account_id?: StringFieldUpdateOperationsInput | string
     user_account_provider_id?: StringFieldUpdateOperationsInput | string
     user_account_user_id?: StringFieldUpdateOperationsInput | string
@@ -7524,7 +7499,6 @@ export namespace Prisma {
     user_account_refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_id_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_access_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_account_refresh_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_account_scope?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_password?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7532,7 +7506,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableCreateInput = {
-    verification_id: string
+    id: string
     verification_identifier: string
     verification_value: string
     verification_expires_at: Date | string
@@ -7541,7 +7515,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableUncheckedCreateInput = {
-    verification_id: string
+    id: string
     verification_identifier: string
     verification_value: string
     verification_expires_at: Date | string
@@ -7550,7 +7524,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableUpdateInput = {
-    verification_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     verification_identifier?: StringFieldUpdateOperationsInput | string
     verification_value?: StringFieldUpdateOperationsInput | string
     verification_expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7559,7 +7533,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableUncheckedUpdateInput = {
-    verification_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     verification_identifier?: StringFieldUpdateOperationsInput | string
     verification_value?: StringFieldUpdateOperationsInput | string
     verification_expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7568,7 +7542,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableCreateManyInput = {
-    verification_id: string
+    id: string
     verification_identifier: string
     verification_value: string
     verification_expires_at: Date | string
@@ -7577,7 +7551,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableUpdateManyMutationInput = {
-    verification_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     verification_identifier?: StringFieldUpdateOperationsInput | string
     verification_value?: StringFieldUpdateOperationsInput | string
     verification_expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7586,7 +7560,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableUncheckedUpdateManyInput = {
-    verification_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     verification_identifier?: StringFieldUpdateOperationsInput | string
     verification_value?: StringFieldUpdateOperationsInput | string
     verification_expires_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7594,95 +7568,95 @@ export namespace Prisma {
     verification_updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type subscriotion_tableCreateInput = {
-    subscription_id: string
-    subscription_plan: string
-    subscription_reference_id: string
-    subscription_stripe_customer_id?: string | null
-    subscription_stripe_subscription_id?: string | null
-    subscription_status?: string | null
-    subscription_period_start?: Date | string | null
-    subscription_period_end?: Date | string | null
-    subscription_cancel_at_period_end?: boolean | null
-    subscription_seats?: number | null
+  export type SubscriptionCreateInput = {
+    id: string
+    plan: string
+    referenceId: string
+    stripeCustomerId?: string | null
+    stripeSubscriptionId?: string | null
+    status?: string | null
+    periodStart?: Date | string | null
+    periodEnd?: Date | string | null
+    cancelAtPeriodEnd?: boolean | null
+    seats?: number | null
   }
 
-  export type subscriotion_tableUncheckedCreateInput = {
-    subscription_id: string
-    subscription_plan: string
-    subscription_reference_id: string
-    subscription_stripe_customer_id?: string | null
-    subscription_stripe_subscription_id?: string | null
-    subscription_status?: string | null
-    subscription_period_start?: Date | string | null
-    subscription_period_end?: Date | string | null
-    subscription_cancel_at_period_end?: boolean | null
-    subscription_seats?: number | null
+  export type SubscriptionUncheckedCreateInput = {
+    id: string
+    plan: string
+    referenceId: string
+    stripeCustomerId?: string | null
+    stripeSubscriptionId?: string | null
+    status?: string | null
+    periodStart?: Date | string | null
+    periodEnd?: Date | string | null
+    cancelAtPeriodEnd?: boolean | null
+    seats?: number | null
   }
 
-  export type subscriotion_tableUpdateInput = {
-    subscription_id?: StringFieldUpdateOperationsInput | string
-    subscription_plan?: StringFieldUpdateOperationsInput | string
-    subscription_reference_id?: StringFieldUpdateOperationsInput | string
-    subscription_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_stripe_subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_status?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_period_start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_period_end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_cancel_at_period_end?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    subscription_seats?: NullableIntFieldUpdateOperationsInput | number | null
+  export type SubscriptionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    referenceId?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    periodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    periodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelAtPeriodEnd?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type subscriotion_tableUncheckedUpdateInput = {
-    subscription_id?: StringFieldUpdateOperationsInput | string
-    subscription_plan?: StringFieldUpdateOperationsInput | string
-    subscription_reference_id?: StringFieldUpdateOperationsInput | string
-    subscription_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_stripe_subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_status?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_period_start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_period_end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_cancel_at_period_end?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    subscription_seats?: NullableIntFieldUpdateOperationsInput | number | null
+  export type SubscriptionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    referenceId?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    periodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    periodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelAtPeriodEnd?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type subscriotion_tableCreateManyInput = {
-    subscription_id: string
-    subscription_plan: string
-    subscription_reference_id: string
-    subscription_stripe_customer_id?: string | null
-    subscription_stripe_subscription_id?: string | null
-    subscription_status?: string | null
-    subscription_period_start?: Date | string | null
-    subscription_period_end?: Date | string | null
-    subscription_cancel_at_period_end?: boolean | null
-    subscription_seats?: number | null
+  export type SubscriptionCreateManyInput = {
+    id: string
+    plan: string
+    referenceId: string
+    stripeCustomerId?: string | null
+    stripeSubscriptionId?: string | null
+    status?: string | null
+    periodStart?: Date | string | null
+    periodEnd?: Date | string | null
+    cancelAtPeriodEnd?: boolean | null
+    seats?: number | null
   }
 
-  export type subscriotion_tableUpdateManyMutationInput = {
-    subscription_id?: StringFieldUpdateOperationsInput | string
-    subscription_plan?: StringFieldUpdateOperationsInput | string
-    subscription_reference_id?: StringFieldUpdateOperationsInput | string
-    subscription_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_stripe_subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_status?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_period_start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_period_end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_cancel_at_period_end?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    subscription_seats?: NullableIntFieldUpdateOperationsInput | number | null
+  export type SubscriptionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    referenceId?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    periodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    periodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelAtPeriodEnd?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
-  export type subscriotion_tableUncheckedUpdateManyInput = {
-    subscription_id?: StringFieldUpdateOperationsInput | string
-    subscription_plan?: StringFieldUpdateOperationsInput | string
-    subscription_reference_id?: StringFieldUpdateOperationsInput | string
-    subscription_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_stripe_subscription_id?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_status?: NullableStringFieldUpdateOperationsInput | string | null
-    subscription_period_start?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_period_end?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    subscription_cancel_at_period_end?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    subscription_seats?: NullableIntFieldUpdateOperationsInput | number | null
+  export type SubscriptionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    plan?: StringFieldUpdateOperationsInput | string
+    referenceId?: StringFieldUpdateOperationsInput | string
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    stripeSubscriptionId?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    periodStart?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    periodEnd?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    cancelAtPeriodEnd?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type plan_tableCreateInput = {
@@ -7840,48 +7814,48 @@ export namespace Prisma {
   }
 
   export type User_tableCountOrderByAggregateInput = {
-    user_id?: SortOrder
+    id?: SortOrder
     user_name?: SortOrder
     user_email?: SortOrder
     user_email_verified?: SortOrder
     user_image?: SortOrder
     user_created_at?: SortOrder
     user_updated_at?: SortOrder
-    user_role?: SortOrder
-    user_banned?: SortOrder
-    user_ban_reason?: SortOrder
-    user_ban_expires?: SortOrder
-    user_stripe_customer_id?: SortOrder
+    role?: SortOrder
+    banned?: SortOrder
+    banReason?: SortOrder
+    banExpires?: SortOrder
+    stripeCustomerId?: SortOrder
   }
 
   export type User_tableMaxOrderByAggregateInput = {
-    user_id?: SortOrder
+    id?: SortOrder
     user_name?: SortOrder
     user_email?: SortOrder
     user_email_verified?: SortOrder
     user_image?: SortOrder
     user_created_at?: SortOrder
     user_updated_at?: SortOrder
-    user_role?: SortOrder
-    user_banned?: SortOrder
-    user_ban_reason?: SortOrder
-    user_ban_expires?: SortOrder
-    user_stripe_customer_id?: SortOrder
+    role?: SortOrder
+    banned?: SortOrder
+    banReason?: SortOrder
+    banExpires?: SortOrder
+    stripeCustomerId?: SortOrder
   }
 
   export type User_tableMinOrderByAggregateInput = {
-    user_id?: SortOrder
+    id?: SortOrder
     user_name?: SortOrder
     user_email?: SortOrder
     user_email_verified?: SortOrder
     user_image?: SortOrder
     user_created_at?: SortOrder
     user_updated_at?: SortOrder
-    user_role?: SortOrder
-    user_banned?: SortOrder
-    user_ban_reason?: SortOrder
-    user_ban_expires?: SortOrder
-    user_stripe_customer_id?: SortOrder
+    role?: SortOrder
+    banned?: SortOrder
+    banReason?: SortOrder
+    banExpires?: SortOrder
+    stripeCustomerId?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -7970,7 +7944,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableCountOrderByAggregateInput = {
-    user_account_id?: SortOrder
+    id?: SortOrder
     user_account_account_id?: SortOrder
     user_account_provider_id?: SortOrder
     user_account_user_id?: SortOrder
@@ -7978,7 +7952,6 @@ export namespace Prisma {
     user_account_refresh_token?: SortOrder
     user_account_id_token?: SortOrder
     user_account_access_token_expires_at?: SortOrder
-    user_account_refresh_token_expires_at?: SortOrder
     user_account_scope?: SortOrder
     user_account_password?: SortOrder
     user_account_created_at?: SortOrder
@@ -7986,7 +7959,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableMaxOrderByAggregateInput = {
-    user_account_id?: SortOrder
+    id?: SortOrder
     user_account_account_id?: SortOrder
     user_account_provider_id?: SortOrder
     user_account_user_id?: SortOrder
@@ -7994,7 +7967,6 @@ export namespace Prisma {
     user_account_refresh_token?: SortOrder
     user_account_id_token?: SortOrder
     user_account_access_token_expires_at?: SortOrder
-    user_account_refresh_token_expires_at?: SortOrder
     user_account_scope?: SortOrder
     user_account_password?: SortOrder
     user_account_created_at?: SortOrder
@@ -8002,7 +7974,7 @@ export namespace Prisma {
   }
 
   export type User_account_tableMinOrderByAggregateInput = {
-    user_account_id?: SortOrder
+    id?: SortOrder
     user_account_account_id?: SortOrder
     user_account_provider_id?: SortOrder
     user_account_user_id?: SortOrder
@@ -8010,7 +7982,6 @@ export namespace Prisma {
     user_account_refresh_token?: SortOrder
     user_account_id_token?: SortOrder
     user_account_access_token_expires_at?: SortOrder
-    user_account_refresh_token_expires_at?: SortOrder
     user_account_scope?: SortOrder
     user_account_password?: SortOrder
     user_account_created_at?: SortOrder
@@ -8018,7 +7989,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableCountOrderByAggregateInput = {
-    verification_id?: SortOrder
+    id?: SortOrder
     verification_identifier?: SortOrder
     verification_value?: SortOrder
     verification_expires_at?: SortOrder
@@ -8027,7 +7998,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableMaxOrderByAggregateInput = {
-    verification_id?: SortOrder
+    id?: SortOrder
     verification_identifier?: SortOrder
     verification_value?: SortOrder
     verification_expires_at?: SortOrder
@@ -8036,7 +8007,7 @@ export namespace Prisma {
   }
 
   export type Verification_tableMinOrderByAggregateInput = {
-    verification_id?: SortOrder
+    id?: SortOrder
     verification_identifier?: SortOrder
     verification_value?: SortOrder
     verification_expires_at?: SortOrder
@@ -8055,51 +8026,51 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type subscriotion_tableCountOrderByAggregateInput = {
-    subscription_id?: SortOrder
-    subscription_plan?: SortOrder
-    subscription_reference_id?: SortOrder
-    subscription_stripe_customer_id?: SortOrder
-    subscription_stripe_subscription_id?: SortOrder
-    subscription_status?: SortOrder
-    subscription_period_start?: SortOrder
-    subscription_period_end?: SortOrder
-    subscription_cancel_at_period_end?: SortOrder
-    subscription_seats?: SortOrder
+  export type SubscriptionCountOrderByAggregateInput = {
+    id?: SortOrder
+    plan?: SortOrder
+    referenceId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrder
+    status?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    cancelAtPeriodEnd?: SortOrder
+    seats?: SortOrder
   }
 
-  export type subscriotion_tableAvgOrderByAggregateInput = {
-    subscription_seats?: SortOrder
+  export type SubscriptionAvgOrderByAggregateInput = {
+    seats?: SortOrder
   }
 
-  export type subscriotion_tableMaxOrderByAggregateInput = {
-    subscription_id?: SortOrder
-    subscription_plan?: SortOrder
-    subscription_reference_id?: SortOrder
-    subscription_stripe_customer_id?: SortOrder
-    subscription_stripe_subscription_id?: SortOrder
-    subscription_status?: SortOrder
-    subscription_period_start?: SortOrder
-    subscription_period_end?: SortOrder
-    subscription_cancel_at_period_end?: SortOrder
-    subscription_seats?: SortOrder
+  export type SubscriptionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    plan?: SortOrder
+    referenceId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrder
+    status?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    cancelAtPeriodEnd?: SortOrder
+    seats?: SortOrder
   }
 
-  export type subscriotion_tableMinOrderByAggregateInput = {
-    subscription_id?: SortOrder
-    subscription_plan?: SortOrder
-    subscription_reference_id?: SortOrder
-    subscription_stripe_customer_id?: SortOrder
-    subscription_stripe_subscription_id?: SortOrder
-    subscription_status?: SortOrder
-    subscription_period_start?: SortOrder
-    subscription_period_end?: SortOrder
-    subscription_cancel_at_period_end?: SortOrder
-    subscription_seats?: SortOrder
+  export type SubscriptionMinOrderByAggregateInput = {
+    id?: SortOrder
+    plan?: SortOrder
+    referenceId?: SortOrder
+    stripeCustomerId?: SortOrder
+    stripeSubscriptionId?: SortOrder
+    status?: SortOrder
+    periodStart?: SortOrder
+    periodEnd?: SortOrder
+    cancelAtPeriodEnd?: SortOrder
+    seats?: SortOrder
   }
 
-  export type subscriotion_tableSumOrderByAggregateInput = {
-    subscription_seats?: SortOrder
+  export type SubscriptionSumOrderByAggregateInput = {
+    seats?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -8427,32 +8398,30 @@ export namespace Prisma {
   }
 
   export type User_account_tableCreateWithoutUser_tableInput = {
-    user_account_id: string
+    id: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null
     user_account_refresh_token?: string | null
     user_account_id_token?: string | null
     user_account_access_token_expires_at?: Date | string | null
-    user_account_refresh_token_expires_at?: Date | string | null
     user_account_scope?: string | null
     user_account_password?: string | null
-    user_account_created_at?: Date | string
+    user_account_created_at: Date | string
     user_account_updated_at: Date | string
   }
 
   export type User_account_tableUncheckedCreateWithoutUser_tableInput = {
-    user_account_id: string
+    id: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null
     user_account_refresh_token?: string | null
     user_account_id_token?: string | null
     user_account_access_token_expires_at?: Date | string | null
-    user_account_refresh_token_expires_at?: Date | string | null
     user_account_scope?: string | null
     user_account_password?: string | null
-    user_account_created_at?: Date | string
+    user_account_created_at: Date | string
     user_account_updated_at: Date | string
   }
 
@@ -8486,7 +8455,7 @@ export namespace Prisma {
     AND?: User_account_tableScalarWhereInput | User_account_tableScalarWhereInput[]
     OR?: User_account_tableScalarWhereInput[]
     NOT?: User_account_tableScalarWhereInput | User_account_tableScalarWhereInput[]
-    user_account_id?: StringFilter<"User_account_table"> | string
+    id?: StringFilter<"User_account_table"> | string
     user_account_account_id?: StringFilter<"User_account_table"> | string
     user_account_provider_id?: StringFilter<"User_account_table"> | string
     user_account_user_id?: StringFilter<"User_account_table"> | string
@@ -8494,7 +8463,6 @@ export namespace Prisma {
     user_account_refresh_token?: StringNullableFilter<"User_account_table"> | string | null
     user_account_id_token?: StringNullableFilter<"User_account_table"> | string | null
     user_account_access_token_expires_at?: DateTimeNullableFilter<"User_account_table"> | Date | string | null
-    user_account_refresh_token_expires_at?: DateTimeNullableFilter<"User_account_table"> | Date | string | null
     user_account_scope?: StringNullableFilter<"User_account_table"> | string | null
     user_account_password?: StringNullableFilter<"User_account_table"> | string | null
     user_account_created_at?: DateTimeFilter<"User_account_table"> | Date | string
@@ -8502,33 +8470,33 @@ export namespace Prisma {
   }
 
   export type User_tableCreateWithoutUser_account_tablesInput = {
-    user_id: string
+    id: string
     user_name: string
     user_email: string
     user_email_verified: boolean
     user_image?: string | null
-    user_created_at?: Date | string
+    user_created_at: Date | string
     user_updated_at: Date | string
-    user_role?: string | null
-    user_banned?: boolean | null
-    user_ban_reason?: string | null
-    user_ban_expires?: Date | string | null
-    user_stripe_customer_id?: string | null
+    role?: string | null
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
+    stripeCustomerId?: string | null
   }
 
   export type User_tableUncheckedCreateWithoutUser_account_tablesInput = {
-    user_id: string
+    id: string
     user_name: string
     user_email: string
     user_email_verified: boolean
     user_image?: string | null
-    user_created_at?: Date | string
+    user_created_at: Date | string
     user_updated_at: Date | string
-    user_role?: string | null
-    user_banned?: boolean | null
-    user_ban_reason?: string | null
-    user_ban_expires?: Date | string | null
-    user_stripe_customer_id?: string | null
+    role?: string | null
+    banned?: boolean | null
+    banReason?: string | null
+    banExpires?: Date | string | null
+    stripeCustomerId?: string | null
   }
 
   export type User_tableCreateOrConnectWithoutUser_account_tablesInput = {
@@ -8548,59 +8516,57 @@ export namespace Prisma {
   }
 
   export type User_tableUpdateWithoutUser_account_tablesInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_email?: StringFieldUpdateOperationsInput | string
     user_email_verified?: BoolFieldUpdateOperationsInput | boolean
     user_image?: NullableStringFieldUpdateOperationsInput | string | null
     user_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_role?: NullableStringFieldUpdateOperationsInput | string | null
-    user_banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    user_ban_reason?: NullableStringFieldUpdateOperationsInput | string | null
-    user_ban_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type User_tableUncheckedUpdateWithoutUser_account_tablesInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_email?: StringFieldUpdateOperationsInput | string
     user_email_verified?: BoolFieldUpdateOperationsInput | boolean
     user_image?: NullableStringFieldUpdateOperationsInput | string | null
     user_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user_updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_role?: NullableStringFieldUpdateOperationsInput | string | null
-    user_banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    user_ban_reason?: NullableStringFieldUpdateOperationsInput | string | null
-    user_ban_expires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_stripe_customer_id?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: NullableStringFieldUpdateOperationsInput | string | null
+    banned?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    banReason?: NullableStringFieldUpdateOperationsInput | string | null
+    banExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type User_account_tableCreateManyUser_tableInput = {
-    user_account_id: string
+    id: string
     user_account_account_id: string
     user_account_provider_id: string
     user_account_access_token?: string | null
     user_account_refresh_token?: string | null
     user_account_id_token?: string | null
     user_account_access_token_expires_at?: Date | string | null
-    user_account_refresh_token_expires_at?: Date | string | null
     user_account_scope?: string | null
     user_account_password?: string | null
-    user_account_created_at?: Date | string
+    user_account_created_at: Date | string
     user_account_updated_at: Date | string
   }
 
   export type User_account_tableUpdateWithoutUser_tableInput = {
-    user_account_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_account_account_id?: StringFieldUpdateOperationsInput | string
     user_account_provider_id?: StringFieldUpdateOperationsInput | string
     user_account_access_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_id_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_access_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_account_refresh_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_account_scope?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_password?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8608,14 +8574,13 @@ export namespace Prisma {
   }
 
   export type User_account_tableUncheckedUpdateWithoutUser_tableInput = {
-    user_account_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_account_account_id?: StringFieldUpdateOperationsInput | string
     user_account_provider_id?: StringFieldUpdateOperationsInput | string
     user_account_access_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_id_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_access_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_account_refresh_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_account_scope?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_password?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8623,14 +8588,13 @@ export namespace Prisma {
   }
 
   export type User_account_tableUncheckedUpdateManyWithoutUser_tableInput = {
-    user_account_id?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
     user_account_account_id?: StringFieldUpdateOperationsInput | string
     user_account_provider_id?: StringFieldUpdateOperationsInput | string
     user_account_access_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_id_token?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_access_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    user_account_refresh_token_expires_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user_account_scope?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_password?: NullableStringFieldUpdateOperationsInput | string | null
     user_account_created_at?: DateTimeFieldUpdateOperationsInput | Date | string

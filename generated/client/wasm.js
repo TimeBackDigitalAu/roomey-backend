@@ -121,22 +121,22 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 });
 
 exports.Prisma.User_tableScalarFieldEnum = {
-  user_id: 'user_id',
+  id: 'id',
   user_name: 'user_name',
   user_email: 'user_email',
   user_email_verified: 'user_email_verified',
   user_image: 'user_image',
   user_created_at: 'user_created_at',
   user_updated_at: 'user_updated_at',
-  user_role: 'user_role',
-  user_banned: 'user_banned',
-  user_ban_reason: 'user_ban_reason',
-  user_ban_expires: 'user_ban_expires',
-  user_stripe_customer_id: 'user_stripe_customer_id'
+  role: 'role',
+  banned: 'banned',
+  banReason: 'banReason',
+  banExpires: 'banExpires',
+  stripeCustomerId: 'stripeCustomerId'
 };
 
 exports.Prisma.User_account_tableScalarFieldEnum = {
-  user_account_id: 'user_account_id',
+  id: 'id',
   user_account_account_id: 'user_account_account_id',
   user_account_provider_id: 'user_account_provider_id',
   user_account_user_id: 'user_account_user_id',
@@ -144,7 +144,6 @@ exports.Prisma.User_account_tableScalarFieldEnum = {
   user_account_refresh_token: 'user_account_refresh_token',
   user_account_id_token: 'user_account_id_token',
   user_account_access_token_expires_at: 'user_account_access_token_expires_at',
-  user_account_refresh_token_expires_at: 'user_account_refresh_token_expires_at',
   user_account_scope: 'user_account_scope',
   user_account_password: 'user_account_password',
   user_account_created_at: 'user_account_created_at',
@@ -152,7 +151,7 @@ exports.Prisma.User_account_tableScalarFieldEnum = {
 };
 
 exports.Prisma.Verification_tableScalarFieldEnum = {
-  verification_id: 'verification_id',
+  id: 'id',
   verification_identifier: 'verification_identifier',
   verification_value: 'verification_value',
   verification_expires_at: 'verification_expires_at',
@@ -160,17 +159,17 @@ exports.Prisma.Verification_tableScalarFieldEnum = {
   verification_updated_at: 'verification_updated_at'
 };
 
-exports.Prisma.Subscriotion_tableScalarFieldEnum = {
-  subscription_id: 'subscription_id',
-  subscription_plan: 'subscription_plan',
-  subscription_reference_id: 'subscription_reference_id',
-  subscription_stripe_customer_id: 'subscription_stripe_customer_id',
-  subscription_stripe_subscription_id: 'subscription_stripe_subscription_id',
-  subscription_status: 'subscription_status',
-  subscription_period_start: 'subscription_period_start',
-  subscription_period_end: 'subscription_period_end',
-  subscription_cancel_at_period_end: 'subscription_cancel_at_period_end',
-  subscription_seats: 'subscription_seats'
+exports.Prisma.SubscriptionScalarFieldEnum = {
+  id: 'id',
+  plan: 'plan',
+  referenceId: 'referenceId',
+  stripeCustomerId: 'stripeCustomerId',
+  stripeSubscriptionId: 'stripeSubscriptionId',
+  status: 'status',
+  periodStart: 'periodStart',
+  periodEnd: 'periodEnd',
+  cancelAtPeriodEnd: 'cancelAtPeriodEnd',
+  seats: 'seats'
 };
 
 exports.Prisma.Plan_tableScalarFieldEnum = {
@@ -204,7 +203,7 @@ exports.Prisma.ModelName = {
   User_table: 'User_table',
   User_account_table: 'User_account_table',
   Verification_table: 'Verification_table',
-  subscriotion_table: 'subscriotion_table',
+  Subscription: 'Subscription',
   plan_table: 'plan_table'
 };
 

@@ -14,7 +14,7 @@ const PinoLevelToGoogleLoggingSeverityLookup = Object.freeze({
 
 const genReqId: GenReqId = (req, res) => {
   const id: ReqId = req.headers["x-request-id"] || uuidv4();
-  res.setHeader("X-Request-Id", id.toString());
+  res.setHeader("X-Request-Id", id as string);
   return id;
 };
 

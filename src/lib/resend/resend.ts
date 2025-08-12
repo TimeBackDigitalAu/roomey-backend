@@ -1,19 +1,21 @@
 import { render } from "@react-email/render";
 import { Resend } from "resend";
+import { appConfig } from "../../config/app-config";
 
-export const resend = new Resend(process.env.RESEND_API_KEY);
+export const resend = new Resend(appConfig.RESEND_API_KEY);
 
 export const sendEmail = async (sendEmailDto: {
   to: string;
   subject: string;
   html: React.ReactNode;
+  from: string;
 }) => {
-  const { to, subject, html } = sendEmailDto;
+  const { to, subject, html, from } = sendEmailDto;
 
   const htmlRendered = await render(html);
 
   await resend.emails.send({
-    from: process.env.RESEND_FROM_EMAIL!,
+    from: from,
     to: to,
     subject: subject,
     html: htmlRendered,

@@ -9,6 +9,7 @@ import {
   openAPI,
 } from "better-auth/plugins";
 import Stripe from "stripe";
+import { appConfig } from "../../config/app-config";
 import { ConfirmationEmail } from "../../react-email/confirmation-email";
 import { OtpEmail } from "../../react-email/otp-email";
 import {
@@ -93,11 +94,11 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
   }),
   socialProviders: {
     google: {
-      clientId: process.env.GOOGLE_CLIENT_ID as string,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
+      clientId: appConfig.GOOGLE_CLIENT_ID,
+      clientSecret: appConfig.GOOGLE_CLIENT_SECRET,
     },
   },
-  trustedOrigins: [process.env.WEBSITE_URL!],
+  trustedOrigins: [appConfig.WEBSITE_URL],
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
@@ -109,6 +110,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         html: ConfirmationEmail({
           magicLink: tokenUrl,
         }),
+        from: "test <no-reply@roomey.com>",
       });
     },
   },
@@ -128,6 +130,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         html: ConfirmationEmail({
           magicLink: tokenUrl,
         }),
+        from: "test <no-reply@roomey.com>",
       });
     },
     onPasswordReset: async ({ user }) => {
@@ -135,6 +138,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         to: user.email,
         subject: "Reset your password",
         html: "password reset",
+        from: "test <no-reply@roomey.com>",
       });
     },
     sendMagicLink: async ({
@@ -153,6 +157,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         html: ConfirmationEmail({
           magicLink: tokenUrl,
         }),
+        from: "test <no-reply@roomey.com>",
       });
     },
   },
@@ -165,6 +170,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
           to: email,
           subject: "Verify your email address",
           html: generateTemplate(OtpEmail({ validationCode: otp })),
+          from: "test <no-reply@roomey.com>",
         });
       },
     }),
@@ -190,6 +196,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
           html: ConfirmationEmail({
             magicLink: tokenUrl,
           }),
+          from: "test <no-reply@roomey.com>",
         });
       },
     }),
@@ -198,7 +205,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
       onEvent: async (event: Stripe.Event) => {
         await StripeHelper(event);
       },
-      stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET!,
+      stripeWebhookSecret: appConfig.STRIPE_WEBHOOK_SECRET!,
       createCustomerOnSignUp: true,
       subscription: {
         enabled: true,
@@ -238,6 +245,6 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
     },
   },
   jwt: {
-    secret: process.env.JWT_SECRET!,
+    secret: appConfig.JWT_SECRET,
   },
 });

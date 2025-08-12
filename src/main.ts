@@ -2,6 +2,7 @@ import { VersioningType } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 import { AppModule } from "./app.module";
+import { appConfig } from "./config/app-config";
 import { AllExceptionsFilter } from "./filter/filter";
 
 async function bootstrap() {
@@ -9,10 +10,8 @@ async function bootstrap() {
     bodyParser: false,
   });
 
-  // app.use(new LoggerMiddleware().use.bind(new LoggerMiddleware()));
-
   app.enableCors({
-    origin: process.env.WEBSITE_URL,
+    origin: appConfig.WEBSITE_URL,
     methods: ["GET", "POST", "PUT", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Content-Length"],
@@ -27,10 +26,10 @@ async function bootstrap() {
   });
 
   const config = new DocumentBuilder()
-    .setTitle("Auth Service")
-    .setDescription("The Auth Service API description")
+    .setTitle(appConfig.APP_NAME)
+    .setDescription("Roomey Service API Documentation")
     .setVersion("1.0")
-    .addTag("Auth Service")
+    .addTag(appConfig.APP_NAME)
     .build();
 
   const document = SwaggerModule.createDocument(app, config, {
@@ -40,6 +39,6 @@ async function bootstrap() {
 
   app.setGlobalPrefix("api/v1");
 
-  await app.listen(process.env.PORT ?? 8000);
+  await app.listen(appConfig.PORT);
 }
 bootstrap();

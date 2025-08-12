@@ -1,6 +1,8 @@
 # ---------- Base (shared) ----------
     FROM node:20.10-slim AS base
     WORKDIR /app
+
+    ENV HUSKY=0
     
     # System deps (doppler + tools you need everywhere)
     RUN apt-get update && apt-get install -y \
@@ -16,20 +18,15 @@
       apt-get update && apt-get install -y doppler && \
       rm -rf /var/lib/apt/lists/*
     
-    # ✅ Activate pnpm via Corepack (available in Node 20 images)
-    #    Do this in the base so all child stages inherit it.
+
     RUN corepack enable && corepack prepare pnpm@10.4.1 --activate
     
-    # ---------- Builder ----------
     FROM base AS builder
     WORKDIR /app
     
-    # (Optional) native build tools for node-gyp builds
     RUN apt-get update && apt-get install -y python3 make g++ libssl-dev && rm -rf /var/lib/apt/lists/*
     
-    # Copy package files and install dependencies
     COPY package.json pnpm-lock.yaml ./
-    # COPY .npmrc ./.npmrc   # uncomment if you use a private registry
     RUN pnpm install --frozen-lockfile
     
     # Copy source and config files

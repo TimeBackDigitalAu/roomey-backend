@@ -1,16 +1,20 @@
 import { render } from "@react-email/render";
+import Stripe from "stripe";
+import { prisma } from "./prisma/prisma";
 
-export const StripeHelper = async (event) => {
+export const StripeHelper = async (event: Stripe.Event) => {
   switch (event.type) {
     case "product.created": {
       const product = event.data.object;
 
-      await prisma.plan.create({
+      await prisma.plan_table.create({
         data: {
-          id: product.id,
-          name: product.name,
-          photo: product.images[0],
-          description: product.description,
+          plan_id: product.id,
+          plan_name: product.name,
+          plan_photo: product.images[0],
+          plan_description: product.description,
+          plan_is_active: true,
+          plan_created_at: new Date(),
         },
       });
       break;
@@ -34,8 +38,8 @@ export const StripeHelper = async (event) => {
       }
 
       if (Object.keys(updateData).length > 0) {
-        await prisma.plan.update({
-          where: { id: product.id },
+        await prisma.plan_table.update({
+          where: { plan_id: product.id },
           data: updateData,
         });
       } else {
@@ -46,10 +50,10 @@ export const StripeHelper = async (event) => {
     }
     case "product.deleted": {
       const product = event.data.object;
-      await prisma.plan.update({
-        where: { id: product.id },
+      await prisma.plan_table.update({
+        where: { plan_id: product.id },
         data: {
-          isActive: false,
+          plan_is_active: false,
         },
       });
       break;

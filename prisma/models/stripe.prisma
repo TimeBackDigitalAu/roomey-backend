@@ -1,21 +1,21 @@
 model Subscription {
-  id                   String    @id @default(uuid())
-  plan                 String
-  referenceId          String
-  stripeCustomerId     String?
-  stripeSubscriptionId String?
-  status               String?
-  periodStart          DateTime?
-  periodEnd            DateTime?
-  cancelAtPeriodEnd    Boolean?
-  seats                Int?
+  id                                  String    @id
+  subscription_plan                   String    @map("plan")
+  subscription_reference_id           String    @map("referenceId")
+  subscription_stripe_customer_id     String?   @map("stripeCustomerId")
+  subscription_stripe_subscription_id String?   @map("stripeSubscriptionId")
+  subscription_status                 String?   @map("status")
+  subscription_period_start           DateTime? @map("periodStart")
+  subscription_period_end             DateTime? @map("periodEnd")
+  subscription_cancel_at_period_end   Boolean?  @map("cancelAtPeriodEnd")
+  subscription_seats                  Int?      @map("seats")
 
   @@map("subscription")
   @@schema("stripe_schema")
 }
 
 model plan_table {
-  plan_id          String    @id @default(uuid()) @map("id")
+  plan_id          String    @id @default(uuid()) @map("plan_id")
   plan_name        String    @map("name")
   plan_price_id    String?   @map("priceId")
   plan_created_at  DateTime  @map("createdAt") @default(now()) @db.Timestamptz(3)

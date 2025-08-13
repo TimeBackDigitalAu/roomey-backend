@@ -8,6 +8,7 @@ import {
   haveIBeenPwned,
   magicLink,
   openAPI,
+  phoneNumber,
 } from "better-auth/plugins";
 import Stripe from "stripe";
 import { appConfig } from "../../config/app-config";
@@ -25,10 +26,15 @@ import { prisma } from "../prisma/prisma";
 import { redis } from "../redis/redis";
 import { sendEmail } from "../resend/resend";
 import { stripe as stripeClient } from "../stripe/stripe";
+import { sendSMS } from "../twillio/twillio";
 
 export const auth: ReturnType<typeof betterAuth> = betterAuth({
+  appName: appConfig.APP_NAME,
+  advanced: {
+    cookiePrefix: `${appConfig.APP_NAME}-AUTH`,
+  },
   user: {
-    modelName: "User_table",
+    modelName: "user_table",
     fields: {
       id: "user_id",
       name: "user_name",
@@ -42,11 +48,20 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
       banReason: "user_ban_reason",
       banExpires: "user_ban_expires",
       stripeCustomerId: "user_stripe_customer_id",
+      phoneNumber: "user_phone_number",
+      phoneNumberVerified: "user_phone_number_verified",
+      twoFactorEnabled: "user_two_factor_enabled",
       accounts: "user_account_tables",
+    },
+    additionalFields: {
+      user_is_onboarded: {
+        type: "boolean",
+        defaultValue: false,
+      },
     },
   },
   account: {
-    modelName: "User_account_table",
+    modelName: "user_account_table",
     fields: {
       id: "user_account_id",
       accountId: "user_account_account_id",
@@ -56,8 +71,6 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
       refreshToken: "user_account_refresh_token",
       idToken: "user_account_id_token",
       accessTokenExpiresAt: "user_account_access_token_expires_at",
-      // optional if you use it in Better Auth:
-      // refreshTokenExpiresAt: "user_account_refresh_token_expires_at",
       scope: "user_account_scope",
       password: "user_account_password",
       createdAt: "user_account_created_at",
@@ -65,7 +78,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
     },
   },
   verification: {
-    modelName: "Verification_table",
+    modelName: "verification_table",
     fields: {
       id: "verification_id",
       identifier: "verification_identifier",
@@ -76,7 +89,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
     },
   },
   subscription: {
-    modelName: "Subscription_table",
+    modelName: "subscription_table",
     fields: {
       id: "subscription_id",
       plan: "subscription_plan",
@@ -103,15 +116,15 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
-    sendVerificationEmail: async ({ user, url, token }) => {
-      const tokenUrl = `${url}?token=${token}`;
+    sendVerificationEmail: async ({ user, token }) => {
+      const tokenUrl = `${appConfig.WEBSITE_URL}/email-verification?token=${token}`;
       await sendEmail({
         to: user.email,
         subject: "Verify your email address",
         html: ConfirmationEmail({
           magicLink: tokenUrl,
         }),
-        from: "test <no-reply@roomey.com>",
+        from: `${appConfig.APP_EMAIL}`,
       });
     },
   },
@@ -131,7 +144,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         html: ConfirmationEmail({
           magicLink: tokenUrl,
         }),
-        from: "test <no-reply@roomey.com>",
+        from: `${appConfig.APP_EMAIL}`,
       });
     },
     onPasswordReset: async ({ user }) => {
@@ -139,7 +152,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         to: user.email,
         subject: "Reset your password",
         html: "password reset",
-        from: "test <no-reply@roomey.com>",
+        from: `${appConfig.APP_EMAIL}`,
       });
     },
     sendMagicLink: async ({
@@ -158,11 +171,27 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         html: ConfirmationEmail({
           magicLink: tokenUrl,
         }),
-        from: "test <no-reply@roomey.com>",
+        from: `${appConfig.APP_EMAIL}`,
       });
     },
   },
   plugins: [
+    phoneNumber({
+      schema: {
+        user: {
+          fields: {
+            phoneNumber: "user_phone_number",
+            phoneNumberVerified: "user_phone_number_verified",
+          },
+        },
+      },
+      sendOTP: async ({ phoneNumber, code }) => {
+        await sendSMS({
+          to: phoneNumber,
+          message: `Your verification code is ${code}`,
+        });
+      },
+    }),
     emailOTP({
       allowedAttempts: 5,
       expiresIn: 300,
@@ -171,11 +200,21 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
           to: email,
           subject: "Verify your email address",
           html: generateTemplate(OtpEmail({ validationCode: otp })),
-          from: "test <no-reply@roomey.com>",
+          from: `${appConfig.APP_EMAIL}`,
         });
       },
     }),
     admin({
+      schema: {
+        user: {
+          fields: {
+            role: "user_role",
+            banned: "user_banned",
+            banReason: "user_ban_reason",
+            banExpires: "user_ban_expires",
+          },
+        },
+      },
       ac,
       adminRoles: ["admin"],
       roles: {
@@ -197,11 +236,32 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
           html: ConfirmationEmail({
             magicLink: tokenUrl,
           }),
-          from: "test <no-reply@roomey.com>",
+          from: `${appConfig.APP_EMAIL}`,
         });
       },
     }),
     stripe({
+      schema: {
+        user: {
+          fields: {
+            stripeCustomerId: "user_stripe_customer_id",
+          },
+        },
+        subscription: {
+          fields: {
+            id: "subscription_id",
+            plan: "subscription_plan",
+            referenceId: "subscription_reference_id",
+            stripeCustomerId: "subscription_stripe_customer_id",
+            stripeSubscriptionId: "subscription_stripe_subscription_id",
+            status: "subscription_status",
+            periodStart: "subscription_period_start",
+            periodEnd: "subscription_period_end",
+            cancelAtPeriodEnd: "subscription_cancel_at_period_end",
+            seats: "subscription_seats",
+          },
+        },
+      },
       stripeClient,
       onEvent: async (event: Stripe.Event) => {
         await StripeHelper(event);
@@ -220,7 +280,6 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         },
       },
     }),
-
     captcha({
       provider: "cloudflare-turnstile", // or google-recaptcha, hcaptcha
       secretKey: process.env.TURNSTILE_SECRET_KEY!,

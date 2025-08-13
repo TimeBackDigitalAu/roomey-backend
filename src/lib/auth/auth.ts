@@ -152,7 +152,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         to: user.email,
         subject: "Reset your password",
         html: "password reset",
-        from: "Test <noreply@help.elevateglobal.app>",
+        from: `${appConfig.APP_EMAIL}`,
       });
     },
     sendMagicLink: async ({
@@ -171,7 +171,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
         html: ConfirmationEmail({
           magicLink: tokenUrl,
         }),
-        from: "Test <noreply@help.elevateglobal.app>",
+        from: `${appConfig.APP_EMAIL}`,
       });
     },
   },

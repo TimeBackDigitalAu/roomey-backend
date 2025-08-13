@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common";
+import { appConfig } from "../../config/app-config";
 import { resend } from "../../lib/resend/resend";
 import { SendEmailDto } from "./dto/email.schema";
 
@@ -10,7 +11,7 @@ export class EmailService {
     const { to, subject, html } = sendEmailDto;
 
     await resend.emails.send({
-      from: "Test <no-reply@elevateglobal.app>",
+      from: `${appConfig.APP_EMAIL}`,
       to: to,
       subject: subject,
       html: html,

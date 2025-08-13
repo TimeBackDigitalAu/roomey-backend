@@ -1,50 +1,55 @@
-model User_table {
-  id                  String               @id @default(uuid())
-  user_name           String               @map("name")
-  user_email          String               @map("email")
-  user_email_verified Boolean              @map("emailVerified")
-  user_image          String?              @map("image")
-  user_created_at     DateTime             @map("createdAt")
-  user_updated_at     DateTime             @map("updatedAt")
-  role                String?
-  banned              Boolean?
-  banReason           String?
-  banExpires          DateTime?
-  stripeCustomerId    String?
-  user_account_tables User_account_table[]
+model user_table {
+  id                         String               @id
+  user_name                  String               @map("name")
+  user_email                 String               @map("email")
+  user_email_verified        Boolean              @map("emailVerified")
+  user_image                 String?              @map("image")
+  user_created_at            DateTime             @map("createdAt") @db.Timestamptz(3)
+  user_updated_at            DateTime             @map("updatedAt") @db.Timestamptz(3)
+  user_phone_number          String?              @map("phoneNumber")
+  user_phone_number_verified Boolean?             @map("phoneNumberVerified")
+  user_role                  String?              @map("role")
+  user_banned                Boolean?             @map("banned")
+  user_ban_reason            String?              @map("banReason")
+  user_ban_expires           DateTime?            @map("banExpires") @db.Timestamptz(3)
+  user_stripe_customer_id    String?              @map("stripeCustomerId")
+  twoFactorEnabled           Boolean?
+  user_is_onboarded          Boolean?
+  user_account_tables        user_account_table[]
 
   @@unique([user_email])
-  @@map("User_table")
+  @@unique([user_phone_number])
+  @@map("user_table")
   @@schema("auth_schema")
 }
 
-model User_account_table {
-  id                                   String     @id @default(uuid())
+model user_account_table {
+  id                                   String     @id
   user_account_account_id              String     @map("accountId")
   user_account_provider_id             String     @map("providerId")
   user_account_user_id                 String     @map("userId")
-  user_table                           User_table @relation(fields: [user_account_user_id], references: [id], onDelete: Cascade)
+  user_table                           user_table @relation(fields: [user_account_user_id], references: [id], onDelete: Cascade)
   user_account_access_token            String?    @map("accessToken")
   user_account_refresh_token           String?    @map("refreshToken")
   user_account_id_token                String?    @map("idToken")
-  user_account_access_token_expires_at DateTime?  @map("accessTokenExpiresAt")
+  user_account_access_token_expires_at DateTime?  @map("accessTokenExpiresAt") @db.Timestamptz(3)
   user_account_scope                   String?    @map("scope")
   user_account_password                String?    @map("password")
-  user_account_created_at              DateTime   @map("createdAt")
-  user_account_updated_at              DateTime   @map("updatedAt")
+  user_account_created_at              DateTime   @map("createdAt") @db.Timestamptz(3)
+  user_account_updated_at              DateTime   @map("updatedAt") @db.Timestamptz(3)
 
-  @@map("User_account_table")
+  @@map("user_account_table")
   @@schema("auth_schema")
 }
 
-model Verification_table {
-  id                      String    @id @default(uuid())
+model verification_table {
+  id                      String    @id
   verification_identifier String    @map("identifier")
   verification_value      String    @map("value")
-  verification_expires_at DateTime  @map("expiresAt")
-  verification_created_at DateTime? @map("createdAt")
-  verification_updated_at DateTime? @map("updatedAt")
+  verification_expires_at DateTime  @map("expiresAt") @db.Timestamptz(3)
+  verification_created_at DateTime? @map("createdAt") @db.Timestamptz(3)
+  verification_updated_at DateTime? @map("updatedAt") @db.Timestamptz(3)
 
-  @@map("Verification_table")
+  @@map("verification_table")
   @@schema("auth_schema")
 }

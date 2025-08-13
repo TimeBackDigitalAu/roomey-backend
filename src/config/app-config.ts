@@ -5,6 +5,7 @@ import { z } from "zod";
 export const appConfigSchema = z.object({
   DATABASE_URL: z.url(),
   APP_NAME: z.string().default("auth-service"),
+  APP_EMAIL: z.string(),
   JWT_SECRET: z.string().min(1),
   REDIS_URL: z.string().url(),
   RESEND_API_KEY: z.string().min(1),
@@ -22,6 +23,10 @@ export const appConfigSchema = z.object({
   STRIPE_WEBHOOK_SECRET: z.string().min(1).optional(),
 
   TURNSTILE_SECRET_KEY: z.string().min(1),
+
+  TWILIO_ACCOUNT_SID: z.string().min(1),
+  TWILIO_AUTH_TOKEN: z.string().min(1),
+  TWILIO_FROM: z.string().min(1),
 
   PORT: z.coerce.number().default(8080),
 });

@@ -28,6 +28,10 @@ export const appConfigSchema = z.object({
   TWILIO_AUTH_TOKEN: z.string().min(1),
   TWILIO_FROM: z.string().min(1),
 
+  CLOUDINARY_CLOUD_NAME: z.string().min(1),
+  CLOUDINARY_API_KEY: z.string().min(1),
+  CLOUDINARY_API_SECRET: z.string().min(1),
+
   PORT: z.coerce.number().default(8080),
 });
 

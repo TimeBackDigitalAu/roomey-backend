@@ -1,10 +1,11 @@
-import { Controller, Post, Session } from "@nestjs/common";
-import { UserSession } from "@thallesp/nestjs-better-auth";
+import { Controller, Post, Session, UseGuards } from "@nestjs/common";
+import { AuthGuard, UserSession } from "@thallesp/nestjs-better-auth";
 
 @Controller("auth")
+@UseGuards(AuthGuard)
 export class AuthController {
   @Post("get-session")
   getSession(@Session() session: UserSession) {
-    return session;
+    return { user: session.user };
   }
 }

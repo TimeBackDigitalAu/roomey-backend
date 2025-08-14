@@ -17,7 +17,7 @@ type ConfirmationEmailProps = {
   name?: string;
 };
 
-export const ConfirmationEmail = ({
+export const ResetPasswordEmail = ({
   magicLink,
   name = "there",
 }: ConfirmationEmailProps) => {
@@ -29,25 +29,22 @@ export const ConfirmationEmail = ({
         <Container style={container}>
           <Heading style={brand}>roomey.</Heading>
 
-          <Heading style={title}>Verify your Roomey account!</Heading>
+          <Heading style={title}>Reset your password!</Heading>
 
           <Text style={paragraph}>Hi {name},</Text>
 
-          <Text style={paragraph}>Welcome to Roomey!</Text>
-
           <Text style={paragraph}>
-            To complete your registration and verify your email address, please
-            click the link below:
+            Click the button below to securely reset your password.
           </Text>
 
           <Section style={{ textAlign: "start", margin: "24px 0" }}>
             <Button href={magicLink} style={button}>
-              Verify Email
+              Reset My Password
             </Button>
           </Section>
 
           <Text style={paragraph}>
-            This link will expire in 10 minutes for your security.
+            This magic link will expire in 10 minutes
           </Text>
 
           <Text style={paragraph}>
@@ -67,7 +64,7 @@ export const ConfirmationEmail = ({
   );
 };
 
-export default ConfirmationEmail;
+export default ResetPasswordEmail;
 
 // === Styles ===
 const main: React.CSSProperties = {

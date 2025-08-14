@@ -10,6 +10,7 @@ import {
   openAPI,
   phoneNumber,
 } from "better-auth/plugins";
+import ResetPasswordEmail from "src/react-email/reset-password-email";
 import Stripe from "stripe";
 import { appConfig } from "../../config/app-config";
 import { ConfirmationEmail } from "../../react-email/confirmation-email";
@@ -116,13 +117,15 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
   emailVerification: {
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
-    sendVerificationEmail: async ({ user, token }) => {
-      const tokenUrl = `${appConfig.WEBSITE_URL}/email-verification?token=${token}`;
+    expiresIn: 1000 * 60 * 10, // 10 minutes
+    sendVerificationEmail: async ({ url, user, token }) => {
+      const tokenUrl = `${url}?token=${token}`;
       await sendEmail({
         to: user.email,
-        subject: "Verify your email address",
+        subject: "Verify your Roomey account",
         html: ConfirmationEmail({
           magicLink: tokenUrl,
+          name: user.name,
         }),
         from: `${appConfig.APP_EMAIL}`,
       });
@@ -136,13 +139,15 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
+    expiresIn: 1000 * 60 * 10, // 10 minutes
     sendResetPassword: async ({ user, url, token }) => {
       const tokenUrl = `${url}?token=${token}`;
       await sendEmail({
         to: user.email,
         subject: "Reset your password",
-        html: ConfirmationEmail({
+        html: ResetPasswordEmail({
           magicLink: tokenUrl,
+          name: user.name,
         }),
         from: `${appConfig.APP_EMAIL}`,
       });
@@ -188,7 +193,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
       sendOTP: async ({ phoneNumber, code }) => {
         await sendSMS({
           to: phoneNumber,
-          message: `Your verification code is ${code}`,
+          message: `Your Roomey verification code is ${code}. This code will expire in 10 minutes. if you didn't request this code, please ignore this message.`,
         });
       },
     }),

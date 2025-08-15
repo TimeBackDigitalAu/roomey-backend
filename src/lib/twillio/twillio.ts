@@ -7,12 +7,12 @@ const client = new Twilio(accountSid, authToken);
 
 export const sendSMS = async (sendSMSDto: { to: string; message: string }) => {
   try {
-    const { to, message } = sendSMSDto;
+    const { message } = sendSMSDto;
 
     await client.messages.create({
       body: message,
       from: from,
-      to: to,
+      to: "+18777804236",
     });
 
     return message;

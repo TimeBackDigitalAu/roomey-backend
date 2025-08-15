@@ -4,17 +4,18 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import {
   admin,
   captcha,
+  createAuthMiddleware,
   emailOTP,
   haveIBeenPwned,
   magicLink,
   openAPI,
   phoneNumber,
 } from "better-auth/plugins";
-import ResetPasswordEmail from "src/react-email/reset-password-email";
 import Stripe from "stripe";
 import { appConfig } from "../../config/app-config";
 import { ConfirmationEmail } from "../../react-email/confirmation-email";
 import { OtpEmail } from "../../react-email/otp-email";
+import { ResetPasswordEmail } from "../../react-email/reset-password-email";
 import {
   ac,
   admin as adminRole,
@@ -31,6 +32,22 @@ import { sendSMS } from "../twillio/twillio";
 
 export const auth: ReturnType<typeof betterAuth> = betterAuth({
   appName: appConfig.APP_NAME,
+  hooks: {
+    after: createAuthMiddleware(async (ctx) => {
+      if (ctx.path.startsWith("/sign-up") || ctx.path.startsWith("/sign-in")) {
+        const newSession = ctx.context.newSession;
+
+        if (newSession) {
+          await prisma.user_table.update({
+            where: { id: newSession.user.id },
+            data: {
+              user_last_login_at: new Date(),
+            },
+          });
+        }
+      }
+    }),
+  },
   advanced: {
     cookiePrefix: `${appConfig.APP_NAME}-AUTH`,
   },
@@ -58,6 +75,10 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
       user_is_onboarded: {
         type: "boolean",
         defaultValue: false,
+      },
+      user_phone_number: {
+        type: "string",
+        defaultValue: "",
       },
     },
   },

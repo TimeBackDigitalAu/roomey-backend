@@ -12,7 +12,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-type ConfirmationEmailProps = {
+type ResetPasswordEmail = {
   magicLink: string;
   name?: string;
 };
@@ -20,7 +20,7 @@ type ConfirmationEmailProps = {
 export const ResetPasswordEmail = ({
   magicLink,
   name = "there",
-}: ConfirmationEmailProps) => {
+}: ResetPasswordEmail) => {
   return (
     <Html>
       <Head />

@@ -1,4 +1,4 @@
-model Subscription {
+model subscription_table {
   id                                  String    @id
   subscription_plan                   String   
   subscription_reference_id           String 

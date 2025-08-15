@@ -10,14 +10,15 @@ model user_table {
   user_phone_number_verified Boolean           @default(false)
   user_ban_expires           DateTime?         @db.Timestamptz(3)
   user_role                  String
+  user_is_active             Boolean            @default(false)
   user_stripe_customer_id    String?         
   twoFactorEnabled           Boolean?
   user_is_onboarded          Boolean?
+  user_last_login_at         DateTime?         @db.Timestamptz(3)
   user_account_tables        user_account_table[]
   user_profile_table         user_profile_table?
 
   @@unique([user_email])
-  @@unique([user_phone_number])
   @@map("user_table")
   @@schema("auth_schema")
 }
@@ -42,13 +43,13 @@ model user_account_table {
 }
 
 model user_profile_table {
-  user_profile_id                     String @id  @db.Uuid
+  user_profile_id                     String @id  @db.Uuid @default(uuid())
   user_profile_allow_marketing        Boolean
   user_profile_allow_verification     Boolean
   user_profile_user_id                String
 
   user_profile_created_at             DateTime @default(now()) @db.Timestamptz(3)
-  user_profile_updated_at             DateTime @db.Timestamptz(3)
+  user_profile_updated_at             DateTime? @db.Timestamptz(3)
 
   user_table  user_table @relation(fields: [user_profile_user_id], references: [id], onDelete: Cascade)
 

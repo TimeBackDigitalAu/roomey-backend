@@ -30,4 +30,16 @@ export const OnboardingSchema = z.discriminatedUnion("role", [
   AgencySchema,
 ]);
 
+export const UserListSchema = z.object({
+  page: z.coerce.number().min(1).default(1),
+  take: z.coerce.number().min(1).default(10),
+  search: z.string().optional(),
+  sort: z.string().optional(),
+  filter: z.string().optional(),
+  order: z.string().optional(),
+  orderBy: z.string().optional(),
+  orderByDirection: z.string().optional(),
+  orderByField: z.string().optional(),
+});
+
 export type OnboardingData = z.infer<typeof OnboardingSchema>;

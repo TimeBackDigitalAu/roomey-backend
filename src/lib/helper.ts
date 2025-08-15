@@ -64,3 +64,17 @@ export const StripeHelper = async (event: Stripe.Event) => {
 export const generateTemplate = (template: React.ReactNode) => {
   return render(template);
 };
+
+export const formatElapsedTime = (elapsedMs: number) => {
+  const minutes = Math.floor(elapsedMs / (1000 * 60));
+  const hours = Math.floor(elapsedMs / (1000 * 60 * 60));
+  const days = Math.floor(elapsedMs / (1000 * 60 * 60 * 24));
+
+  if (days >= 1) {
+    return `${days} day${days > 1 ? "s" : ""} ago`;
+  } else if (hours >= 1) {
+    return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+  } else {
+    return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+  }
+};

@@ -75,6 +75,6 @@ USER roomey
 ENV PORT=4000
 EXPOSE 4000
 
-# Entrypoint and default command
-ENTRYPOINT ["/app/entrypoint.sh"]
+# # Entrypoint and default command
+# ENTRYPOINT ["/app/entrypoint.sh"]
 CMD ["pnpm", "start:prod"]

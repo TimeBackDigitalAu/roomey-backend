@@ -77,4 +77,4 @@ EXPOSE 4000
 
 # Entrypoint and default command
 ENTRYPOINT ["/app/entrypoint.sh"]
-CMD ["pnpm", "start"]
+CMD ["pnpm", "start:prod"]

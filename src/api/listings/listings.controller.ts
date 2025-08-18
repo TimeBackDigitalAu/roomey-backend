@@ -9,9 +9,15 @@ import {
   Post,
   Put,
   Query,
-} from '@nestjs/common';
-import { ApiOperation, ApiParam, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { ZodValidationPipe } from 'nestjs-zod';
+} from "@nestjs/common";
+import {
+  ApiOperation,
+  ApiParam,
+  ApiQuery,
+  ApiResponse,
+  ApiTags,
+} from "@nestjs/swagger";
+import { ZodValidationPipe } from "nestjs-zod";
 import {
   CreateListingDto,
   CreateListingResponse,
@@ -28,80 +34,80 @@ import {
   UpdateListingResponse,
   UpdateListingResponseSwagger,
   UpdateListingSchema,
-} from './dto/listings.dto';
-import { ListingsService } from './listings.service';
+} from "./dto/listings.dto";
+import { ListingsService } from "./listings.service";
 
-@ApiTags('listings')
-@Controller('listings')
+@ApiTags("listings")
+@Controller("listings")
 export class ListingsController {
   public constructor(private readonly listingsService: ListingsService) {}
 
-  @Get('search')
+  @Get("search")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Search listings',
-    description: 'Search for listings based on various criteria',
+    summary: "Search listings",
+    description: "Search for listings based on various criteria",
   })
   @ApiQuery({
-    name: 'query',
+    name: "query",
     required: false,
-    description: 'Search query string',
-    example: 'studio apartment downtown',
+    description: "Search query string",
+    example: "studio apartment downtown",
   })
   @ApiQuery({
-    name: 'minPrice',
+    name: "minPrice",
     required: false,
-    description: 'Minimum price',
+    description: "Minimum price",
     example: 500,
   })
   @ApiQuery({
-    name: 'maxPrice',
+    name: "maxPrice",
     required: false,
-    description: 'Maximum price',
+    description: "Maximum price",
     example: 2000,
   })
   @ApiQuery({
-    name: 'propertyType',
+    name: "propertyType",
     required: false,
-    description: 'Type of property',
-    example: 'apartment',
+    description: "Type of property",
+    example: "apartment",
   })
   @ApiQuery({
-    name: 'bedrooms',
+    name: "bedrooms",
     required: false,
-    description: 'Number of bedrooms',
+    description: "Number of bedrooms",
     example: 2,
   })
   @ApiQuery({
-    name: 'bathrooms',
+    name: "bathrooms",
     required: false,
-    description: 'Number of bathrooms',
+    description: "Number of bathrooms",
     example: 1,
   })
   @ApiQuery({
-    name: 'page',
+    name: "page",
     required: false,
-    description: 'Page number for pagination',
+    description: "Page number for pagination",
     example: 1,
   })
   @ApiQuery({
-    name: 'limit',
+    name: "limit",
     required: false,
-    description: 'Number of results per page',
+    description: "Number of results per page",
     example: 20,
   })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Listings found successfully',
+    description: "Listings found successfully",
     type: ListingResponseSwagger,
   })
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid search parameters',
+    description: "Invalid search parameters",
   })
   @ApiResponse({
     status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Internal server error',
+    description: "Internal server error",
   })
   public async searchListings(
     @Query(new ZodValidationPipe(SearchListingsSchema))
@@ -110,108 +116,109 @@ export class ListingsController {
     return this.listingsService.searchListings(searchDto);
   }
 
-  @Get('nearby')
+  @Get("nearby")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Find listings nearby',
-    description: 'Find listings within a specified radius from given coordinates',
+    summary: "Find listings nearby",
+    description:
+      "Find listings within a specified radius from given coordinates",
   })
   @ApiQuery({
-    name: 'lat',
+    name: "lat",
     required: true,
-    description: 'Latitude',
+    description: "Latitude",
     example: 40.7128,
   })
   @ApiQuery({
-    name: 'lon',
+    name: "lon",
     required: true,
-    description: 'Longitude',
+    description: "Longitude",
     example: -74.006,
   })
   @ApiQuery({
-    name: 'radius',
+    name: "radius",
     required: false,
-    description: 'Search radius in kilometers',
+    description: "Search radius in kilometers",
     example: 10,
   })
   @ApiQuery({
-    name: 'limit',
+    name: "limit",
     required: false,
-    description: 'Maximum number of results',
+    description: "Maximum number of results",
     example: 20,
   })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Nearby listings found successfully',
+    description: "Nearby listings found successfully",
     type: [ListingResponseSwagger],
   })
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid coordinates or parameters',
+    description: "Invalid coordinates or parameters",
   })
   @ApiResponse({
     status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Internal server error',
+    description: "Internal server error",
   })
   public async findNearby(
-    @Query('lat') lat: number,
-    @Query('lon') lon: number,
-    @Query('radius') radius = 10,
-    @Query('limit') limit = 20
+    @Query("lat") lat: number,
+    @Query("lon") lon: number,
+    @Query("radius") radius = 10,
+    @Query("limit") limit = 20
   ): Promise<ListingResponse[]> {
     return this.listingsService.findNearby(lat, lon, radius, limit);
   }
 
-  @Get(':id')
+  @Get(":id")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Get listing by ID',
-    description: 'Retrieve a specific listing by its unique identifier',
+    summary: "Get listing by ID",
+    description: "Retrieve a specific listing by its unique identifier",
   })
   @ApiParam({
-    name: 'id',
-    description: 'Listing UUID',
-    example: '123e4567-e89b-12d3-a456-426614174000',
+    name: "id",
+    description: "Listing UUID",
+    example: "123e4567-e89b-12d3-a456-426614174000",
   })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Listing found successfully',
+    description: "Listing found successfully",
     type: ListingResponseSwagger,
   })
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid listing ID format',
+    description: "Invalid listing ID format",
   })
   @ApiResponse({
     status: HttpStatus.NOT_FOUND,
-    description: 'Listing not found',
+    description: "Listing not found",
   })
   @ApiResponse({
     status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Internal server error',
+    description: "Internal server error",
   })
-  public async getListing(@Param('id') id: string): Promise<ListingResponse> {
+  public async getListing(@Param("id") id: string): Promise<ListingResponse> {
     return this.listingsService.getListingById(id);
   }
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
-    summary: 'Create new listing',
-    description: 'Create a new property listing',
+    summary: "Create new listing",
+    description: "Create a new property listing",
   })
   @ApiResponse({
     status: HttpStatus.CREATED,
-    description: 'Listing created successfully',
+    description: "Listing created successfully",
     type: CreateListingResponseSwagger,
   })
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid input data',
+    description: "Invalid input data",
   })
   @ApiResponse({
     status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Internal server error',
+    description: "Internal server error",
   })
   public async createListing(
     @Body(new ZodValidationPipe(CreateListingSchema))
@@ -220,95 +227,97 @@ export class ListingsController {
     return this.listingsService.createListing(createDto);
   }
 
-  @Put(':id')
+  @Put(":id")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Update listing',
-    description: 'Update an existing property listing',
+    summary: "Update listing",
+    description: "Update an existing property listing",
   })
   @ApiParam({
-    name: 'id',
-    description: 'Listing UUID',
-    example: '123e4567-e89b-12d3-a456-426614174000',
+    name: "id",
+    description: "Listing UUID",
+    example: "123e4567-e89b-12d3-a456-426614174000",
   })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Listing updated successfully',
+    description: "Listing updated successfully",
     type: UpdateListingResponseSwagger,
   })
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid input data',
+    description: "Invalid input data",
   })
   @ApiResponse({
     status: HttpStatus.NOT_FOUND,
-    description: 'Listing not found',
+    description: "Listing not found",
   })
   @ApiResponse({
     status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Internal server error',
+    description: "Internal server error",
   })
   public async updateListing(
-    @Param('id') id: string,
+    @Param("id") id: string,
     @Body(new ZodValidationPipe(UpdateListingSchema))
     updateDto: UpdateListingDto
   ): Promise<UpdateListingResponse> {
     return this.listingsService.updateListing(id, updateDto);
   }
 
-  @Delete(':id')
+  @Delete(":id")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Delete listing',
-    description: 'Soft delete a property listing',
+    summary: "Delete listing",
+    description: "Soft delete a property listing",
   })
   @ApiParam({
-    name: 'id',
-    description: 'Listing UUID',
-    example: '123e4567-e89b-12d3-a456-426614174000',
+    name: "id",
+    description: "Listing UUID",
+    example: "123e4567-e89b-12d3-a456-426614174000",
   })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Listing deleted successfully',
+    description: "Listing deleted successfully",
     type: DeleteListingResponseSwagger,
   })
   @ApiResponse({
     status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid listing ID format',
+    description: "Invalid listing ID format",
   })
   @ApiResponse({
     status: HttpStatus.NOT_FOUND,
-    description: 'Listing not found',
+    description: "Listing not found",
   })
   @ApiResponse({
     status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Internal server error',
+    description: "Internal server error",
   })
-  public async deleteListing(@Param('id') id: string): Promise<DeleteListingResponse> {
+  public async deleteListing(
+    @Param("id") id: string
+  ): Promise<DeleteListingResponse> {
     return this.listingsService.deleteListing(id);
   }
 
-  @Get('health/check')
+  @Get("health/check")
   @HttpCode(HttpStatus.OK)
   @ApiOperation({
-    summary: 'Service health check',
-    description: 'Check the health status of the listings service',
+    summary: "Service health check",
+    description: "Check the health status of the listings service",
   })
   @ApiResponse({
     status: HttpStatus.OK,
-    description: 'Service is healthy',
+    description: "Service is healthy",
     schema: {
-      type: 'object',
+      type: "object",
       properties: {
-        status: { type: 'string', example: 'healthy' },
-        timestamp: { type: 'string', format: 'date-time' },
-        service: { type: 'string', example: 'listings' },
+        status: { type: "string", example: "healthy" },
+        timestamp: { type: "string", format: "date-time" },
+        service: { type: "string", example: "listings" },
       },
     },
   })
   @ApiResponse({
     status: HttpStatus.INTERNAL_SERVER_ERROR,
-    description: 'Service is unhealthy',
+    description: "Service is unhealthy",
   })
   public async healthCheck(): Promise<{
     status: string;

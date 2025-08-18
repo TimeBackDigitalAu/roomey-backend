@@ -1,6 +1,10 @@
-import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
-import type { Prisma } from '../../../generated/client';
-import { PrismaService } from '../../prisma/prisma.service';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from "@nestjs/common";
+import type { Prisma } from "../../../generated/client";
+import { PrismaService } from "../../prisma/prisma.service";
 
 export interface ProfileData {
   firstName?: string;
@@ -45,9 +49,9 @@ export class ProfileService {
     avatar?: string | null | undefined;
     phoneNumber: string | null;
     dateOfBirth?: Date | undefined;
-    address?: ProfileData['address'] | undefined;
-    preferences?: ProfileData['preferences'] | undefined;
-    socialLinks?: ProfileData['socialLinks'] | undefined;
+    address?: ProfileData["address"] | undefined;
+    preferences?: ProfileData["preferences"] | undefined;
+    socialLinks?: ProfileData["socialLinks"] | undefined;
     isOnboarded: boolean | null;
     createdAt: Date;
     updatedAt: Date;
@@ -58,14 +62,15 @@ export class ProfileService {
     });
 
     if (!existingProfile) {
-      throw new NotFoundException('User not found');
+      throw new NotFoundException("User not found");
     }
 
     // Update user with profile information
     const updatedUser = await this.prisma.user_table.update({
       where: { id: userId },
       data: {
-        user_name: `${profileData.firstName ?? ''} ${profileData.lastName ?? ''}`.trim(),
+        user_name:
+          `${profileData.firstName ?? ""} ${profileData.lastName ?? ""}`.trim(),
         user_phone_number: profileData.phoneNumber ?? null,
         user_updated_at: new Date(),
         user_is_onboarded: true,
@@ -105,8 +110,8 @@ export class ProfileService {
     updatedAt: Date;
   }> {
     // Users can only access their own profile, admins can access any profile
-    if (userId !== requestingUserId && requestingUserRole !== 'admin') {
-      throw new UnauthorizedException('Access denied');
+    if (userId !== requestingUserId && requestingUserRole !== "admin") {
+      throw new UnauthorizedException("Access denied");
     }
 
     type UserSelected = {
@@ -135,7 +140,7 @@ export class ProfileService {
     })) as UserSelected | null;
 
     if (!user) {
-      throw new NotFoundException('Profile not found');
+      throw new NotFoundException("Profile not found");
     }
 
     const { first, last } = this.splitNameSafely(user.user_name);
@@ -166,16 +171,16 @@ export class ProfileService {
     avatar: string | null;
     phoneNumber: string | null;
     dateOfBirth?: Date | undefined;
-    address?: ProfileData['address'] | undefined;
-    preferences?: ProfileData['preferences'] | undefined;
-    socialLinks?: ProfileData['socialLinks'] | undefined;
+    address?: ProfileData["address"] | undefined;
+    preferences?: ProfileData["preferences"] | undefined;
+    socialLinks?: ProfileData["socialLinks"] | undefined;
     isOnboarded: boolean | null;
     createdAt: Date;
     updatedAt: Date;
   }> {
     // Users can only update their own profile, admins can update any profile
-    if (userId !== requestingUserId && requestingUserRole !== 'admin') {
-      throw new UnauthorizedException('Access denied');
+    if (userId !== requestingUserId && requestingUserRole !== "admin") {
+      throw new UnauthorizedException("Access denied");
     }
 
     type UserNameOnly = { user_name: string | null };
@@ -185,7 +190,7 @@ export class ProfileService {
     })) as UserNameOnly | null;
 
     if (!user) {
-      throw new NotFoundException('Profile not found');
+      throw new NotFoundException("Profile not found");
     }
 
     // Prepare update data
@@ -194,7 +199,9 @@ export class ProfileService {
     };
 
     if (profileData.firstName || profileData.lastName) {
-      const { first: currentFirst, last: currentLast } = this.splitNameSafely(user.user_name);
+      const { first: currentFirst, last: currentLast } = this.splitNameSafely(
+        user.user_name
+      );
       const firstName = profileData.firstName ?? currentFirst;
       const lastName = profileData.lastName ?? currentLast;
       updateData.user_name = `${firstName} ${lastName}`.trim();
@@ -232,7 +239,9 @@ export class ProfileService {
       },
     })) as UserSelected;
 
-    const { first: updatedFirst, last: updatedLast } = this.splitNameSafely(updatedUser.user_name);
+    const { first: updatedFirst, last: updatedLast } = this.splitNameSafely(
+      updatedUser.user_name
+    );
 
     return {
       id: updatedUser.id,
@@ -257,8 +266,8 @@ export class ProfileService {
     requestingUserRole: string
   ): Promise<{ id: string; message: string; deletedAt: Date }> {
     // Users can only delete their own profile, admins can delete any profile
-    if (userId !== requestingUserId && requestingUserRole !== 'admin') {
-      throw new UnauthorizedException('Access denied');
+    if (userId !== requestingUserId && requestingUserRole !== "admin") {
+      throw new UnauthorizedException("Access denied");
     }
 
     const user = await this.prisma.user_table.findUnique({
@@ -266,7 +275,7 @@ export class ProfileService {
     });
 
     if (!user) {
-      throw new NotFoundException('Profile not found');
+      throw new NotFoundException("Profile not found");
     }
 
     // Soft delete by setting banned status
@@ -274,14 +283,14 @@ export class ProfileService {
       where: { id: userId },
       data: {
         user_banned: true,
-        user_ban_reason: 'Profile deleted by user',
+        user_ban_reason: "Profile deleted by user",
         user_updated_at: new Date(),
       },
     });
 
     return {
       id: deletedUser.id,
-      message: 'Profile deleted successfully',
+      message: "Profile deleted successfully",
       deletedAt: deletedUser.user_updated_at,
     };
   }
@@ -305,8 +314,8 @@ export class ProfileService {
     }>
   > {
     // Only admins can access all profiles
-    if (requestingUserRole !== 'admin') {
-      throw new UnauthorizedException('Admin access required');
+    if (requestingUserRole !== "admin") {
+      throw new UnauthorizedException("Admin access required");
     }
 
     const users = await this.prisma.user_table.findMany({
@@ -322,7 +331,7 @@ export class ProfileService {
         user_created_at: true,
         user_updated_at: true,
       },
-      orderBy: { user_created_at: 'desc' },
+      orderBy: { user_created_at: "desc" },
     });
 
     return users.map((user) => {
@@ -363,15 +372,15 @@ export class ProfileService {
     }>
   > {
     // Only admins can search profiles
-    if (requestingUserRole !== 'admin') {
-      throw new UnauthorizedException('Admin access required');
+    if (requestingUserRole !== "admin") {
+      throw new UnauthorizedException("Admin access required");
     }
 
     const users = await this.prisma.user_table.findMany({
       where: {
         OR: [
-          { user_name: { contains: searchTerm, mode: 'insensitive' } },
-          { user_email: { contains: searchTerm, mode: 'insensitive' } },
+          { user_name: { contains: searchTerm, mode: "insensitive" } },
+          { user_email: { contains: searchTerm, mode: "insensitive" } },
         ],
       },
       select: {
@@ -386,7 +395,7 @@ export class ProfileService {
         user_created_at: true,
         user_updated_at: true,
       },
-      orderBy: { user_created_at: 'desc' },
+      orderBy: { user_created_at: "desc" },
     });
 
     return users.map((user) => {
@@ -407,13 +416,16 @@ export class ProfileService {
     });
   }
 
-  private splitNameSafely(fullName: string | null): { first: string; last: string } {
+  private splitNameSafely(fullName: string | null): {
+    first: string;
+    last: string;
+  } {
     if (!fullName) {
-      return { first: '', last: '' };
+      return { first: "", last: "" };
     }
-    const parts = fullName.trim().split(' ');
-    const first = parts[0] ?? '';
-    const last = parts.slice(1).join(' ') ?? '';
+    const parts = fullName.trim().split(" ");
+    const first = parts[0] ?? "";
+    const last = parts.slice(1).join(" ") ?? "";
     return { first, last };
   }
 }

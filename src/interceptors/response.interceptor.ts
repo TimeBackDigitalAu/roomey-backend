@@ -1,7 +1,13 @@
-import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from '@nestjs/common';
-import { Request, Response } from 'express';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import {
+  CallHandler,
+  ExecutionContext,
+  Injectable,
+  Logger,
+  NestInterceptor,
+} from "@nestjs/common";
+import { Request, Response } from "express";
+import { Observable } from "rxjs";
+import { map, tap } from "rxjs/operators";
 
 export interface StandardResponse<T = unknown> {
   success: boolean;
@@ -36,25 +42,31 @@ interface HealthCheckData {
 }
 
 @Injectable()
-export class ResponseInterceptor<T> implements NestInterceptor<T, StandardResponse<T>> {
+export class ResponseInterceptor<T>
+  implements NestInterceptor<T, StandardResponse<T>>
+{
   private readonly logger = new Logger(ResponseInterceptor.name);
 
-  public intercept(context: ExecutionContext, next: CallHandler): Observable<StandardResponse<T>> {
+  public intercept(
+    context: ExecutionContext,
+    next: CallHandler
+  ): Observable<StandardResponse<T>> {
     const request = context.switchToHttp().getRequest<AuthenticatedRequest>();
     const response = context.switchToHttp().getResponse<Response>();
     const startTime = Date.now();
 
     // Generate or get request ID
-    const requestId = (request.headers['x-request-id'] as string) ?? this.generateRequestId();
-    request.headers['x-request-id'] = requestId;
+    const requestId =
+      (request.headers["x-request-id"] as string) ?? this.generateRequestId();
+    request.headers["x-request-id"] = requestId;
 
     // Set request ID in response headers
-    response.setHeader('X-Request-ID', requestId);
+    response.setHeader("X-Request-ID", requestId);
 
     return next.handle().pipe(
       tap(() => {
         const responseTime = Date.now() - startTime;
-        response.setHeader('X-Response-Time', `${responseTime}ms`);
+        response.setHeader("X-Response-Time", `${responseTime}ms`);
 
         // Log successful requests
         this.logger.log(
@@ -65,7 +77,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, StandardRespon
             path: request.url,
             statusCode: response.statusCode,
             responseTime,
-            userAgent: request.headers['user-agent'],
+            userAgent: request.headers["user-agent"],
             ip: request.ip ?? request.connection.remoteAddress,
             userId: request.user?.id,
           }
@@ -75,7 +87,7 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, StandardRespon
         const responseTime = Date.now() - startTime;
 
         // Don't wrap if it's already a standard response
-        if (data && typeof data === 'object' && 'success' in data) {
+        if (data && typeof data === "object" && "success" in data) {
           return data as unknown as StandardResponse<T>;
         }
 
@@ -112,14 +124,20 @@ export class PaginationResponseInterceptor<T>
   ): Observable<StandardResponse<T[]>> {
     const request = context.switchToHttp().getRequest<Request>();
     const startTime = Date.now();
-    const requestId = (request.headers['x-request-id'] as string) ?? this.generateRequestId();
+    const requestId =
+      (request.headers["x-request-id"] as string) ?? this.generateRequestId();
 
     return next.handle().pipe(
       map((data: unknown) => {
         const responseTime = Date.now() - startTime;
 
         // Handle paginated responses
-        if (data && typeof data === 'object' && 'data' in data && 'pagination' in data) {
+        if (
+          data &&
+          typeof data === "object" &&
+          "data" in data &&
+          "pagination" in data
+        ) {
           const paginatedData = data as PaginatedData<T>;
           return {
             success: true,
@@ -172,17 +190,21 @@ export class HealthCheckResponseInterceptor
 {
   private readonly logger = new Logger(HealthCheckResponseInterceptor.name);
 
-  public intercept(context: ExecutionContext, next: CallHandler): Observable<HealthCheckData> {
+  public intercept(
+    context: ExecutionContext,
+    next: CallHandler
+  ): Observable<HealthCheckData> {
     const request = context.switchToHttp().getRequest<Request>();
     const startTime = Date.now();
-    const requestId = (request.headers['x-request-id'] as string) ?? this.generateRequestId();
+    const requestId =
+      (request.headers["x-request-id"] as string) ?? this.generateRequestId();
 
     return next.handle().pipe(
       map((data: HealthCheckData) => {
         const responseTime = Date.now() - startTime;
 
         // For health checks, return the data as-is but add metadata
-        if (data && typeof data === 'object' && 'status' in data) {
+        if (data && typeof data === "object" && "status" in data) {
           return {
             ...data,
             timestamp: new Date().toISOString(),

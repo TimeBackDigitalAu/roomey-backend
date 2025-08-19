@@ -3,8 +3,8 @@ import {
   Catch,
   ExceptionFilter,
   HttpException,
-} from "@nestjs/common";
-import { Request, Response } from "express";
+} from '@nestjs/common';
+import { Request, Response } from 'express';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
@@ -19,9 +19,9 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const message =
       exception instanceof HttpException
         ? exception.getResponse()
-        : "Internal server error";
+        : 'Internal server error';
 
-    console.error("Unhandled Exception:", exception);
+    console.error('Unhandled Exception:', exception);
 
     response.status(status).json({
       statusCode: status,

@@ -4,10 +4,10 @@ import {
   Injectable,
   Logger,
   NestInterceptor,
-} from "@nestjs/common";
-import { Request, Response } from "express";
-import { Observable } from "rxjs";
-import { map, tap } from "rxjs/operators";
+} from '@nestjs/common';
+import { Request, Response } from 'express';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 export interface StandardResponse<T = unknown> {
   success: boolean;
@@ -57,16 +57,16 @@ export class ResponseInterceptor<T>
 
     // Generate or get request ID
     const requestId =
-      (request.headers["x-request-id"] as string) ?? this.generateRequestId();
-    request.headers["x-request-id"] = requestId;
+      (request.headers['x-request-id'] as string) ?? this.generateRequestId();
+    request.headers['x-request-id'] = requestId;
 
     // Set request ID in response headers
-    response.setHeader("X-Request-ID", requestId);
+    response.setHeader('X-Request-ID', requestId);
 
     return next.handle().pipe(
       tap(() => {
         const responseTime = Date.now() - startTime;
-        response.setHeader("X-Response-Time", `${responseTime}ms`);
+        response.setHeader('X-Response-Time', `${responseTime}ms`);
 
         // Log successful requests
         this.logger.log(
@@ -77,7 +77,7 @@ export class ResponseInterceptor<T>
             path: request.url,
             statusCode: response.statusCode,
             responseTime,
-            userAgent: request.headers["user-agent"],
+            userAgent: request.headers['user-agent'],
             ip: request.ip ?? request.connection.remoteAddress,
             userId: request.user?.id,
           }
@@ -87,7 +87,7 @@ export class ResponseInterceptor<T>
         const responseTime = Date.now() - startTime;
 
         // Don't wrap if it's already a standard response
-        if (data && typeof data === "object" && "success" in data) {
+        if (data && typeof data === 'object' && 'success' in data) {
           return data as unknown as StandardResponse<T>;
         }
 
@@ -125,7 +125,7 @@ export class PaginationResponseInterceptor<T>
     const request = context.switchToHttp().getRequest<Request>();
     const startTime = Date.now();
     const requestId =
-      (request.headers["x-request-id"] as string) ?? this.generateRequestId();
+      (request.headers['x-request-id'] as string) ?? this.generateRequestId();
 
     return next.handle().pipe(
       map((data: unknown) => {
@@ -134,9 +134,9 @@ export class PaginationResponseInterceptor<T>
         // Handle paginated responses
         if (
           data &&
-          typeof data === "object" &&
-          "data" in data &&
-          "pagination" in data
+          typeof data === 'object' &&
+          'data' in data &&
+          'pagination' in data
         ) {
           const paginatedData = data as PaginatedData<T>;
           return {
@@ -197,14 +197,14 @@ export class HealthCheckResponseInterceptor
     const request = context.switchToHttp().getRequest<Request>();
     const startTime = Date.now();
     const requestId =
-      (request.headers["x-request-id"] as string) ?? this.generateRequestId();
+      (request.headers['x-request-id'] as string) ?? this.generateRequestId();
 
     return next.handle().pipe(
       map((data: HealthCheckData) => {
         const responseTime = Date.now() - startTime;
 
         // For health checks, return the data as-is but add metadata
-        if (data && typeof data === "object" && "status" in data) {
+        if (data && typeof data === 'object' && 'status' in data) {
           return {
             ...data,
             timestamp: new Date().toISOString(),

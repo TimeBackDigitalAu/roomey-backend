@@ -63,7 +63,7 @@ export interface INotificationPreferences {
 }
 
 export interface IPrivacySettings {
-  profileVisibility: "public" | "private" | "friends";
+  profileVisibility: 'public' | 'private' | 'friends';
   showEmail: boolean;
   showPhone: boolean;
   showLocation: boolean;
@@ -73,7 +73,7 @@ export interface IAuthTokens {
   accessToken: string;
   refreshToken: string;
   expiresIn: number;
-  tokenType: "Bearer";
+  tokenType: 'Bearer';
 }
 
 export interface IVerificationResult {
@@ -85,7 +85,7 @@ export interface IVerificationResult {
 
 export interface IVerificationRequest {
   email: string;
-  type: "email" | "phone";
+  type: 'email' | 'phone';
   captchaToken?: string;
 }
 
@@ -218,7 +218,7 @@ export interface ISessionConfig {
   cookiePrefix: string;
   secure: boolean;
   httpOnly: boolean;
-  sameSite: "strict" | "lax" | "none";
+  sameSite: 'strict' | 'lax' | 'none';
   maxAge: number;
 }
 
@@ -277,48 +277,48 @@ export interface ISecurityConfig {
 }
 
 export enum AuthEventType {
-  REGISTRATION = "REGISTRATION",
-  LOGIN_SUCCESS = "LOGIN_SUCCESS",
-  LOGIN_FAILURE = "LOGIN_FAILURE",
-  LOGOUT = "LOGOUT",
-  EMAIL_VERIFICATION = "EMAIL_VERIFICATION",
-  PHONE_VERIFICATION = "PHONE_VERIFICATION",
-  VERIFICATION_RESENT = "VERIFICATION_RESENT",
-  PASSWORD_RESET = "PASSWORD_RESET",
-  PASSWORD_CHANGE = "PASSWORD_CHANGE",
-  PROFILE_UPDATE = "PROFILE_UPDATE",
-  ACCOUNT_LOCKOUT = "ACCOUNT_LOCKOUT",
-  ACCOUNT_UNLOCK = "ACCOUNT_UNLOCK",
-  TOKEN_REFRESH = "TOKEN_REFRESH",
-  TOKEN_INVALIDATION = "TOKEN_INVALIDATION",
-  TWO_FACTOR_ENABLE = "TWO_FACTOR_ENABLE",
-  TWO_FACTOR_DISABLE = "TWO_FACTOR_DISABLE",
-  DEVICE_ADDED = "DEVICE_ADDED",
-  DEVICE_REMOVED = "DEVICE_REMOVED",
-  SESSION_EXPIRED = "SESSION_EXPIRED",
-  SUSPICIOUS_ACTIVITY = "SUSPICIOUS_ACTIVITY",
-  SECURITY_ALERT = "SECURITY_ALERT",
+  REGISTRATION = 'REGISTRATION',
+  LOGIN_SUCCESS = 'LOGIN_SUCCESS',
+  LOGIN_FAILURE = 'LOGIN_FAILURE',
+  LOGOUT = 'LOGOUT',
+  EMAIL_VERIFICATION = 'EMAIL_VERIFICATION',
+  PHONE_VERIFICATION = 'PHONE_VERIFICATION',
+  VERIFICATION_RESENT = 'VERIFICATION_RESENT',
+  PASSWORD_RESET = 'PASSWORD_RESET',
+  PASSWORD_CHANGE = 'PASSWORD_CHANGE',
+  PROFILE_UPDATE = 'PROFILE_UPDATE',
+  ACCOUNT_LOCKOUT = 'ACCOUNT_LOCKOUT',
+  ACCOUNT_UNLOCK = 'ACCOUNT_UNLOCK',
+  TOKEN_REFRESH = 'TOKEN_REFRESH',
+  TOKEN_INVALIDATION = 'TOKEN_INVALIDATION',
+  TWO_FACTOR_ENABLE = 'TWO_FACTOR_ENABLE',
+  TWO_FACTOR_DISABLE = 'TWO_FACTOR_DISABLE',
+  DEVICE_ADDED = 'DEVICE_ADDED',
+  DEVICE_REMOVED = 'DEVICE_REMOVED',
+  SESSION_EXPIRED = 'SESSION_EXPIRED',
+  SUSPICIOUS_ACTIVITY = 'SUSPICIOUS_ACTIVITY',
+  SECURITY_ALERT = 'SECURITY_ALERT',
 }
 
 export enum AuthStatus {
-  ACTIVE = "active",
-  INACTIVE = "inactive",
-  SUSPENDED = "suspended",
-  BANNED = "banned",
-  PENDING_VERIFICATION = "pending_verification",
-  LOCKED = "locked",
+  ACTIVE = 'active',
+  INACTIVE = 'inactive',
+  SUSPENDED = 'suspended',
+  BANNED = 'banned',
+  PENDING_VERIFICATION = 'pending_verification',
+  LOCKED = 'locked',
 }
 
 export enum VerificationStatus {
-  PENDING = "pending",
-  VERIFIED = "verified",
-  FAILED = "failed",
-  EXPIRED = "expired",
+  PENDING = 'pending',
+  VERIFIED = 'verified',
+  FAILED = 'failed',
+  EXPIRED = 'expired',
 }
 
 export enum SecurityLevel {
-  LOW = "low",
-  MEDIUM = "medium",
-  HIGH = "high",
-  CRITICAL = "critical",
+  LOW = 'low',
+  MEDIUM = 'medium',
+  HIGH = 'high',
+  CRITICAL = 'critical',
 }

@@ -4,9 +4,9 @@ import {
   InternalServerErrorException,
   Logger,
   NotFoundException,
-} from "@nestjs/common";
-import { z } from "zod";
-import { PrismaClient } from "../../../generated/client";
+} from '@nestjs/common';
+import { z } from 'zod';
+import { PrismaClient } from '../../../generated/client';
 import {
   CreateListingDto,
   CreateListingResponse,
@@ -20,7 +20,7 @@ import {
   UpdateListingDto,
   UpdateListingResponse,
   UpdateListingSchema,
-} from "./dto/listings.dto";
+} from './dto/listings.dto';
 
 interface DatabaseResult {
   id: string;
@@ -59,7 +59,7 @@ export class ListingsService {
           ${query ?? null}::text,
           ${min_price ?? null}::numeric,
           ${max_price ?? null}::numeric,
-          ${status ?? "active"}::text,
+          ${status ?? 'active'}::text,
           ${limit ?? 20}::integer,
           ${offset ?? 0}::integer
         )
@@ -69,10 +69,10 @@ export class ListingsService {
       const countResult = await this.prisma.$queryRaw<DatabaseResult[]>`
         SELECT COUNT(*) as total FROM listings 
         WHERE deleted_at IS NULL 
-        AND status = ${status ?? "active"}
-        ${query ? `AND (title ILIKE ${`%${query}%`} OR description ILIKE ${`%${query}%`})` : ""}
-        ${min_price ? `AND price >= ${min_price}` : ""}
-        ${max_price ? `AND price <= ${max_price}` : ""}
+        AND status = ${status ?? 'active'}
+        ${query ? `AND (title ILIKE ${`%${query}%`} OR description ILIKE ${`%${query}%`})` : ''}
+        ${min_price ? `AND price >= ${min_price}` : ''}
+        ${max_price ? `AND price <= ${max_price}` : ''}
       `;
 
       const total = Number(countResult[0]?.total ?? 0);
@@ -92,7 +92,7 @@ export class ListingsService {
         pagination,
       };
     } catch (error) {
-      this.handleError(error, "search listings");
+      this.handleError(error, 'search listings');
     }
   }
 
@@ -140,7 +140,7 @@ export class ListingsService {
       const result = results[0];
       return this.convertBigInts(result) as ListingResponse;
     } catch (error) {
-      this.handleError(error, "fetch listing");
+      this.handleError(error, 'fetch listing');
     }
   }
 
@@ -178,13 +178,13 @@ export class ListingsService {
 
         if (!ownerResult || ownerResult.length === 0) {
           throw new BadRequestException(
-            "No users available to assign as owner"
+            'No users available to assign as owner'
           );
         }
 
         const ownerId = ownerResult[0]?.id;
         if (!ownerId) {
-          throw new BadRequestException("Invalid owner ID");
+          throw new BadRequestException('Invalid owner ID');
         }
 
         // Create the listing
@@ -193,14 +193,14 @@ export class ListingsService {
             owner_id, title, description, price, currency_code, status, 
             latitude, longitude, address, created_at, updated_at
           ) VALUES (
-            ${ownerId}::uuid, ${title}, ${description}, ${price}, ${currency_code ?? "USD"}, ${status ?? "active"},
+            ${ownerId}::uuid, ${title}, ${description}, ${price}, ${currency_code ?? 'USD'}, ${status ?? 'active'},
             ${latitude}, ${longitude}, ${address}, NOW(), NOW()
           ) RETURNING *
         `;
 
         const createdResult = result[0];
         if (!createdResult) {
-          throw new InternalServerErrorException("Failed to create listing");
+          throw new InternalServerErrorException('Failed to create listing');
         }
         this.logger.log(
           `Successfully created listing with ID: ${createdResult.id}`
@@ -209,7 +209,7 @@ export class ListingsService {
         return this.convertBigInts(createdResult) as CreateListingResponse;
       });
     } catch (error) {
-      this.handleError(error, "create listing");
+      this.handleError(error, 'create listing');
     }
   }
 
@@ -269,12 +269,12 @@ export class ListingsService {
         this.logger.log(`Successfully updated listing ${id}`);
 
         return {
-          message: "Listing updated successfully",
+          message: 'Listing updated successfully',
           listing: updatedListing,
         };
       });
     } catch (error) {
-      this.handleError(error, "update listing");
+      this.handleError(error, 'update listing');
     }
   }
 
@@ -314,12 +314,12 @@ export class ListingsService {
         this.logger.log(`Successfully deleted listing ${id}`);
 
         return {
-          message: "Listing deleted successfully",
+          message: 'Listing deleted successfully',
           deleted_at: new Date(),
         };
       });
     } catch (error) {
-      this.handleError(error, "delete listing");
+      this.handleError(error, 'delete listing');
     }
   }
 
@@ -366,7 +366,7 @@ export class ListingsService {
 
       return listings;
     } catch (error) {
-      this.handleError(error, "find nearby listings");
+      this.handleError(error, 'find nearby listings');
     }
   }
 
@@ -383,12 +383,12 @@ export class ListingsService {
       await this.prisma.$queryRaw`SELECT 1`;
 
       return {
-        status: "healthy",
+        status: 'healthy',
         timestamp: new Date(),
-        service: "listings",
+        service: 'listings',
       };
     } catch (error) {
-      this.handleError(error, "health check");
+      this.handleError(error, 'health check');
     }
   }
 
@@ -398,11 +398,11 @@ export class ListingsService {
    */
   private convertBigInts(data: unknown): unknown {
     if (data === null || data === undefined) return data;
-    if (typeof data === "bigint") return Number(data);
+    if (typeof data === 'bigint') return Number(data);
     if (Array.isArray(data)) {
       return data.map((item) => this.convertBigInts(item));
     }
-    if (typeof data === "object" && data !== null) {
+    if (typeof data === 'object' && data !== null) {
       const converted: Record<string, unknown> = {};
       for (const [key, value] of Object.entries(data)) {
         converted[key] = this.convertBigInts(value);
@@ -425,7 +425,7 @@ export class ListingsService {
     }
 
     const errorMessage =
-      error instanceof Error ? error.message : "Unknown error occurred";
+      error instanceof Error ? error.message : 'Unknown error occurred';
     const errorStack = error instanceof Error ? error.stack : undefined;
 
     this.logger.error(`Error in ${context}: ${errorMessage}`, errorStack);
@@ -442,8 +442,8 @@ export class ListingsService {
     } catch (error) {
       if (error instanceof z.ZodError) {
         const validationErrors = (error as any).errors
-          .map((err) => `${err.path.join(".")}: ${err.message}`)
-          .join(", ");
+          .map((err) => `${err.path.join('.')}: ${err.message}`)
+          .join(', ');
         throw new BadRequestException(`Validation failed: ${validationErrors}`);
       }
       throw error;

@@ -4,12 +4,12 @@ import {
   Injectable,
   Logger,
   UnauthorizedException,
-} from "@nestjs/common";
-import { PrismaService } from "../../prisma/prisma.service";
-import { RedisService } from "../redis/redis";
-import { ResendService } from "../resend/resend";
-import { TwilioService } from "../twillio/twillio";
-import { AUTH_CONFIG, AUTH_ERRORS, AUTH_SUCCESS } from "./auth.config";
+} from '@nestjs/common';
+import { PrismaService } from '../../prisma/prisma.service';
+import { RedisService } from '../redis/redis';
+import { ResendService } from '../resend/resend';
+import { TwilioService } from '../twillio/twillio';
+import { AUTH_CONFIG, AUTH_ERRORS, AUTH_SUCCESS } from './auth.config';
 import {
   AuthEventType,
   IAuthResult,
@@ -18,7 +18,7 @@ import {
   IUserProfile,
   IUserRegistration,
   IVerificationResult,
-} from "./interfaces/auth.interface";
+} from './interfaces/auth.interface';
 
 // Define proper types for database entities
 interface UserEntity {
@@ -66,7 +66,7 @@ export class AuthService {
   ): Promise<IAuthResult> {
     try {
       // Check rate limiting
-      await this.checkRateLimit("register", ip);
+      await this.checkRateLimit('register', ip);
 
       // Validate input data
       this.validateRegistrationData(data);
@@ -94,12 +94,12 @@ export class AuthService {
         message: AUTH_SUCCESS.REGISTRATION,
         userId: user.id,
         requiresVerification: true,
-        verificationMethods: ["email", "phone"],
+        verificationMethods: ['email', 'phone'],
       };
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error occurred";
-      this.logger.error("User registration failed", {
+        error instanceof Error ? error.message : 'Unknown error occurred';
+      this.logger.error('User registration failed', {
         error: errorMessage,
         data,
         ip,
@@ -118,7 +118,7 @@ export class AuthService {
   ): Promise<IAuthResult> {
     try {
       // Check rate limiting
-      await this.checkRateLimit("login", ip);
+      await this.checkRateLimit('login', ip);
 
       // Find and validate user
       const user = await this.findAndValidateUser(data.email);
@@ -129,7 +129,7 @@ export class AuthService {
       // Verify password using better-auth
       const userAccount = user.user_account_tables?.[0];
       if (!userAccount?.user_account_password) {
-        throw new UnauthorizedException("Invalid credentials");
+        throw new UnauthorizedException('Invalid credentials');
       }
       this.verifyPasswordHash(data.password, userAccount.user_account_password);
 
@@ -166,8 +166,8 @@ export class AuthService {
       }
 
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error occurred";
-      this.logger.error("User login failed", {
+        error instanceof Error ? error.message : 'Unknown error occurred';
+      this.logger.error('User login failed', {
         error: errorMessage,
         email: data.email,
         ip,
@@ -186,10 +186,10 @@ export class AuthService {
   ): Promise<IVerificationResult> {
     try {
       // Check rate limiting
-      await this.checkRateLimit("verification", ip);
+      await this.checkRateLimit('verification', ip);
 
       // Validate and consume token using better-auth
-      const verification = this.validateAndConsumeToken(token, "email");
+      const verification = this.validateAndConsumeToken(token, 'email');
 
       // Update user verification status
       const user = this.updateEmailVerification(
@@ -215,8 +215,8 @@ export class AuthService {
       };
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error occurred";
-      this.logger.error("Email verification failed", {
+        error instanceof Error ? error.message : 'Unknown error occurred';
+      this.logger.error('Email verification failed', {
         error: errorMessage,
         token,
         ip,
@@ -236,7 +236,7 @@ export class AuthService {
   ): Promise<IVerificationResult> {
     try {
       // Check rate limiting
-      await this.checkRateLimit("verification", ip);
+      await this.checkRateLimit('verification', ip);
 
       // Find user
       const user = await this.findUserByEmail(email);
@@ -245,7 +245,7 @@ export class AuthService {
       if (user.user_phone_number) {
         this.verifyOTP(user.user_phone_number, otp);
       } else {
-        throw new BadRequestException("User has no phone number");
+        throw new BadRequestException('User has no phone number');
       }
 
       // Update phone verification status
@@ -270,8 +270,8 @@ export class AuthService {
       };
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error occurred";
-      this.logger.error("Phone verification failed", {
+        error instanceof Error ? error.message : 'Unknown error occurred';
+      this.logger.error('Phone verification failed', {
         error: errorMessage,
         email,
         ip,
@@ -312,8 +312,8 @@ export class AuthService {
       };
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error occurred";
-      this.logger.error("Token refresh failed", { error: errorMessage, ip });
+        error instanceof Error ? error.message : 'Unknown error occurred';
+      this.logger.error('Token refresh failed', { error: errorMessage, ip });
       throw error;
     }
   }
@@ -344,8 +344,8 @@ export class AuthService {
       };
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error occurred";
-      this.logger.error("User logout failed", {
+        error instanceof Error ? error.message : 'Unknown error occurred';
+      this.logger.error('User logout failed', {
         error: errorMessage,
         userId,
         ip,
@@ -359,19 +359,19 @@ export class AuthService {
    */
   public async resendVerification(
     email: string,
-    type: "email" | "phone",
+    type: 'email' | 'phone',
     ip: string,
     userAgent?: string
   ): Promise<{ success: boolean; message: string }> {
     try {
       // Check rate limiting
-      await this.checkRateLimit("resend", ip);
+      await this.checkRateLimit('resend', ip);
 
       // Find user
       const user = await this.findUserByEmail(email);
 
       // Generate and send new verification code
-      if (type === "email") {
+      if (type === 'email') {
         this.sendEmailVerification(user);
       } else {
         this.sendPhoneVerification(user);
@@ -391,8 +391,8 @@ export class AuthService {
       };
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Unknown error occurred";
-      this.logger.error("Verification resend failed", {
+        error instanceof Error ? error.message : 'Unknown error occurred';
+      this.logger.error('Verification resend failed', {
         error: errorMessage,
         email,
         type,
@@ -413,13 +413,13 @@ export class AuthService {
     isOnboarded: boolean;
   }> {
     if (!email) {
-      throw new BadRequestException("Email is required");
+      throw new BadRequestException('Email is required');
     }
     const user = await this.prisma.user_table.findUnique({
       where: { user_email: email },
     });
     if (!user) {
-      throw new BadRequestException("User not found");
+      throw new BadRequestException('User not found');
     }
     const emailVerified = Boolean(user.user_email_verified);
     const phoneVerified = Boolean(user.user_phone_number_verified);
@@ -470,7 +470,7 @@ export class AuthService {
       data: {
         id: crypto.randomUUID(),
         user_account_account_id: crypto.randomUUID(),
-        user_account_provider_id: "credentials",
+        user_account_provider_id: 'credentials',
         user_account_user_id: user.id,
         user_account_password: hashedPassword,
         user_account_created_at: new Date(),
@@ -495,7 +495,7 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new UnauthorizedException("Invalid credentials");
+      throw new UnauthorizedException('Invalid credentials');
     }
 
     return user as UserEntity;
@@ -507,7 +507,7 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new BadRequestException("User not found");
+      throw new BadRequestException('User not found');
     }
 
     return user as UserEntity;
@@ -519,7 +519,7 @@ export class AuthService {
     });
 
     if (!user) {
-      throw new BadRequestException("User not found");
+      throw new BadRequestException('User not found');
     }
 
     return user as UserEntity;
@@ -531,12 +531,12 @@ export class AuthService {
     this.logger.log(`Updating email verification for: ${verificationId}`);
     return {
       id: verificationId,
-      user_name: "",
-      user_email: "",
+      user_name: '',
+      user_email: '',
       user_email_verified: true,
-      user_phone_number: "",
+      user_phone_number: '',
       user_phone_number_verified: false,
-      user_role: "",
+      user_role: '',
       user_created_at: new Date(),
       user_updated_at: new Date(),
       user_is_onboarded: false,
@@ -576,14 +576,14 @@ export class AuthService {
       id: user.id,
       email: user.user_email,
       name: user.user_name,
-      phoneNumber: user.user_phone_number ?? "",
-      role: user.user_role ?? "user",
+      phoneNumber: user.user_phone_number ?? '',
+      role: user.user_role ?? 'user',
       emailVerified: user.user_email_verified,
       phoneVerified: Boolean(user.user_phone_number_verified),
       isOnboarded: Boolean(user.user_is_onboarded),
       createdAt: user.user_created_at,
       updatedAt: user.user_updated_at,
-      status: "active", // Default status
+      status: 'active', // Default status
     };
   }
 
@@ -594,11 +594,11 @@ export class AuthService {
 
     if (current && parseInt(current) >= 5) {
       throw new BadRequestException(
-        "Rate limit exceeded. Please try again later."
+        'Rate limit exceeded. Please try again later.'
       );
     }
 
-    await this.redis.set(key, (parseInt(current ?? "0") + 1).toString(), 300);
+    await this.redis.set(key, (parseInt(current ?? '0') + 1).toString(), 300);
   }
 
   private async checkAccountLockStatus(userId: string): Promise<void> {
@@ -606,7 +606,7 @@ export class AuthService {
 
     if (failedAttempts && parseInt(failedAttempts) >= 5) {
       throw new UnauthorizedException(
-        "Account temporarily locked due to multiple failed attempts."
+        'Account temporarily locked due to multiple failed attempts.'
       );
     }
   }
@@ -615,7 +615,7 @@ export class AuthService {
     const user = await this.findUserByEmail(email);
     const key = `failed_login:${user.id}`;
     const current = await this.redis.get(key);
-    const attempts = parseInt(current ?? "0") + 1;
+    const attempts = parseInt(current ?? '0') + 1;
 
     await this.redis.set(key, attempts.toString(), 900); // 15 minutes lockout
   }
@@ -635,7 +635,7 @@ export class AuthService {
       accessToken: `access_${user.id}_${Date.now()}`,
       refreshToken: `refresh_${user.id}_${Date.now()}`,
       expiresIn: AUTH_CONFIG.TOKENS.ACCESS_TOKEN / 1000, // Convert to seconds
-      tokenType: "Bearer",
+      tokenType: 'Bearer',
     };
   }
 
@@ -684,12 +684,12 @@ export class AuthService {
   // Validation methods
   private validateRegistrationData(data: IUserRegistration): void {
     if (!data.firstName || !data.email || !data.phoneNumber || !data.password) {
-      throw new BadRequestException("All fields are required");
+      throw new BadRequestException('All fields are required');
     }
 
     if (data.password.length < 8) {
       throw new BadRequestException(
-        "Password must be at least 8 characters long"
+        'Password must be at least 8 characters long'
       );
     }
   }
@@ -706,7 +706,7 @@ export class AuthService {
 
     if (existingUser) {
       throw new ConflictException(
-        "User with this email or phone number already exists"
+        'User with this email or phone number already exists'
       );
     }
   }
@@ -744,7 +744,7 @@ export class AuthService {
     // const payload = await auth.validateRefreshToken(token);
 
     // For now, return a mock payload
-    return { sub: "mock_user_id" };
+    return { sub: 'mock_user_id' };
   }
 
   // Password methods using better-auth
@@ -782,7 +782,7 @@ export class AuthService {
 
   private generateVerificationToken(): string {
     // Use better-auth to generate verification token
-    this.logger.log("Generating verification token");
+    this.logger.log('Generating verification token');
 
     // This would integrate with better-auth's token generation
     // return await auth.generateVerificationToken();
@@ -802,13 +802,13 @@ export class AuthService {
 
     if (current && parseInt(current) >= limit) {
       throw new BadRequestException(
-        "Rate limit exceeded. Please try again later."
+        'Rate limit exceeded. Please try again later.'
       );
     }
 
     await this.redis.set(
       key,
-      (parseInt(current ?? "0") + 1).toString(),
+      (parseInt(current ?? '0') + 1).toString(),
       windowSeconds
     );
   }

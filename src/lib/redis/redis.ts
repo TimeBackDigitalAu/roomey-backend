@@ -1,5 +1,5 @@
-import { Injectable } from "@nestjs/common";
-import { Redis } from "ioredis";
+import { Injectable } from '@nestjs/common';
+import { Redis } from 'ioredis';
 
 export const redis = new Redis(process.env.REDIS_URL!);
 
@@ -15,7 +15,7 @@ export class RedisService {
     return this.redis.get(key);
   }
 
-  async set(key: string, value: string, ttl?: number): Promise<"OK"> {
+  async set(key: string, value: string, ttl?: number): Promise<'OK'> {
     if (ttl) {
       return this.redis.setex(key, ttl, value);
     }

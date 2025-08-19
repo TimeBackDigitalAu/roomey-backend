@@ -1,5 +1,5 @@
 // user.dto.ts
-import { createZodDto } from "nestjs-zod";
+import { createZodDto } from 'nestjs-zod';
 import {
   CreateUserSchema,
   GenerateMagicLinkSchema,
@@ -13,7 +13,7 @@ import {
   SignOutSchema,
   VerifyEmailSchema,
   VerifyPhoneSchema,
-} from "./auth.dto";
+} from './auth.dto';
 
 export class CreateUserDto extends createZodDto(CreateUserSchema) {}
 

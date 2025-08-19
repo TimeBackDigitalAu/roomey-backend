@@ -1,10 +1,10 @@
-import { render } from "@react-email/render";
-import Stripe from "stripe";
-import { prisma } from "./prisma/prisma";
+import { render } from '@react-email/render';
+import Stripe from 'stripe';
+import { prisma } from './prisma/prisma';
 
 export const StripeHelper = async (event: Stripe.Event) => {
   switch (event.type) {
-    case "product.created": {
+    case 'product.created': {
       const product = event.data.object;
 
       await prisma.plan_table.create({
@@ -19,7 +19,7 @@ export const StripeHelper = async (event: Stripe.Event) => {
       });
       break;
     }
-    case "product.updated": {
+    case 'product.updated': {
       const product = event.data.object;
       const previous = event.data.previous_attributes ?? {};
 
@@ -43,12 +43,12 @@ export const StripeHelper = async (event: Stripe.Event) => {
           data: updateData,
         });
       } else {
-        console.log("No relevant product fields changed — skipping update.");
+        console.log('No relevant product fields changed — skipping update.');
       }
 
       break;
     }
-    case "product.deleted": {
+    case 'product.deleted': {
       const product = event.data.object;
       await prisma.plan_table.update({
         where: { plan_id: product.id },

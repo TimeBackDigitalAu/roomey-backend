@@ -1,15 +1,15 @@
 // user.schema.ts
-import { z } from "zod";
+import { z } from 'zod';
 
 export const CreateUserSchema = z.object({
   email: z.email(),
   password: z
     .string()
-    .min(8, "Password must be at least 8 characters")
-    .max(20, "Password must be at most 20 characters")
+    .min(8, 'Password must be at least 8 characters')
+    .max(20, 'Password must be at most 20 characters')
     .regex(
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])/,
-      "Password must contain letters, numbers, and symbols"
+      'Password must contain letters, numbers, and symbols'
     ),
   name: z.string().min(1),
 });
@@ -52,4 +52,29 @@ export const SendVerificationEmailSchema = z.object({
 
 export const GetUserSchema = z.object({
   userId: z.string(),
+});
+
+// Add missing schemas
+export const RegisterUserSchema = z.object({
+  email: z.email(),
+  password: z
+    .string()
+    .min(8, 'Password must be at least 8 characters')
+    .max(20, 'Password must be at most 20 characters')
+    .regex(
+      /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9])/,
+      'Password must contain letters, numbers, and symbols'
+    ),
+  firstName: z.string().min(1),
+  phoneNumber: z.string().min(1),
+});
+
+export const ResendVerificationSchema = z.object({
+  email: z.email(),
+  type: z.enum(['email', 'phone']),
+});
+
+export const VerifyPhoneSchema = z.object({
+  email: z.email(),
+  otp: z.string().min(6).max(6),
 });

@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { Twilio } from 'twilio';
+import { Injectable } from "@nestjs/common";
+import { Twilio } from "twilio";
 
 const accountSid = process.env.TWILIO_ACCOUNT_SID!;
 const authToken = process.env.TWILIO_AUTH_TOKEN!;
@@ -28,7 +28,7 @@ export class TwilioService {
 
       return message;
     } catch (error) {
-      throw new Error('Failed to send SMS', { cause: error });
+      throw new Error("Failed to send SMS", { cause: error });
     }
   }
 

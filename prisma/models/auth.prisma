@@ -19,6 +19,7 @@ model user_table {
   user_profile_table         user_profile_table?
 
   @@unique([user_email])
+  @@unique([user_phone_number])
   @@map("user_table")
   @@schema("auth_schema")
 }

@@ -203,6 +203,16 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
   },
   plugins: [
     phoneNumber({
+      requireVerification: true,
+      callbackOnVerification: async (data) => {
+        console.log(data);
+        await prisma.user_table.update({
+          where: { id: data.user.id },
+          data: {
+            user_phone_number_verified: true,
+          },
+        });
+      },
       schema: {
         user: {
           fields: {
@@ -307,7 +317,7 @@ export const auth: ReturnType<typeof betterAuth> = betterAuth({
       },
     }),
     captcha({
-      provider: "cloudflare-turnstile", // or google-recaptcha, hcaptcha
+      provider: "cloudflare-turnstile",
       secretKey: process.env.TURNSTILE_SECRET_KEY!,
     }),
   ],

@@ -21,33 +21,48 @@ export const StripeHelper = async (event: Stripe.Event) => {
     }
     case "product.updated": {
       const product = event.data.object;
+      const metadata = product.metadata;
       const previous = event.data.previous_attributes ?? {};
 
       const updateData: any = {};
 
       if (previous.name !== undefined) {
-        updateData.name = product.name;
+        updateData.plan_name = product.name;
       }
 
       if (previous.default_price !== undefined) {
-        updateData.priceId = product.default_price;
+        updateData.plan_price_id = product.default_price;
       }
 
       if (previous.description !== undefined) {
-        updateData.description = product.description;
+        updateData.plan_description = product.description;
       }
 
-      if (Object.keys(updateData).length > 0) {
-        await prisma.plan_table.update({
-          where: { plan_id: product.id },
-          data: updateData,
-        });
-      } else {
-        console.log("No relevant product fields changed — skipping update.");
-      }
+      // Always sync metadata
+      updateData.plan_role_available = metadata.plan_role_available;
+      updateData.plan_type = metadata.plan_type;
+      updateData.plan_limit = metadata.plan_limit;
+
+      await prisma.plan_table.upsert({
+        where: { plan_id: product.id },
+        update: updateData,
+        create: {
+          plan_id: product.id,
+          plan_name: product.name,
+          plan_photo: product.images[0],
+          plan_description: product.description,
+          plan_price_id: product.default_price as string,
+          plan_role_available: metadata.plan_role_available,
+          plan_type: metadata.plan_type,
+          plan_limit: metadata.plan_limit,
+          plan_is_active: true,
+          plan_created_at: new Date(product.created * 1000), // Stripe gives timestamp in seconds
+        },
+      });
 
       break;
     }
+
     case "product.deleted": {
       const product = event.data.object;
       await prisma.plan_table.update({

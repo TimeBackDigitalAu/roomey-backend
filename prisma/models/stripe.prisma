@@ -22,7 +22,10 @@ model plan_table {
   plan_updated_at  DateTime? @db.Timestamptz(3)
   plan_photo       String?
   plan_description String?  
+  plan_role_available String?
   plan_is_active   Boolean 
+  plan_type        String?
+  plan_limit       Json?
 
   @@map("plan_table")
   @@schema("stripe_schema")

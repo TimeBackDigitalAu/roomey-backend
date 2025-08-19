@@ -19,6 +19,7 @@ export interface IRegistrationData {
   firstName: string;
   email: string;
   phoneNumber: string;
+  password: string;
 }
 
 export interface IVerificationResult {
